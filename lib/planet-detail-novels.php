@@ -6,40 +6,44 @@
 		GROUP BY NT.novel_id
 		ORDER BY chapters DESC, N.title";
 	//echo "$query <p>\n";
-	$result_pn = mysql_query($query);
-	$num_pn = mysql_numrows($result_pn);
+	$sth = $dbh->prepare($query);
+	$sth->execute(array(':planet' => $planet));
+	$novels = $sth->fetchAll(PDO::FETCH_ASSOC);
+	$sth = null;
 
-	if ($num_pn != 0) {
+	if ($novels) {
 ?>
 <h2>Used as a location in the following Novels:</h2>
 <table>
 <tr><th>Novel:</th><th># of Chapters:</th><th>Amazon.com:</th></tr>
 <?php
-		for ($i = 0; $i < $num_pn; $i++) {
-			$novel_id = mysql_result($result_pn, $i, "novel_id");
+		for ($i = 0; $i < count($novels); $i++) {
+			$novel_id = $novels[$i]['novel_id'];
 			echo "<tr><td><a href=\"./novel-detail.php?novel=",urlencode($novel_id),"\">";
-			$val = mysql_result($result_pn, $i, "title");
+			$val = $novels[$i]['title'];
 			print_sp($val);
 			echo "</a></td>";
 			
 			echo "<td>";
-			$val = mysql_result($result_pn, $i, "chapters");
+			$val = $novels[$i]['chapters'];
 			print_sp($val);
 
 			$query = "SELECT isbn, availability
 				FROM publisher
-				WHERE novel_id=$novel_id
+				WHERE novel_id=:novel_id
 				ORDER BY print_year DESC
 				LIMIT 1";
-			$result_pa = mysql_query($query);
-			$num_pa = mysql_numrows($result_pa);
+			$sth = $dbh->prepare($query);
+			$sth->execute(array(':novel_id' => $novel_id));
+			$publishedNovel = $sth->fetchAll(PDO::FETCH_ASSOC);
+			$sth = null;
 		
-			if ($num_pa != 0) {
+			if ($publishedNovel) {
 				echo "</td><td>";
-				$val = mysql_result($result_pa, 0, "isbn");
+				$val = $publishedNovel[0]['isbn'];
 				
 				$asin = preg_replace("/-/", "", $val);
-				$availability = mysql_result($result_pa, 0, "availability");
+				$availability = $publishedNovel[0]['availability'];
 				include("$ISA_LIBDIR/amazon-link.php");
 			}
 			echo "</td></tr>\n";
@@ -48,5 +52,4 @@
 </table><br />
 <?php
 	}
-	mysql_free_result($result_pn);
 ?>

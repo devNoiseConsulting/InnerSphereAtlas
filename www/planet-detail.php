@@ -32,6 +32,7 @@ if (empty($planet) || !is_numeric($planet)) { $planet = 2266787; }
 					<div class="yui-u">
 						<?php
 							echo "<a name=\"map\" /><h2>Starmap of Surrounding Systems:</h2>\n";
+							$eraMaps = "";
 							$eras = array(2575, 2750, 3025, 3030, 3040, 3052, 3057, 3062);
 							for ($i = 0; $i < 8; $i++) {
 								$eraMaps .= "<a href=\"./system-map.php?planet=". urlencode($planet) . "&amp;era=" . $eras[$i] . "\">" . $eras[$i] . "</a> | ";
@@ -57,7 +58,9 @@ if (empty($planet) || !is_numeric($planet)) { $planet = 2266787; }
 			<?php include("$ISA_DOCROOTDIR/adsense.php"); ?>
 		</div>
 	</div>
-	<div id="ft"><? include("$ISA_DOCROOTDIR/cya.php"); ?></div>
+	<div id="ft">
+		<?php include("$ISA_DOCROOTDIR/cya.php"); ?>
+	</div>
 </div>
 </body>
 </html>
