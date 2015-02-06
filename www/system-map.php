@@ -3,17 +3,26 @@ include("./isatlas-config.php");
 include("$ISA_LIBDIR/connect.php");
 ?>
 <?php
-$planet = $_REQUEST["planet"];
-if (empty($planet) || !is_numeric($planet)) { $planet = 2266787; }
-$query = "SELECT P.name, P.x_coord, P.y_coord FROM planet P where P.planet_id = " . $planet;
+$planet = array_key_exists("planet", $_REQUEST) ? $_REQUEST["planet"] : 2266787;
+$query = "SELECT
+P.name,
+P.x_coord,
+P.y_coord
+FROM
+planet P
+where
+P.planet_id = :planet
+";
 
-$result = mysql_query($query);
-$num = mysql_numrows($result);
+$sth = $dbh->prepare($query);
+$sth->bindParam(':planet', $planet);
+$sth->execute();
+$planetData = $sth->fetch(PDO::FETCH_ASSOC);
 
-if ($num > 0) {
-	$name = mysql_result($result, 0, "name");
-	$x = mysql_result($result, 0, "x_coord");
-	$y = mysql_result($result, 0, "y_coord");
+if ($planetData) {
+	$name = $planetData['name'];
+	$x = $planetData['x_coord'];
+	$y = $planetData['y_coord'];
 }
 
 if (empty($x)) { $x = 0; }
@@ -44,6 +53,7 @@ $era = preg_replace("/(2575|2750|30(25|30|40|52|57|62))/", "\\1", $era);
 						</div>
 			<div class="yui-u">
 			<?php 
+			$eraMaps = "";
 			$eras = array(2575, 2750, 3025, 3030, 3040, 3052, 3057, 3062);
 			for ($i = 0; $i < 8; $i++) {
 				if ($era == $eras[$i]) {
