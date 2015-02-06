@@ -12,10 +12,14 @@ $func = array_key_exists("func", $_REQUEST) ? $_REQUEST["func"] : "browselist";
 $whichfield = array_key_exists("whichfield", $_REQUEST) ? $_REQUEST["whichfield"] : "novel_id";
 $searchvalue = array_key_exists("searchvalue", $_REQUEST) ? $_REQUEST["searchvalue"] : "5";
 $searchvalue = '%' . trim($searchvalue) . '%';
+
 $start = array_key_exists("start", $_REQUEST) ? $_REQUEST["start"] : "0";
-if (empty($start) || !is_numeric($start)) { $start = 0; }
+if (!is_numeric($start)) { $start = 0; }
+$start = (int) $start;
 $limit = array_key_exists("limit", $_REQUEST) ? $_REQUEST["limit"] : "25";
-if (empty($limit) || !is_numeric($limit)) { $limit = 25; }
+if (!is_numeric($limit)) { $limit = 25; }
+$limit = (int) $limit;
+
 $sortString = "NT.chapter_date, N.novel_id, NT.chapter_name";
 $sort = array_key_exists("sort", $_REQUEST) ? $_REQUEST["sort"] : "X";
 if (isset($sort)) {
@@ -70,7 +74,7 @@ if (isset($func) && $func == "search") {
 	(N.novel_id = NT.novel_id) AND
 	($whichfield LIKE :searchvalue)
 	ORDER BY " . $sortString . "
-	LIMIT $start, $limit";
+	LIMIT :start, :limit";
 } else {
 	$query = "SELECT
 	N.novel_id,
@@ -83,12 +87,14 @@ if (isset($func) && $func == "search") {
 	WHERE
 	(N.novel_id = NT.novel_id) 
 	ORDER BY " . $sortString . "
-	LIMIT $start, $limit";
+	LIMIT :start, :limit";
 }
 $sth = $dbh->prepare($query);
 if ($func == "search") {
 	$sth->bindParam(':searchvalue', $searchvalue);
 }
+$sth->bindParam(':start', $start, PDO::PARAM_INT);
+$sth->bindParam(':limit', $limit, PDO::PARAM_INT);
 $sth->execute();
 $timeline = $sth->fetchAll(PDO::FETCH_ASSOC);
 $sth = null;

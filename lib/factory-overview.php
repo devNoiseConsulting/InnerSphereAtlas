@@ -12,10 +12,13 @@ $func = array_key_exists("func", $_REQUEST) ? $_REQUEST["func"] : "browselist";
 $whichfield = array_key_exists("whichfield", $_REQUEST) ? $_REQUEST["whichfield"] : "F.name";
 $searchvalue = array_key_exists("searchvalue", $_REQUEST) ? $_REQUEST["searchvalue"] : "Majesty";
 $searchvalue = '%' . trim($searchvalue) . '%';
+
 $start = array_key_exists("start", $_REQUEST) ? $_REQUEST["start"] : "0";
 if (!is_numeric($start)) { $start = 0; }
+$start = (int) $start;
 $limit = array_key_exists("limit", $_REQUEST) ? $_REQUEST["limit"] : "25";
 if (!is_numeric($limit)) { $limit = 25; }
+$limit = (int) $limit;
 
 $found = array_key_exists("found", $_REQUEST) ? $_REQUEST["found"] : null;
 if (empty($found) || !is_numeric($found)) {
@@ -85,7 +88,7 @@ if ($func == "search") {
 	WHERE
 	P.planet_id = F.planet_id
 	ORDER BY F.name
-	LIMIT $start, $limit
+	LIMIT :start, :limit
 	";
 }
 
@@ -93,6 +96,8 @@ $sth = $dbh->prepare($query);
 if ($func == "search") {
 	$sth->bindParam(':searchvalue', $searchvalue);
 }
+$sth->bindParam(':start', $start, PDO::PARAM_INT);
+$sth->bindParam(':limit', $limit, PDO::PARAM_INT);
 $sth->execute();
 $factories = $sth->fetchAll(PDO::FETCH_ASSOC);
 $sth = null;
