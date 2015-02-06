@@ -1,0 +1,48 @@
+html {
+  color:	#000033;
+  background: white url("http://isatlas.teamspam.net/images/iscs_3025_bg.jpg");
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
+div.autocomplete {
+	position:absolute;
+	width:350px;
+	background-color:white;
+	border:1px solid #888;
+	margin:0px;
+	padding:0px;
+	overflow:scroll;
+}
+div.autocomplete ul {
+	list-style-type:none;
+	margin:0px;
+	padding:0px;
+}
+div.autocomplete ul li.selected {
+	background-color: #ffb;
+}
+div.autocomplete ul li {
+	list-style-type:none;
+	display:block;
+	margin:0;
+	padding:2px;
+	cursor:pointer;
+}
+
+h2 {
+	padding: 1px;
+	margin: 1px;
+}
+p {
+	padding: 1px;
+	margin-top: 1px;
+}
+blockquote {
+	padding: 1px;
+	margin-top: 1px;
+}
+ul {
+	padding: 1px;
+	margin-top: 1px;
+}
