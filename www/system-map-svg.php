@@ -36,7 +36,7 @@ F.color1_g,
 F.color1_b
 FROM
 planet P,
-faction F, 
+faction F,
 " . $era . " E
 WHERE
 P.planet_id = :planet AND
@@ -48,6 +48,7 @@ $sth = $dbh->prepare($query);
 $sth->bindParam(':planet', $planet);
 $sth->execute();
 $planetData = $sth->fetch(PDO::FETCH_ASSOC);
+$sth = null;
 
 if ($planetData) {
 	$name = $planetData['name'];
@@ -77,6 +78,7 @@ if ($planetData) {
 	$sth->bindParam(':planet_id', $planet_id);
 	$sth->execute();
 	$planetJumps = $sth->fetchAll(PDO::FETCH_ASSOC);
+	$sth = null;
 
 	$ringSize = 30 * $ISA_MAP_SCALE - 0.5;
 ?>
@@ -84,7 +86,7 @@ if ($planetData) {
 <radialGradient id="jumpradial">
 <stop offset="0%" style="stop-color:White;" />
 <stop offset="100%" style="stop-color:rgb(<?php echo($rgb); ?>);">
-<animate attributeName="offset" from="0%" to="100%" dur="10s" repeatCount="indefinite"/>
+<animate attributeName="offset" from="0%" to="100%" dur="10s" repeatCount="indefinite" />
 </stop>
 </radialGradient>
 </defs>
@@ -125,12 +127,13 @@ if ($planetData) {
 	ORDER BY
 	P.x_coord,
 	P.y_coord
-		";
+	";
 	
 	$sth = $dbh->prepare($query);
 	$sth->bindParam(':planet_id', $planet_id);
 	$sth->execute();
 	$planets = $sth->fetchAll(PDO::FETCH_ASSOC);
+	$sth = null;
 	
 	$font_size = $ISA_MAP_PLANET_DIAMETER * 1.5;
 	echo '<g font-family="Helvetica" font-size="' . $font_size . '" >' . "\n";
