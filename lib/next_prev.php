@@ -7,7 +7,7 @@ if ($found >= $limit) {
 		$letterNav = "";
 		for ($i = 65; $i <= 90; $i++) {
 			if (ord($letter) != $i) {
-				$letterNav .= "<a href=\"$_SERVER[PHP_SELF]?func=$func&amp;searchvalue=" . chr($i) . "\">";
+				$letterNav .= "<a href=\"".$_SERVER['PHP_SELF']."?func=$func&amp;searchvalue=" . chr($i) . "\">";
 				$letterNav .= chr($i) . "</a> | \n";
 			} else {
 				$letterNav .= "$letter | \n";
@@ -22,7 +22,7 @@ if ($found >= $limit) {
 	if (empty($start)) $start=0;
 	
 	if (isset($start) && ((($start+$limit) < $found))) { 
-		echo "<a href=\"$_SERVER[PHP_SELF]?func=$func";
+		echo "<a href=\"".$_SERVER['PHP_SELF']."?func=$func";
 		if (isset($func) && ($func == "search" || $func == "browsebyletter")) {
 			echo "&amp;searchvalue=",urlencode($trimmedsearchvalue);
 		}
@@ -31,7 +31,7 @@ if ($found >= $limit) {
 	}
 	
 	if (isset($start) && ($start>0)) { 
-		echo "<a href=\"$_SERVER[PHP_SELF]?func=$func";
+		echo "<a href=\"".$_SERVER['PHP_SELF']."?func=$func";
 		if (isset($func) && ($func == "search" || $func == "browsebyletter")) {
 			echo "&amp;searchvalue=",urlencode($trimmedsearchvalue);
 		}
@@ -43,7 +43,7 @@ if ($found >= $limit) {
 	if ($lowerbound <= 0) {
 		$lowerbound = 0;
 	} else {
-		echo("<a href=\"$_SERVER[PHP_SELF]?func=$func");
+		echo("<a href=\"".$_SERVER['PHP_SELF']."?func=$func");
 		if (isset($func) && ($func == "search" || $func == "browsebyletter")) {
 			echo "&amp;searchvalue=",urlencode($trimmedsearchvalue);
 		}
@@ -61,7 +61,7 @@ if ($found >= $limit) {
 	if ($found > $limit) {
 		for ($i = $lowerbound; $i < $upperbound; $i++) {
 			if (($i * $limit) != $start) {
-				echo("<a href=\"$_SERVER[PHP_SELF]?func=$func");
+				echo("<a href=\"".$_SERVER['PHP_SELF']."?func=$func");
 				if (isset($func) && ($func == "search" || $func == "browsebyletter")) {
 					echo "&amp;searchvalue=",urlencode($trimmedsearchvalue);
 				}
@@ -73,7 +73,7 @@ if ($found >= $limit) {
 		}
 	}
 	if (($start + (6 * $limit)) <= $found) {
-		echo("...\n<a href=\"$_SERVER[PHP_SELF]?func=$func");
+		echo("...\n<a href=\"".$_SERVER['PHP_SELF']."?func=$func");
 		if (isset($func) && ($func == "search" || $func == "browsebyletter")) {
 			echo "&amp;searchvalue=",urlencode($trimmedsearchvalue);
 		}

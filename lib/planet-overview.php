@@ -108,7 +108,6 @@ for ($i =0 ;$i < count($planets); $i++) {
 
 	echo "</tr>\n";
 }
-mysql_free_result($result);
 
 ?>
 </table>

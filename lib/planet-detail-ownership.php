@@ -73,13 +73,11 @@
 <?php
 	for ($i = 0; $i < count($ownerDates); $i++) {
 		echo "<tr><td>";
-		#$val = mysql_result($result_pod, $i, "O.occupation_date");
 		$val = $ownerDates[$i]['occupation_date'];
 		print_sp($val);
 		echo "</td>";
 		
 		echo "<td>";
-		#$val = mysql_result($result_pod, $i, "F.name");
 		$val = $ownerDates[$i]['name'];
 		print_sp($val);
 		echo "</td></tr>\n";

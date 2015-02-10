@@ -53,12 +53,11 @@ if ($planetData) {
 	$name = $planetData['name'];
 	$planet_id = $planetData['planet_id'];
 	$x = $planetData['x_coord'];
-	$y = $planetData['0'];
-	$red = $planetData['$i'];
-	$green = $planetData['$i'];
-	$blue = $planetData['$i'];
+	$y = $planetData['y_coord'];
+	$red = $planetData['color1_r'];
+	$green = $planetData['color1_g'];
+	$blue = $planetData['color1_b'];
 	$rgb = 	$red . "," . $green . "," .$blue;
-
 
 	$query = "SELECT
 	P.x_coord,

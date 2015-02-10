@@ -44,7 +44,7 @@
 			$factory = $neighbors[$i]['factory'];
 			$fluff = $neighbors[$i]['fluff'];
 			if ($factory || $fluff) {
-				echo "<td align=\"center\"><a href=\"./planet-detail.php?planet=",urlencode(mysql_result($result_pn,$i,"planet_id")),"\">";
+				echo "<td align=\"center\"><a href=\"./planet-detail.php?planet=",urlencode($neighbors[$i]['planet_id']),"\">";
 		
 				if ($factory && $fluff) {
 					echo "<img src=\"./images/fluff.gif\" alt=\"Description\" width=\"16\" 	height=\"16\" border=\"0\" /><img src=\"./images/factory.gif\" alt=\"Factory\" 	width=\"16\" height=\"16\" border=\"0\" />";
