@@ -30,7 +30,7 @@ include("$ISA_LIBDIR/connect.php");
 			<?php include("$ISA_DOCROOTDIR/adsense.php"); ?>
 		</div>
 	</div>
-	<div id="ft"><? include("$ISA_DOCROOTDIR/cya.php"); ?></div>
+	<div id="ft"><?php include("$ISA_DOCROOTDIR/cya.php"); ?></div>
 </div>
 </body>
 </html>

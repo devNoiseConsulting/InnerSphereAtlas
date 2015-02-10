@@ -8,18 +8,20 @@ Function print_sp($val) {
 		print "&nbsp;";
 }
 
-$func = $_REQUEST["func"];
-if (empty($func)) { $func = "browselist"; }
-$whichfield = $_REQUEST["whichfield"];
-if (empty($whichfield)) { $whichfield = "novel_id"; }
-$searchvalue = $_REQUEST["searchvalue"];
-if (empty($searchvalue)) { $searchvalue = "5"; }
-$start = $_REQUEST["start"];
-if (empty($start) || !is_numeric($start)) { $start = 0; }
-$limit = $_REQUEST["limit"];
-if (empty($limit) || !is_numeric($limit)) { $limit = 25; }
+$func = array_key_exists("func", $_REQUEST) ? $_REQUEST["func"] : "browselist";
+$whichfield = array_key_exists("whichfield", $_REQUEST) ? $_REQUEST["whichfield"] : "novel_id";
+$searchvalue = array_key_exists("searchvalue", $_REQUEST) ? $_REQUEST["searchvalue"] : "5";
+$searchvalue = '%' . trim($searchvalue) . '%';
+
+$start = array_key_exists("start", $_REQUEST) ? $_REQUEST["start"] : "0";
+if (!is_numeric($start)) { $start = 0; }
+$start = (int) $start;
+$limit = array_key_exists("limit", $_REQUEST) ? $_REQUEST["limit"] : "25";
+if (!is_numeric($limit)) { $limit = 25; }
+$limit = (int) $limit;
+
 $sortString = "NT.chapter_date, N.novel_id, NT.chapter_name";
-$sort = $_REQUEST["sort"];
+$sort = array_key_exists("sort", $_REQUEST) ? $_REQUEST["sort"] : "X";
 if (isset($sort)) {
 	if ($sort == "title") {
 		$sortString = "N.title, N.start_date, NT.chapter_date";
@@ -28,14 +30,31 @@ if (isset($sort)) {
 	}
 }
 
-$found = $_REQUEST["found"];
+$found = array_key_exists("found", $_REQUEST) ? $_REQUEST["found"] : "X";
 if (empty($found) || !is_numeric($found)) {
 	if (isset($func) && $func == "search") {
-		$result = mysql_query("SELECT COUNT(*) FROM novel_timelin WHERE ($whichfield LIKE '%" . $searchvalue . "%') ORDER BY $whichfield");
+		$query = "SELECT
+		COUNT(*) AS found
+		FROM novel_timeline 
+		WHERE
+		($whichfield LIKE :searchvalue)
+		";
 	} else {
-		$result = mysql_query("SELECT COUNT(*) FROM novel_timeline");
+		$query = "SELECT 
+		COUNT(*) AS found
+		FROM
+		novel_timeline
+		";
 	}
-	$found = mysql_result($result,0,0) - 1;
+	$sth = $dbh->prepare($query);
+	if ($func == "search") {
+		$sth->bindParam(':searchvalue', $searchvalue);
+	}
+	$sth->execute();
+	$novelData = $sth->fetch(PDO::FETCH_ASSOC);
+	$sth = null;
+
+	$found = $novelData['found'] - 1;
 }
 
 include("$ISA_LIBDIR/next_prev.php"); 
@@ -44,25 +63,42 @@ if ($limit == 0) { $limit = $found; }
 
 if (isset($func) && $func == "search") {
 	$query = "SELECT
-	N.novel_id, N.title, NT.chapter_name, NT.chapter_date
+	N.novel_id,
+	N.title,
+	NT.chapter_name,
+	NT.chapter_date
 	FROM
-	novel N, novel_timeline NT
-	WHERE (N.novel_id = NT.novel_id) 
-	AND ($whichfield LIKE '%" . $searchvalue . "%')
+	novel N,
+	novel_timeline NT
+	WHERE
+	(N.novel_id = NT.novel_id) AND
+	($whichfield LIKE :searchvalue)
 	ORDER BY " . $sortString . "
-	LIMIT $start,$limit";
+	LIMIT :start, :limit";
 } else {
 	$query = "SELECT
-	N.novel_id, N.title, NT.chapter_name, NT.chapter_date
+	N.novel_id,
+	N.title,
+	NT.chapter_name,
+	NT.chapter_date
 	FROM
-	novel N, novel_timeline NT
-	WHERE (N.novel_id = NT.novel_id) 
+	novel N,
+	novel_timeline NT
+	WHERE
+	(N.novel_id = NT.novel_id) 
 	ORDER BY " . $sortString . "
-	LIMIT $start,$limit";
+	LIMIT :start, :limit";
 }
+$sth = $dbh->prepare($query);
+if ($func == "search") {
+	$sth->bindParam(':searchvalue', $searchvalue);
+}
+$sth->bindParam(':start', $start, PDO::PARAM_INT);
+$sth->bindParam(':limit', $limit, PDO::PARAM_INT);
+$sth->execute();
+$timeline = $sth->fetchAll(PDO::FETCH_ASSOC);
+$sth = null;
 
-$result = mysql_query($query);
-$num = mysql_numrows($result);
 ?>
 <table border="1" cellspacing="0" cellpadding="5">
 <tr>
@@ -72,25 +108,24 @@ $num = mysql_numrows($result);
 </tr>
 <?php
 /* Loop through each item */
-for ($i =0 ;$i < $num; $i++) {
+for ($i = 0; $i < count($timeline); $i++) {
 	echo "<tr><td>";
-	$val = mysql_result($result, $i, "NT.chapter_date");
+	$val = $timeline[$i]['chapter_date'];
 	print_sp($val);
 	echo "</td>";
 
-	echo "<td><a href=\"./novel-detail.php?novel=",urlencode(mysql_result($result,$i,"N.novel_id")),"\">";
-	$val = mysql_result($result, $i, "N.title");
+	echo "<td><a href=\"./novel-detail.php?novel=",urlencode($timeline[$i]['novel_id']),"\">";
+	$val = $timeline[$i]['title'];
 	print_sp($val);
 	echo "</a></td>";
 
 	echo "<td>";
-	$val = mysql_result($result, $i, "NT.chapter_name");
+	$val = $timeline[$i]['chapter_name'];
 	print_sp($val);
 	echo "</td>";
 
 	echo "</tr>\n";
 }
-mysql_free_result($result);
 
 ?>
 </table>

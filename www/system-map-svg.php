@@ -19,62 +19,74 @@ print('<?xml version="1.0" encoding="UTF-8" ?>' . "\n");
      viewBox="0 0 <?php echo($ISA_MAP_SIZE . ' ' . $ISA_MAP_SIZE); ?>" >
 <?php
 
-$planet = $_REQUEST["planet"];
-if (empty($planet) || !is_numeric($planet)) { $planet = 2266787; }
+$planet = array_key_exists("planet", $_REQUEST) ? $_REQUEST["planet"] : "2266787";
+if (!is_numeric($planet)) { $planet = 2266787; }
 
-$era = $_REQUEST["era"];
-if (empty($era) || !is_numeric($era)) { $era = 3062; }
+$era = array_key_exists("era", $_REQUEST) ? $_REQUEST["era"] : "3062";
+if (!is_numeric($era)) { $era = 3062; }
 $era = preg_replace("/(2575|2750|30(25|30|40|52|57|62))/", "era_\\1", $era);
 
-$query = "
-SELECT P.planet_id,
-       P.name,
-       P.x_coord,
-       P.y_coord,
-       F.color1_r,
-       F.color1_g,
-       F.color1_b
-  FROM planet P,
-       faction F, 
-       " . $era . " E
- WHERE P.planet_id = " . $planet . "
-   AND P.planet_id=E.planet_id
-   AND E.faction_id=F.faction_id
+$query = "SELECT
+P.planet_id,
+P.name,
+P.x_coord,
+P.y_coord,
+F.color1_r,
+F.color1_g,
+F.color1_b
+FROM
+planet P,
+faction F,
+" . $era . " E
+WHERE
+P.planet_id = :planet AND
+P.planet_id=E.planet_id AND
+E.faction_id=F.faction_id
 ";
 
-$result = mysql_query($query);
-$num = mysql_numrows($result);
+$sth = $dbh->prepare($query);
+$sth->bindParam(':planet', $planet);
+$sth->execute();
+$planetData = $sth->fetch(PDO::FETCH_ASSOC);
+$sth = null;
 
-if ($num > 0) {
-	$name = mysql_result($result, 0, "name");
-	$planet_id = mysql_result($result, 0, "planet_id");
-	$x = mysql_result($result, 0, "x_coord");
-	$y = mysql_result($result, 0, "y_coord");
-	$red = mysql_result($result, $i, "color1_r");
-	$green = mysql_result($result, $i, "color1_g");
-	$blue = mysql_result($result, $i, "color1_b");
+if ($planetData) {
+	$name = $planetData['name'];
+	$planet_id = $planetData['planet_id'];
+	$x = $planetData['x_coord'];
+	$y = $planetData['y_coord'];
+	$red = $planetData['color1_r'];
+	$green = $planetData['color1_g'];
+	$blue = $planetData['color1_b'];
 	$rgb = 	$red . "," . $green . "," .$blue;
 
-
-	$query = "
-SELECT P.x_coord,
-       P.y_coord
-  FROM jump_points J,
-       planet P
- WHERE J.planet_id = " . $planet_id . "
-   AND J.jump_id = P.planet_id
- ORDER BY P.x_coord, P.y_coord
+	$query = "SELECT
+	P.x_coord,
+	P.y_coord
+	FROM
+	jump_points J,
+	planet P
+	WHERE
+	J.planet_id = :planet_id AND
+	J.jump_id = P.planet_id
+	ORDER BY
+	P.x_coord,
+	P.y_coord
 	";
 	
-	$result = mysql_query($query);
-	$num = mysql_numrows($result);
+	$sth = $dbh->prepare($query);
+	$sth->bindParam(':planet_id', $planet_id);
+	$sth->execute();
+	$planetJumps = $sth->fetchAll(PDO::FETCH_ASSOC);
+	$sth = null;
+
 	$ringSize = 30 * $ISA_MAP_SCALE - 0.5;
 ?>
 <defs>
 <radialGradient id="jumpradial">
 <stop offset="0%" style="stop-color:White;" />
 <stop offset="100%" style="stop-color:rgb(<?php echo($rgb); ?>);">
-<animate attributeName="offset" from="0%" to="100%" dur="10s" repeatCount="indefinite"/>
+<animate attributeName="offset" from="0%" to="100%" dur="10s" repeatCount="indefinite" />
 </stop>
 </radialGradient>
 </defs>
@@ -83,56 +95,62 @@ SELECT P.x_coord,
 <g stroke="black" stroke-width="0.5" stroke-dasharray="3" opacity="0.33" fill="none">
 <?php
 	/* Loop through each item */
-	for ($i=0; $i < $num; $i++) {
+	for ($i=0; $i < count($planetJumps); $i++) {
 	
-		$x_coord = (mysql_result($result, $i, "x_coord") - $x) * $ISA_MAP_SCALE + $ISA_MAP_OFFSET;
-		$y_coord = (mysql_result($result, $i, "y_coord") - $y) * -1 * $ISA_MAP_SCALE + $ISA_MAP_OFFSET;
+		$x_coord = ($planetJumps[$i]['x_coord'] - $x) * $ISA_MAP_SCALE + $ISA_MAP_OFFSET;
+		$y_coord = ($planetJumps[$i]['y_coord'] - $y) * -1 * $ISA_MAP_SCALE + $ISA_MAP_OFFSET;
 		
 		echo '<line x1="' . $ISA_MAP_OFFSET . '" y1="' . $ISA_MAP_OFFSET;
 		echo '" x2="' . $x_coord . '" y2="' . $y_coord;
 		echo '" />' . "\n";
 	}
-	mysql_free_result($result);
 	echo '</g>' . "\n\n";
 
-	$query = "
-SELECT P.planet_id,
-       P.name,
-       P.x_coord,
-       P.y_coord,
-       F.color1_r,
-       F.color1_g,
-       F.color1_b,
-       E.capital
-  FROM planet P,
-       faction F,
-       " . $era . " E
- WHERE (P.x_coord > " . ($x - 60) . " AND P.x_coord < " . ($x + 60) . ")
-   AND (P.y_coord > " . ($y - 60) . " AND P.y_coord < " . ($y + 60) . ")
-   AND P.planet_id = E.planet_id
-   AND E.faction_id = F.faction_id
- ORDER BY P.x_coord, P.y_coord
-		";
+	$query = "SELECT
+	P.planet_id,
+	P.name,
+	P.x_coord,
+	P.y_coord,
+	F.color1_r,
+	F.color1_g,
+	F.color1_b,
+	E.capital
+	FROM
+	planet P,
+	faction F,
+	" . $era . " E
+	WHERE
+	(P.x_coord > " . ($x - 60) . " AND P.x_coord < " . ($x + 60) . ") AND
+	(P.y_coord > " . ($y - 60) . " AND P.y_coord < " . ($y + 60) . ") AND
+	P.planet_id = E.planet_id AND
+	E.faction_id = F.faction_id
+	ORDER BY
+	P.x_coord,
+	P.y_coord
+	";
 	
-	$result = mysql_query($query);
-	$num = mysql_numrows($result);
+	$sth = $dbh->prepare($query);
+	$sth->bindParam(':planet_id', $planet_id);
+	$sth->execute();
+	$planets = $sth->fetchAll(PDO::FETCH_ASSOC);
+	$sth = null;
 	
 	$font_size = $ISA_MAP_PLANET_DIAMETER * 1.5;
 	echo '<g font-family="Helvetica" font-size="' . $font_size . '" >' . "\n";
 	/* Loop through each item */
-	for ($i=0; $i < $num; $i++) {
-		$name = mysql_result($result, $i, "name");
-		$planet_id = mysql_result($result, $i, "planet_id");
+	for ($i=0; $i < count($planets); $i++) {
+		$name = $planets[$i]['name'];
+		$planet_id = $planets[$i]['planet_id'];
 	
-		$x_coord = (mysql_result($result, $i, "x_coord") - $x) * $ISA_MAP_SCALE + $ISA_MAP_OFFSET;
-		$y_coord = (mysql_result($result, $i, "y_coord") - $y) * -1 * $ISA_MAP_SCALE + $ISA_MAP_OFFSET;
+		$x_coord = ($planets[$i]['x_coord'] - $x) * $ISA_MAP_SCALE + $ISA_MAP_OFFSET;
+		$y_coord = ($planets[$i]['y_coord'] - $y) * -1 * $ISA_MAP_SCALE + $ISA_MAP_OFFSET;
 	
-		$red = mysql_result($result, $i, "color1_r");
-		$green = mysql_result($result, $i, "color1_g");
-		$blue = mysql_result($result, $i, "color1_b");
+		$red = $planets[$i]['color1_r'];
+		$green = $planets[$i]['color1_g'];
+		$blue = $planets[$i]['color1_b'];
 		$color = 'rgb(' . $red . ',' . $green . ',' . $blue . ')';
 		
-		$capital = mysql_result($result, $i, "capital");
+		$capital = $planets[$i]['capital'];
 	
 		$x_title = $x_coord - $ISA_MAP_TITLE_OFFSET + 1;
 		$y_title = $y_coord + $font_size + 2;
@@ -165,7 +183,6 @@ SELECT P.planet_id,
 		}
 		echo '<text x="' . $x_title . '" y="' . $y_title . '">' . $name . '</text></a>' . "\n";
 	}
-	mysql_free_result($result);
 	echo '</g>' . "\n\n";
 }
 $font_size = $ISA_MAP_PLANET_DIAMETER * 3;
