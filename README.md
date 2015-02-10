@@ -14,9 +14,13 @@ To Do:
  - Use [Bootstrap](http://getbootstrap.com/).
  -- Make use of modern web design patterns.
  -- Make the web site more mobile friendly.
- - Use [PDO](http://php.net/manual/en/book.pdo.php)
- -- This should help to minimize SQL Injection attacks.
  - Work on Search Engine Optimization.
  -- Make the titles more descriptive and less repetitive.
+
+Completed:
+----------
+ - Use [PDO](http://php.net/manual/en/book.pdo.php)
+ -- This should help to minimize SQL Injection attacks.
+ -- Use of the Original MySQL API has been replaced with the PDO driver.
 
 > Written with [StackEdit](https://stackedit.io/).
