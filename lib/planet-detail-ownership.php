@@ -1,4 +1,3 @@
-<h2>System Owner / Occupation:</h2>
 <?php
 	// Planet's Ownership
 	$query = "SELECT
@@ -31,24 +30,7 @@
 	$eraOwnership = $sth->fetch(PDO::FETCH_ASSOC);
 	$sth = null;
 
-	if ($eraOwnership) {
-?>
-<table>
-<tr><th>Era:</th><th>Faction:</th></tr>
-
-<?php
-	$eras = array(2575, 2750, 3025, 3030, 3040, 3052, 3057, 3062);
-	for ($i = 0; $i < 8; $i++) {
-		echo "<tr><td>$eras[$i]</td><td>";
-		$val = $eraOwnership['E'.$eras[$i]];
-		print_sp($val);
-		echo "</td></tr>";
-	}
-?>
-</table><br />
-<?php
-	}
-	
+	$eras = array('E2575', 'E2750', 'E3025', 'E3030', 'E3040', 'E3052', 'E3057', 'E3062');
 	
 	// Planet's Ownership Dates
 	$query = "SELECT
@@ -65,26 +47,3 @@
 	$sth->execute(array(':planet' => $planet));
 	$ownerDates = $sth->fetchAll(PDO::FETCH_ASSOC);
 	$sth = null;
-
-	if ($ownerDates) {
-?>
-<table border="1" cellspacing="0" cellpadding="5">
-<tr><th>Occupation Date:</th><th>Faction:</th></tr>
-<?php
-	for ($i = 0; $i < count($ownerDates); $i++) {
-		echo "<tr><td>";
-		$val = $ownerDates[$i]['occupation_date'];
-		print_sp($val);
-		echo "</td>";
-		
-		echo "<td>";
-		$val = $ownerDates[$i]['name'];
-		print_sp($val);
-		echo "</td></tr>\n";
-		
-	}
-?>
-</table><br />
-<?php
-	}
-?>

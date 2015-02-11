@@ -2,14 +2,6 @@
 
 require_once('../vendor/autoload.php');
 
-$loader = new Twig_Loader_Array(array(
-'index' => 'Hello {{ name }}!',
-));
-$twig = new Twig_Environment($loader);
-
-echo $twig->render('index', array('name' => 'Fabien'));
-
-
 require_once("./isatlas-config.php");
 require_once("$ISA_LIBDIR/connect.php");
 
@@ -19,6 +11,9 @@ if (empty($planet) || !is_numeric($planet)) { $planet = 2266787; }
 include("$ISA_LIBDIR/planet-detail.php"); 
 
 include("$ISA_LIBDIR/planet-detail-ownership.php"); 
+
+/*
+
 
 echo "<a name=\"map\" /><h2>Starmap of Surrounding Systems:</h2>\n";
 $eras = array(2575, 2750, 3025, 3030, 3040, 3052, 3057, 3062);
@@ -36,4 +31,16 @@ include("$ISA_LIBDIR/planet-detail-novels.php");
 
 include("$ISA_DOCROOTDIR/adsense.php"); 
 include("$ISA_DOCROOTDIR/cya.php"); 
+*/
 
+$loader = new Twig_Loader_Filesystem($ISA_TEMPLATEDIR);
+$twig = new Twig_Environment($loader);
+
+$template = $twig->loadTemplate('planet-detail.html');
+
+echo $template->render(array(
+	'planetData' => $planetData,
+	'eraOwnership' => $eraOwnership,
+	'eras' => $eras,
+	'ownerDates' => $ownerDates
+	));

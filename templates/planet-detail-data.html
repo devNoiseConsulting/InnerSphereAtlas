@@ -1,0 +1,60 @@
+<div style="float: left; width: 50%; margin: 0 10px 0 0; padding: 5px; background-image: url(./images/gray_transparency.png); ">
+	
+<b>System Name: </b>
+	{{ planetData.name }}
+<br />
+
+<b>Coordinates:</b> 
+	{{ planetData.x_coord }}, {{ planetData.y_coord }}
+<br />
+
+{% if planetData.star_type %}
+<b>Star Type:</b> 
+	{{ planetData.star_type }}
+<br />
+{% endif %}
+
+{% if planetData.position %}
+<b>Position in System:</b> 
+	{{ planetData.position }}
+<br />
+{% endif %}
+
+{% if planetData.travel_time %}
+<b>Time to Jump Point:</b> 
+	{{ planetData.travel_time }} days
+<br />
+{% endif %}
+
+{% if planetData.recharging_station %}
+<b>Recharging Station:</b> 
+	{{ planetData.recharging_station }}
+<br />
+{% endif %}
+
+{% if planetData.comstar_facility %}
+<b>ComStar Facility Class:</b> 
+	{{ planetData.comstar_facility }}
+<br />
+{% endif %}
+
+{% if planetData.population %}
+<b>Population:</b> 
+	{{ planetData.population | number_format }}
+<br />
+{% endif %}
+
+{% if planetData.native_life %}
+<b>Percentage and Level of Native Life:</b> 
+	{{ planetData.native_life }}
+<br />
+{% endif %}
+
+</div>
+	
+{% if planetData.description %}
+<h2>Description:</h2>
+<blockquote>
+	{{ planetData.description | raw }}
+</blockquote><br />
+{% endif %}
