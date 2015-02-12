@@ -1,7 +1,9 @@
 <p>
+{% if letterNav %}
 {% for letter in letterNav %}
 {{ letter | raw }}
 {% endfor %}<br />
+{% endif %}
 {{ nextLink | raw }}{{ previousLink | raw }}
 {% for link in pageLinks %}
 {{ link | raw }}

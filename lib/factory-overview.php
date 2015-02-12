@@ -1,13 +1,5 @@
 <?php
 
-Function print_sp($val) {
-	$val = chop($val);
-	if($val != "") 
-		print $val;
-	else
-		print "&nbsp;";
-}
-
 $func = array_key_exists("func", $_REQUEST) ? $_REQUEST["func"] : "browselist";
 $whichfield = array_key_exists("whichfield", $_REQUEST) ? $_REQUEST["whichfield"] : "F.name";
 $searchvalue = array_key_exists("searchvalue", $_REQUEST) ? $_REQUEST["searchvalue"] : "Majesty";
@@ -53,7 +45,6 @@ if (empty($found) || !is_numeric($found)) {
 	$found = $factoryData['found'] - 1;
 }
 
-include("$ISA_LIBDIR/next_prev.php"); 
 
 if ($limit == 0) { $limit = $found; }
 
@@ -102,40 +93,4 @@ $sth->execute();
 $factories = $sth->fetchAll(PDO::FETCH_ASSOC);
 $sth = null;
 
-?>
-<table border="1" cellspacing="0" cellpadding="5">
-<tr><th>Name:</th><th>Planet:</th><th>X Coord:</th><th>Y Coord:</th></tr>
-<?php
-/* Loop through each item */
-for ($i=0; $i < count($factories); $i++) {
-		echo "<tr><td><a href=\"./factory-detail.php?factory=",urlencode($factories[$i]['factory_id']),"\">";
-
-		$val = $factories[$i]['name'];
-		print_sp($val);
-		echo "</a></td>";
-
-		echo "<td>";
-		$val = $factories[$i]['planet_name'];
-		print_sp($val);
-		echo "</td>";
-
-		echo "<td align=\"right\">";
-		$val = $factories[$i]['x_coord'];
-		print_sp($val);
-		echo "</td>";
-
-		echo "<td align=\"right\">";
-		$val = $factories[$i]['y_coord'];
-		print_sp($val);
-		echo "</td>";
-
-		echo "</tr>\n";
-}
-
-?>
-</table>
-<?php
-
 include("$ISA_LIBDIR/next_prev.php"); 
-
-?>
