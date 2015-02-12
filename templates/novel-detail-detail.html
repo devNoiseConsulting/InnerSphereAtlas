@@ -1,0 +1,24 @@
+<div style="float: left; width: 30%; margin: 0 10px 0 0; padding: 5px; background-image: url(./images/gray_transparency.png); ">
+<b>Title:</b> {{ novelData.title }}<br />
+<b>Author:</b> {{ novelData.author }}<br />
+<b>Series:</b> {{ novelData.series }}<br />
+{% if novelData.prologue_date and novelData.prologue_date != "0000-00-00" %}
+<b>Prologue Date:</b> {{ novelData.prologue_date }}<br />
+{% endif %}
+{% if novelData.start_date %}
+<b>Start Date:</b> {{ novelData.start_date }}<br />
+{% endif %}
+{% if novelData.end_date %}
+<b>End Date:</b> {{ novelData.end_date }}<br />
+{% endif %}
+{% if novelData.prologue_date and novelData.prologue_date != "0000-00-00" %}
+<b>Epilogue Date:</b> {{ novelData.epilogue_date }}<br />
+{% endif %}
+</div>
+
+{% if novelData.notes %}
+<h2>Description:</h2>
+<blockquote>
+{{ novelData.notes | raw }}
+</blockquote><br />
+{% endif %}
