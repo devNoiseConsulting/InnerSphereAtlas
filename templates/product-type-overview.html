@@ -1,0 +1,14 @@
+{% include 'next_prev.html' %} 
+
+<table border="1" cellspacing="0" cellpadding="5">
+<tr><th>Product/Component Type:</th></tr>
+{% for product in products %}
+<tr>
+<td>
+<a href=\"./product-type-detail.php?searchvalue={{ product.product_type_id }}">{{ product.component_type }} ({{ product.product_type }})</a>
+</td>
+</tr>
+{% endfor %} 
+</table>
+
+{% include 'next_prev.html' %} 
