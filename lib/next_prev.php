@@ -1,4 +1,10 @@
 <?php
+
+$trimmedsearchvalue = null;
+$nextLink = null;
+$previousLink = null;
+$pageLinks = null;
+
 if ($found >= $limit) {
 	
 	$letterNav = array();;
@@ -96,5 +102,4 @@ if ($found >= $limit) {
 		$pageLinks[] = $pageLink;
 	}
 	
-}	
-?>
+}

@@ -1,0 +1,15 @@
+{% include 'next_prev.html' %} 
+
+<table border="1" cellspacing="0" cellpadding="5">
+<tr><th><a href="./novel.php?sort=title">Title:</a></th><th><a href="./novel.php?sort=author">Author:</a></th><th><a href="./novel.php?sort=start">Start Date:</a></th><th><a href="./novel.php?sort=end">End Date:</a></th></tr>
+{% for novel in novelData %}
+<tr>
+<td><a href="./novel-detail.php?novel={{ novel.novel_id }}">{{ novel.title }}</a></td>
+<td align=\"left\"><a href="{{ novel.author_search | raw }}">{{ novel.author }}</a></td>
+<td align="right">{{ novel.start_date }}</td>
+<td align="right">{{ novel.end_date }}</td>
+</tr>
+{% endfor %}
+</table>
+
+{% include 'next_prev.html' %} 

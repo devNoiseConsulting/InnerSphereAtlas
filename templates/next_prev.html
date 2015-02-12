@@ -1,3 +1,4 @@
+{% if pageLinks %}
 <p>
 {% if letterNav %}
 {% for letter in letterNav %}
@@ -9,3 +10,4 @@
 {{ link | raw }}
 {% endfor %}
 </p>
+{% endif %}
