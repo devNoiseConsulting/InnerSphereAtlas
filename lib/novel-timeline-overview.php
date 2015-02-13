@@ -1,13 +1,5 @@
 <?php
 
-Function print_sp($val) {
-	$val = chop($val);
-	if($val != "") 
-		print $val;
-	else
-		print "&nbsp;";
-}
-
 $func = array_key_exists("func", $_REQUEST) ? $_REQUEST["func"] : "browselist";
 $whichfield = array_key_exists("whichfield", $_REQUEST) ? $_REQUEST["whichfield"] : "novel_id";
 $searchvalue = array_key_exists("searchvalue", $_REQUEST) ? $_REQUEST["searchvalue"] : "5";
@@ -57,8 +49,6 @@ if (empty($found) || !is_numeric($found)) {
 	$found = $novelData['found'] - 1;
 }
 
-include("$ISA_LIBDIR/next_prev.php"); 
-
 if ($limit == 0) { $limit = $found; }
 
 if (isset($func) && $func == "search") {
@@ -99,38 +89,4 @@ $sth->execute();
 $timeline = $sth->fetchAll(PDO::FETCH_ASSOC);
 $sth = null;
 
-?>
-<table border="1" cellspacing="0" cellpadding="5">
-<tr>
-<th><a href="./novel-timeline.php?sort=date">Date:</a></th>
-<th><a href="./novel-timeline.php?sort=title">Title:</a></th>
-<th>Chapter:</th>
-</tr>
-<?php
-/* Loop through each item */
-for ($i = 0; $i < count($timeline); $i++) {
-	echo "<tr><td>";
-	$val = $timeline[$i]['chapter_date'];
-	print_sp($val);
-	echo "</td>";
-
-	echo "<td><a href=\"./novel-detail.php?novel=",urlencode($timeline[$i]['novel_id']),"\">";
-	$val = $timeline[$i]['title'];
-	print_sp($val);
-	echo "</a></td>";
-
-	echo "<td>";
-	$val = $timeline[$i]['chapter_name'];
-	print_sp($val);
-	echo "</td>";
-
-	echo "</tr>\n";
-}
-
-?>
-</table>
-<?php
-
 include("$ISA_LIBDIR/next_prev.php"); 
-
-?>
