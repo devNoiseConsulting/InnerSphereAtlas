@@ -1,8 +1,9 @@
 <?php
 	# Constants for Filepaths
-	$ISA_LIBDIR = "/Users/flynnmj/src/btech/InnerSphereAtlas/lib";
-	$ISA_CACHEDIR = "/Users/flynnmj/src/btech/InnerSphereAtlas/cache";
-	$ISA_DOCROOTDIR = "/Users/flynnmj/src/btech/InnerSphereAtlas/www";
+	$ISA_LIBDIR = "<path_to>/lib";
+	$ISA_CACHEDIR = "<path_to>/cache";
+	$ISA_DOCROOTDIR = "<path_to>/www";
+	$ISA_TEMPLATEDIR = "<path_to>/templates";
 	$ISA_WEBDIR = "";
 
 	# Constants for SVG Maps

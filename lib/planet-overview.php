@@ -2,7 +2,7 @@
 
 $func = array_key_exists("func", $_REQUEST) ? $_REQUEST["func"] : "browsebyletter";
 $whichfield = array_key_exists("whichfield", $_REQUEST) ? $_REQUEST["whichfield"] : "P.name";
-$searchvalue = array_key_exists("searchvalue", $_REQUEST) ? $_REQUEST["searchvalue"] : "";
+$searchvalue = array_key_exists("searchvalue", $_REQUEST) ? $_REQUEST["searchvalue"] : "%";
 $searchvalue = trim($searchvalue);
 if (strlen($searchvalue) == 1) {
 	$searchvalue = $searchvalue . "%";

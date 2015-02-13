@@ -1,13 +1,14 @@
 <?php
 
 $trimmedsearchvalue = null;
+$letterNav = null;
 $nextLink = null;
 $previousLink = null;
 $pageLinks = null;
 
 if ($found >= $limit) {
 	
-	$letterNav = array();;
+	$letterNav = array();
 	if ($func == "browsebyletter") {
 		$letter = $searchvalue{0};
 		for ($i = 65; $i <= 90; $i++) {

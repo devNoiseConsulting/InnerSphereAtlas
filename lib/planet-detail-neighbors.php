@@ -1,4 +1,3 @@
-<h2>Inhabited System(s) within thirty light-years:</h2>
 <?php
 	// Planet's Neighbors
 	$query = "SELECT DISTINCT
