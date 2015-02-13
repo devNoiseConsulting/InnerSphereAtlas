@@ -9,4 +9,4 @@ $twig = new Twig_Environment($loader);
 
 $template = $twig->loadTemplate('index.html');
 
-echo $template->render();
+echo $template->render(array());
