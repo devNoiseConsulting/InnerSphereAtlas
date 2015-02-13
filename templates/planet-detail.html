@@ -26,7 +26,7 @@
 						<a name="map" /><h2>Starmap of Surrounding Systems:</h2>
 						| 
 						{% for era in eras %}
-							<a href="./system-map.php?planet={{ planet | url_encode }}&amp;era={{ eras | slice(1,4) | url_encode }}">{{ era | slice(1,4) }}</a> |
+							<a href="./system-map.php?planet={{ planet | url_encode }}&amp;era={{ era | slice(1,4) | url_encode }}">{{ era | slice(1,4) }}</a> |
 						{% endfor %}
 						<br/><br/>
 						{% include 'planet-detail-factory.html' %}
