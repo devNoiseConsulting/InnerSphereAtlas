@@ -1,0 +1,39 @@
+{% if  timeline %}
+<h2>Chapter Information:</h2>
+<table border="1" cellspacing="0" cellpadding="5">
+<tr>
+<th>Chapter:</th>
+<th>Date:</th>
+<th>Planet:</th>
+<th>X Coord:</th>
+<th>Y Coord:</th>
+</tr>
+{% for chapter in timeline %}
+<tr>
+<td>{{ chapter.chapter_name }}</td>
+<td>{{ chapter.chapter_date }}</td>
+<td><a href="./planet-detail.php?planet={{ chapter.planet_id | url_encode }}">{{ chapter.name }}</a></td>
+<td align="right">{{ chapter.x_coord }}</td>
+<td align="right">{{ chapter.y_coord }}</td>
+<td align="center">
+	{% if chapter.factory or chapter.fluff %}
+	<a href="./planet-detail.php?planet={{ chapter.planet_id | url_encode }}">
+		{% if chapter.factory and chapter.fluff %}
+		{% spaceless %}
+<img src="./images/fluff.gif" alt="Description" width="16" height="16" border="0" />
+<img src="./images/factory.gif" alt="Factory" width="16" height="16" border="0" />
+		{% endspaceless %}
+		{% elseif chapter.factory %}
+<img src="./images/factory.gif" alt="Factory" width="16" height="16" border="0" />
+		{% elseif chapter.fluff %}
+<img src="./images/fluff.gif" alt="Description" width="16" height="16" border="0" />
+		{% endif %}
+	</a>
+	{% endif %}
+</td>	
+</tr>
+{% endfor %}
+</table>
+<br />
+{% include 'legend.html' %}
+{% endif %}

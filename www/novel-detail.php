@@ -1,37 +1,21 @@
 <?php
-include("./isatlas-config.php");
-include("$ISA_LIBDIR/connect.php");
-?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<head>
-	<title>Inner Sphere Atlas: Novels</title>
-	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.4.1/build/reset-fonts-grids/reset-fonts-grids.css">
-	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.4.1/build/base/base-min.css">
-	<link rel="stylesheet" type="text/css" href="./style/isatlas.css" media="screen" />
-</head>
-<body>
-<div id="doc2" class="yui-t4">
-	<div id="hd">
-		<h1><a href="./">IS Atlas</a> / <a href="./novel.php">Novels</a> /</h1>
-	</div>
-	<div id="bd">
-		<div id="yui-main">
-			<div class="yui-b">
-				<div class="yui-g">
-					<?php
-					include("$ISA_LIBDIR/novel-detail.php");
-					include("$ISA_LIBDIR/novel-detail-publications.php");
-					include("$ISA_LIBDIR/novel-timeline.php");
-					?>
-				</div>
-			</div>
-			</div>
-		<div class="yui-b">
-			<?php include("$ISA_DOCROOTDIR/adsense.php"); ?>
-		</div>
-	</div>
-	<div id="ft"><?php include("$ISA_DOCROOTDIR/cya.php"); ?></div>
-</div>
-</body>
-</html>
+
+require_once('../vendor/autoload.php');
+
+require_once("./isatlas-config.php");
+require_once("$ISA_LIBDIR/connect.php");
+
+include("$ISA_LIBDIR/novel-detail.php");
+include("$ISA_LIBDIR/novel-detail-publications.php");
+include("$ISA_LIBDIR/novel-detail-timeline.php");
+
+$loader = new Twig_Loader_Filesystem($ISA_TEMPLATEDIR);
+$twig = new Twig_Environment($loader);
+
+$template = $twig->loadTemplate('novel-detail.html');
+
+echo $template->render(array(
+	'novelData' => $novelData,
+	'publisherData' => $publisherData,
+	'timeline' => $timeline,
+	));

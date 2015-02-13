@@ -1,0 +1,24 @@
+<h2>System Owner / Occupation:</h2>
+{% if eraOwnership %}
+<table>
+<tr><th>Era:</th><th>Faction:</th></tr>
+{% for era in eras %}
+<tr>
+	<td>{{ era | slice(1,4) }}</td>
+	<td>{{ attribute(eraOwnership, era) }}</td>
+</tr>
+{% endfor %}
+</table><br />
+{% endif %}
+
+{% if ownerDates %}
+<table border="1" cellspacing="0" cellpadding="5">
+<tr><th>Occupation Date:</th><th>Faction:</th></tr>
+{% for ownerDate in ownerDates %}
+<tr>
+	<td>{{ ownerDate.occupation_date }}</td>
+	<td>{{ ownerDate.name }}</td>
+</tr>
+{% endfor %}
+</table><br />
+{% endif %}

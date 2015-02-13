@@ -1,13 +1,5 @@
 <?php
 
-Function print_sp($val) {
-	$val = chop($val);
-	if($val != "") 
-		print $val;
-	else
-		print "&nbsp;";
-}
-
 $func = array_key_exists("func", $_REQUEST) ? $_REQUEST["func"] : "browselist";
 $whichfield = array_key_exists("whichfield", $_REQUEST) ? $_REQUEST["whichfield"] : "title";
 $searchvalue = array_key_exists("searchvalue", $_REQUEST) ? $_REQUEST["searchvalue"] : "Heir to the Dragon";
@@ -62,8 +54,6 @@ if (empty($found) || !is_numeric($found)) {
 	$found = $novelData['found'] - 1;
 }
 
-include("$ISA_LIBDIR/next_prev.php"); 
-
 if ($limit == 0) { $limit = $found; }
 
 if (isset($func) && $func == "search") {
@@ -108,42 +98,8 @@ $sth->execute();
 $novelData = $sth->fetchAll(PDO::FETCH_ASSOC);
 $sth = null;
 
-?>
-<table border="1" cellspacing="0" cellpadding="5">
-<tr><th><a href="./novel.php?sort=title">Title:</a></th><th><a href="./novel.php?sort=author">Author:</a></th><th><a href="./novel.php?sort=start">Start Date:</a></th><th><a href="./novel.php?sort=end">End Date:</a></th></tr>
-<?php
-/* Loop through each item */
-for ($i =0 ;$i < count($novelData); $i++) {
-	echo "<tr><td><a href=\"./novel-detail.php?novel=",urlencode($novelData[$i]['novel_id']),"\">";
-
-	$val = $novelData[$i]['title'];
-	print_sp($val);
-	echo "</a></td>";
-
-	echo "<td align=\"left\"><a href=\"".$_SERVER['PHP_SELF']."?func=search&amp;whichfield=author&amp;searchvalue=";
-	$val = $novelData[$i]['author'];
-	print_sp(urlencode($val));
-	echo "\">";
-	print_sp($val);
-	echo "</a></td>";
-
-	echo "<td align=\"right\">";
-	$val = $novelData[$i]['start_date'];
-	print_sp($val);
-	echo "</td>";
-
-	echo "<td align=\"right\">";
-	$val = $novelData[$i]['end_date'];
-	print_sp($val);
-	echo "</td>";
-
-	echo "</tr>\n";
+foreach ($novelData as $key => $novel) {
+	$novelData[$key]['author_search'] = $_SERVER['PHP_SELF'] . "?func=search&amp;whichfield=author&amp;searchvalue=" . urlencode($novel['author']);
 }
 
-?>
-</table>
-<?php
-
 include("$ISA_LIBDIR/next_prev.php"); 
-
-?>

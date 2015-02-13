@@ -1,13 +1,5 @@
 <?php
 
-Function print_sp($val) {
-	$val = chop($val);
-	if($val != "") 
-		print $val;
-	else
-		print "&nbsp;";
-}
-
 $func = array_key_exists("func", $_REQUEST) ? $_REQUEST["func"] : "browselist";
 $whichfield = array_key_exists("whichfield", $_REQUEST) ? $_REQUEST["whichfield"] : "PT.product_type";
 $searchvalue = array_key_exists("searchvalue", $_REQUEST) ? $_REQUEST["searchvalue"] : "Dropships";
@@ -73,7 +65,7 @@ if ($func == "search") {
 	PT.component_type LIKE :searchvalue) AND
 	PT.product_type_id=PC.product_type_id
 	ORDER BY 
-	PT.component_type, 
+	PT.product_type_id, 
 	PT.product_type
 	LIMIT :start, :limit";
 } else {
@@ -87,7 +79,7 @@ if ($func == "search") {
 	WHERE
 	PT.product_type_id=PC.product_type_id
 	ORDER BY 
-	PT.component_type, 
+	PT.product_type_id, 
 	PT.product_type
 	LIMIT :start, :limit";
 }
@@ -101,27 +93,5 @@ $sth->bindParam(':limit', $limit, PDO::PARAM_INT);
 $sth->execute();
 $products = $sth->fetchAll(PDO::FETCH_ASSOC);
 $sth = null;
-?>
-<table border="1" cellspacing="0" cellpadding="5">
-<tr><th>Product/Component Type:</th></tr>
-<?php
-/* Loop through each item */
-for ($i = 0; $i < count($products); $i++) {
-	echo "<tr><td><a href=\"./product-type-detail.php?searchvalue=",urlencode($products[$i]['product_type_id']),"\">";
-	$val = $products[$i]['component_type'];
-	print_sp($val);
-	echo " (";
-	$val = $products[$i]['product_type'];
-	print_sp($val);
-	echo ")</a></td>";
-
-	echo "</tr>\n";
-}
-
-?>
-</table>
-<?php
 
 include("$ISA_LIBDIR/next_prev.php"); 
-
-?>

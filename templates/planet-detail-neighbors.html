@@ -1,0 +1,31 @@
+<h2>Inhabited System(s) within thirty light-years:</h2>
+{% if neighbors %}
+<table>
+<tr><th>Planet:</th><th>X Coord:</th><th>Y Coord:</th><th>Distance:</th></tr>
+{% for neighbor in neighbors %}
+<tr><td><a href="./planet-detail.php?planet={{ neighbor.planet_id | url_encode }}">{{ neighbor.planet_name }}</a></td>
+<td align="right">{{ neighbor.x_coord }}</td>
+<td align="right">{{ neighbor.y_coord }}</td>
+<td align="right">{{ neighbor.distance }}</td>
+	{% if neighbor.factory or neighbor.fluff %}
+<td align="center"><a href="./planet-detail.php?planet={{ neighbor.planet_id | url_encode }}">
+		{% if neighbor.factory and neighbor.fluff %}
+		{% spaceless %}
+<img src="./images/fluff.gif" alt="Description" width="16" height="16" border="0" />
+<img src="./images/factory.gif" alt="Factory" width="16" height="16" border="0" />
+		{% endspaceless %}
+		{% elseif neighbor.factory %}
+<img src="./images/factory.gif" alt="Factory" width="16" height="16" border="0" />
+		{% elseif neighbor.fluff %}
+<img src="./images/fluff.gif" alt="Description" width="16" height="16" border="0" />
+		{% endif %}
+</a></td>
+	{% endif %}
+</tr>
+{% endfor %}
+</table><br />
+{% else %}
+<p>There are no inhabited systems within thirty light-years of this planet.</p>
+{% endif %}
+
+{% include 'legend.html' %}
