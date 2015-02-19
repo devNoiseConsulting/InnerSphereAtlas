@@ -1,12 +1,12 @@
 <?php
 
-$func = array_key_exists("func", $_REQUEST) ? $_REQUEST["func"] : "browsebyletter";
+$func = array_key_exists("func", $_REQUEST) ? $_REQUEST["func"] : "all";
 $whichfield = array_key_exists("whichfield", $_REQUEST) ? $_REQUEST["whichfield"] : "P.name";
 $searchvalue = array_key_exists("searchvalue", $_REQUEST) ? $_REQUEST["searchvalue"] : "%";
 $searchvalue = trim($searchvalue);
 if (strlen($searchvalue) == 1) {
 	$searchvalue = $searchvalue . "%";
-} else if ($searchvalue{1} <> "%") {
+} else if ((strlen($searchvalue) > 1) && ($searchvalue{1} <> "%")) {
 	$searchvalue = "%" . $searchvalue . "%";
 }
 

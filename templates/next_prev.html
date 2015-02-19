@@ -1,13 +1,17 @@
 {% if pageLinks %}
-<p>
+<div class="panel panel-default">
 {% if letterNav %}
+	<div class="panel-body">
 {% for letter in letterNav %}
 {{ letter | raw }}
-{% endfor %}<br />
+{% endfor %}
+	</div>
 {% endif %}
+	<div class="panel-footer">
 {{ nextLink | raw }}{{ previousLink | raw }}
 {% for link in pageLinks %}
 {{ link | raw }}
 {% endfor %}
-</p>
+	</div>
+</div>
 {% endif %}
