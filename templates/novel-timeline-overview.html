@@ -1,11 +1,14 @@
 {% include 'next_prev.html' %} 
 
-<table border="1" cellspacing="0" cellpadding="5">
+<table class="table table-bordered table-striped table-hover">
+<thead>
 <tr>
 <th><a href="./novel-timeline.php?sort=date">Date:</a></th>
 <th><a href="./novel-timeline.php?sort=title">Title:</a></th>
 <th>Chapter:</th>
 </tr>
+</thead>
+<tbody>
 {% for chapter in timeline %}
 <tr>
 <td>{{ chapter.chapter_date }}</td>
@@ -13,6 +16,7 @@
 <td>{{ chapter.chapter_name }}</td>
 </tr>
 {% endfor %}
+</tbody>
 </table>
 
 {% include 'next_prev.html' %} 
