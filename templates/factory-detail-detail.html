@@ -1,7 +1,10 @@
 {% if factoryData %}
-<h2><b>Factory:</b> {{ factoryData.name }}</h2>
-<b>Planet:</b> <a href="./planet-detail.php?planet={{ factoryData.planet_id | url_encode }}">{{ factoryData.planet_name }}</a> 
-({{ factoryData.x_coord }}, {{ factoryData.y_coord }})<br/><br/>
-	
+<div class="row">
+	<div class="col-sm-12">
+		<h2><b>Factory:</b> {{ factoryData.name }}</h2>
+		<b>Planet:</b> <a href="./planet-detail.php?planet={{ factoryData.planet_id | url_encode }}">{{ factoryData.planet_name }}</a> 
+		({{ factoryData.x_coord }}, {{ factoryData.y_coord }})<br/><br/>
+	</div>
+</div>	
 	{% include 'product_component.html' %}
 {% endif %}
