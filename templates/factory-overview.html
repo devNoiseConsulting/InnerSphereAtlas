@@ -1,15 +1,19 @@
 {% include 'next_prev.html' %} 
 
-<table border="1" cellspacing="0" cellpadding="5">
+<table class="table table-bordered table-striped table-hover">
+<thead>
 <tr><th>Name:</th><th>Planet:</th><th>X Coord:</th><th>Y Coord:</th></tr>
+</thead>
+<tbody>
 {% for factory in factories %}
 <tr>
 <td><a href="./factory-detail.php?factory={{ factory.factory_id }}">{{ factory.name }}</a></td>
 <td>{{ factory.planet_name }}</td>
-<td align=\"right\">{{ factory.x_coord }}</td>
-<td align=\"right\">{{ factory.y_coord }}</td>
+<td align="right">{{ factory.x_coord }}</td>
+<td align="right">{{ factory.y_coord }}</td>
 </tr>
 {% endfor %}
+<tbody>
 </table>
 
 {% include 'next_prev.html' %}
