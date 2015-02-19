@@ -1,10 +1,10 @@
 <h2>Factories:</h2>
 {% if factories %}
-<ul>
+<div class="list-group">
 {% for factory in factories %}
-<li><a href="./factory-detail.php?factory={{ factory.factory_id | url_encode }}">{{ factory.name }}</a></li>
+	<a class="list-group-item" href="./factory-detail.php?factory={{ factory.factory_id | url_encode }}">{{ factory.name }}</a>
 {% endfor %}
-</ul>
+</div>
 {% else %}
 There are no functional factories located on this planet.
 {% endif %}

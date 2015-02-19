@@ -1,11 +1,11 @@
 {% if novels %}
 <h2>Used as a location in the following Novels:</h2>
-<table>
+<table class="table table-bordered table-striped table-hover">
+<thead>
 <tr><th>Novel:</th><th># of Chapters:</th><th>Amazon.com:</th></tr>
+</thead>
+<tbody>
 	{% for novel in novels %}
-<?php
-		for ($i = 0; $i < count($novels); $i++) {
-			$novel_id = $novels[$i]['novel_id'];
 <tr>
 <td><a href="./novel-detail.php?novel= {{ novel.novel_id | url_encode }}">{{ novel.title }}</a></td>
 <td>{{ novel.chapters }}</td>
@@ -14,5 +14,6 @@
 </td>
 </tr>
 	{% endfor %}
-</table><br />
+</tbody>
+</table>
 {% endif %}
