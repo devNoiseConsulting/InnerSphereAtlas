@@ -2,16 +2,18 @@
 {% if neighbors %}
 <table class="table table-bordered table-striped table-hover">
 <thead>
-<tr><th>Planet:</th><th>X Coord:</th><th>Y Coord:</th><th>Distance:</th></tr>
+<tr><th>Planet:</th><th>X Coord:</th><th>Y Coord:</th><th>Distance:</th><th></th></tr>
 </thead>
 <tbody>
 {% for neighbor in neighbors %}
-<tr><td><a href="./planet-detail.php?planet={{ neighbor.planet_id | url_encode }}">{{ neighbor.planet_name }}</a></td>
+<tr>
+<td><a href="./planet-detail.php?planet={{ neighbor.planet_id | url_encode }}">{{ neighbor.planet_name }}</a></td>
 <td align="right">{{ neighbor.x_coord }}</td>
 <td align="right">{{ neighbor.y_coord }}</td>
 <td align="right">{{ neighbor.distance }}</td>
+<td align="center">
 	{% if neighbor.factory or neighbor.fluff %}
-<td align="center"><a href="./planet-detail.php?planet={{ neighbor.planet_id | url_encode }}">
+<a href="./planet-detail.php?planet={{ neighbor.planet_id | url_encode }}">
 		{% if neighbor.factory and neighbor.fluff %}
 		{% spaceless %}
 <img src="./images/fluff.gif" alt="Description" width="16" height="16" border="0" />
@@ -22,8 +24,9 @@
 		{% elseif neighbor.fluff %}
 <img src="./images/fluff.gif" alt="Description" width="16" height="16" border="0" />
 		{% endif %}
-</a></td>
+</a>
 	{% endif %}
+</td>
 </tr>
 {% endfor %}
 </tbody>

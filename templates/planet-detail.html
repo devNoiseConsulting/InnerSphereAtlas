@@ -34,11 +34,12 @@
 		</div>
 
 		<div class="col-sm-6">
-		<a name="map" /></a><h2>System Starmaps:</h2>
-		| 
+		<a name="map" /></a><h2>System Star Maps:</h2>
+		<ul class="pagination pagination-sm">
 		{% for era in eras %}
-		<a href="./system-map.php?planet={{ planet | url_encode }}&amp;era={{ era | slice(1,4) | url_encode }}">{{ era | slice(1,4) }}</a> |
+			<li><a href="./system-map.php?planet={{ planet | url_encode }}&amp;era={{ era | slice(1,4) | url_encode }}">{{ era | slice(1,4) }}</a></li>
 		{% endfor %}
+		</ul>
 		</div>
 
 		<div class="col-sm-6">
