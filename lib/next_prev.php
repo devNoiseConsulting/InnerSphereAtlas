@@ -1,106 +1,84 @@
 <?php
 
-$trimmedsearchvalue = null;
-$letterNav = null;
-$nextLink = null;
-$previousLink = null;
-$pageLinks = null;
+$pageNav = array(
+	'func' => $func,
+	'trimmedsearchvalue' => null,
+	'letterNav' => null,
+	'firstPage' => false,
+	'lastPage' => false,
+	'nextLink' => null,
+	'previousLink' => null,
+	'pageLinks' => null,
+	'php_self' => $_SERVER['PHP_SELF']
+);
 
 if ($found >= $limit) {
 	
-	$letterNav = array();
+	$pageNav['letterNav'] = array();
 	if ($func == "browsebyletter") {
 		$letter = $searchvalue{0};
 		for ($i = 65; $i <= 90; $i++) {
-			if (ord($letter) != $i) {
-				$letterNav[] = "<a href=\"".$_SERVER['PHP_SELF']."?func=$func&amp;searchvalue=" . chr($i) . "\">" . chr($i) . "</a>";
-			} else {
-				$letterNav[] = $letter;
-			}
-			$letterNav[] = " | ";
+			$pageNav['letterNav'][] = chr($i);
 		}
-		array_pop($letterNav);
 	}
 	
-	$trimmedsearchvalue = preg_replace("/^%?(.*)%$/", "\$1", $searchvalue);
+	$pageNav['trimmedsearchvalue'] = preg_replace("/^%?(.*)%$/", "\$1", $searchvalue);
 	
 	if (empty($start)) $start=0;
-
-	$nextLink ="";
-	if (isset($start) && ((($start+$limit) < $found))) { 
-		$nextLink = "<a href=\"".$_SERVER['PHP_SELF']."?func=$func";
-		if (isset($func) && ($func == "search" || $func == "browsebyletter")) {
-			$nextLink .= "&amp;searchvalue=" . urlencode($trimmedsearchvalue);
-		}
-		if (isset($sort)) { 
-			$nextLink .= "&amp;sort=$sort"; 
-		}
-		$nextLink .= "&amp;found=$found&amp;start=" . $start+$limit . "\">Next</a> /\n";
+	
+	$pageNav['pageNum'] = ($start / $limit) + 1;
+	if ($pageNav['pageNum'] == 1) {
+		$pageNav['firstPage'] = true;
 	}
 
-	$previousLink = "";
-	if (isset($start) && ($start>0)) { 
-		$previousLink .= "<a href=\"".$_SERVER['PHP_SELF']."?func=$func";
-		if (isset($func) && ($func == "search" || $func == "browsebyletter")) {
-			$previousLink .= "&amp;searchvalue=" . urlencode($trimmedsearchvalue);
-		}
-		if (isset($sort)) { 
-			$previousLink .= "&amp;sort=$sort"; 
-		}
-		$previousLink .= "&amp;found=$found&amp;start=" .  max($start - $limit, 0) . "\">Previous</a> /\n";
+	$pageNav['nextLink'] = "<a href=\"".$_SERVER['PHP_SELF']."?func=$func";
+	if (isset($func) && ($func == "search" || $func == "browsebyletter")) {
+		$pageNav['nextLink'] .= "&amp;searchvalue=" . urlencode($pageNav['trimmedsearchvalue']);
 	}
+	if (isset($sort)) { 
+		$pageNav['nextLink'] .= "&amp;sort=$sort"; 
+	}
+	$pageNav['nextLink'] .= "&amp;found=$found&amp;start=" . ($start + $limit) . "\">&#9654;</a>";
 
-	$pageLinks = array();
+	$pageNav['previousLink'] .= "<a href=\"".$_SERVER['PHP_SELF']."?func=$func";
+	if (isset($func) && ($func == "search" || $func == "browsebyletter")) {
+		$pageNav['previousLink'] .= "&amp;searchvalue=" . urlencode($pageNav['trimmedsearchvalue']);
+	}
+	if (isset($sort)) { 
+		$pageNav['previousLink'] .= "&amp;sort=$sort"; 
+	}
+	$pageNav['previousLink'] .= "&amp;found=$found&amp;start=" .  max($start - $limit, 0) . "\">&#9664;</a>";
+
+	$pageNav['pageNumbers'] = array();
+	$pageNav['pageLinks'] = array();
 	$lowerbound = ($start / $limit) - 5;
 	if ($lowerbound <= 0) {
 		$lowerbound = 0;
-	} else {
-		$pageLink = "<a href=\"".$_SERVER['PHP_SELF']."?func=$func";
-		if (isset($func) && ($func == "search" || $func == "browsebyletter")) {
-			$pageLink .= "&amp;searchvalue=" . urlencode($trimmedsearchvalue);
-		}
-		if (isset($sort)) { 
-			$pageLink .= "&amp;sort=$sort"; 
-		}
-		$pageLink .= "&amp;found=$found&amp;start=0\">1</a>\n...\n";
-		$pageLinks[] = $pageLink;
 	}
 
 	$upperbound = $start + (6 * $limit);
 	if ($upperbound < $found) {
 		$upperbound /= $limit;
 	} else {
-		$upperbound = $found / $limit;
+		$upperbound = floor($found / $limit);
+	}
+
+	if (($upperbound + 1) == $pageNav['pageNum']) {
+		$pageNav['lastPage'] = true;
 	}
 
 	if ($found > $limit) {
-		for ($i = $lowerbound; $i < $upperbound; $i++) {
-			if (($i * $limit) != $start) {
-				$pageLink = "<a href=\"".$_SERVER['PHP_SELF']."?func=$func";
-				if (isset($func) && ($func == "search" || $func == "browsebyletter")) {
-					$pageLink .=  "&amp;searchvalue=" . urlencode($trimmedsearchvalue);
-				}
-				if (isset($sort)) { 
-					$pageLink .=  "&amp;sort=$sort"; 
-				}
-				$pageLink .=  "&amp;found=$found&amp;start=" .  ($i * $limit) . "\">" .  ($i + 1) . "</a>\n";
-			} else {
-				$pageLink =  ($i + 1) . "\n" ;
+		for ($i = $lowerbound; $i <= $upperbound; $i++) {
+			$pageNav['pageNumbers'][] = $i + 1;
+			$pageLink = "<a href=\"".$_SERVER['PHP_SELF']."?func=$func";
+			if (isset($func) && ($func == "search" || $func == "browsebyletter")) {
+				$pageLink .=  "&amp;searchvalue=" . urlencode($pageNav['trimmedsearchvalue']);
 			}
-			$pageLinks[] = $pageLink;
+			if (isset($sort)) { 
+				$pageLink .=  "&amp;sort=$sort"; 
+			}
+			$pageLink .=  "&amp;found=$found&amp;start=" .  ($i * $limit) . "\">" .  ($i + 1) . "</a>";
+			$pageNav['pageLinks'][$i + 1] = $pageLink;
 		}
 	}
-
-	if (($start + (6 * $limit)) <= $found) {
-		$pageLink = "...\n<a href=\"".$_SERVER['PHP_SELF']."?func=$func";
-		if (isset($func) && ($func == "search" || $func == "browsebyletter")) {
-			$pageLink .=  "&amp;searchvalue=" . urlencode($trimmedsearchvalue);
-		}
-		if (isset($sort)) { 
-			$pageLink .=  "&amp;sort=$sort"; 
-		}
-		$pageLink .=  "&amp;found=" . $found . "&amp;start=" .  (round(($found / $limit) - 0.5) * $limit) . "\">" . (round(($found / $limit) - 0.5) + 1) . "</a> \n";
-		$pageLinks[] = $pageLink;
-	}
-	
 }

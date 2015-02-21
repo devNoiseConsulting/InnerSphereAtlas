@@ -14,8 +14,5 @@ $template = $twig->loadTemplate('novel.html');
 
 echo $template->render(array(
 	'novelData' => $novelData,
-	'nextLink' => $nextLink,
-	'previousLink' => $previousLink,
-	'pageLinks' => $pageLinks,
-	'trimmedsearchvalue' => $trimmedsearchvalue,
+	'pageNav' => $pageNav,
 	));

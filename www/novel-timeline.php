@@ -15,8 +15,5 @@ $template = $twig->loadTemplate('novel-timeline.html');
 echo $template->render(array(
 	'novelData' => $novelData,
 	'timeline' => $timeline,
-	'nextLink' => $nextLink,
-	'previousLink' => $previousLink,
-	'pageLinks' => $pageLinks,
-	'trimmedsearchvalue' => $trimmedsearchvalue,
+	'pageNav' => $pageNav,
 	));

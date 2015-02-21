@@ -14,9 +14,5 @@ $template = $twig->loadTemplate('planet.html');
 
 echo $template->render(array(
 	'planets' => $planets,
-	'letterNav' => $letterNav,
-	'nextLink' => $nextLink,
-	'previousLink' => $previousLink,
-	'pageLinks' => $pageLinks,
-	'trimmedsearchvalue' => $trimmedsearchvalue,
+	'pageNav' => $pageNav,
 	));

@@ -15,8 +15,5 @@ $template = $twig->loadTemplate('product-type-detail.html');
 echo $template->render(array(
 	'productData' => $product,
 	'products' => $products,
-	'nextLink' => $nextLink,
-	'previousLink' => $previousLink,
-	'pageLinks' => $pageLinks,
-	'trimmedsearchvalue' => $trimmedsearchvalue,
+	'pageNav' => $pageNav,
 	));
