@@ -1,24 +1,31 @@
-<div style="float: left; width: 30%; margin: 0 10px 0 0; padding: 5px; background-image: url(./images/gray_transparency.png); ">
-<b>Title:</b> {{ novelData.title }}<br />
-<b>Author:</b> {{ novelData.author }}<br />
-<b>Series:</b> {{ novelData.series }}<br />
-{% if novelData.prologue_date and novelData.prologue_date != "0000-00-00" %}
-<b>Prologue Date:</b> {{ novelData.prologue_date }}<br />
-{% endif %}
-{% if novelData.start_date %}
-<b>Start Date:</b> {{ novelData.start_date }}<br />
-{% endif %}
-{% if novelData.end_date %}
-<b>End Date:</b> {{ novelData.end_date }}<br />
-{% endif %}
-{% if novelData.prologue_date and novelData.prologue_date != "0000-00-00" %}
-<b>Epilogue Date:</b> {{ novelData.epilogue_date }}<br />
-{% endif %}
-</div>
+<div class="row">
 
-{% if novelData.notes %}
-<h2>Description:</h2>
-<blockquote>
-{{ novelData.notes | raw }}
-</blockquote><br />
-{% endif %}
+	{% if novelData.notes %}
+	<div class="col-sm-8">
+		<h2>Description:</h2>
+		{{ novelData.notes | raw }}
+	</div>
+	{% endif %}
+
+	<div class="panel panel-default col-sm-4">
+		<!-- List group -->
+		<ul class="list-group">
+			<li class="list-group-item"><b>Title:</b> {{ novelData.title }}</li>
+			<li class="list-group-item"><b>Author:</b> {{ novelData.author }}</li>
+			<li class="list-group-item"><b>Series:</b> {{ novelData.series }}</li>
+			{% if novelData.prologue_date and novelData.prologue_date != "0000-00-00" %}
+			<li class="list-group-item"><b>Prologue Date:</b> {{ novelData.prologue_date }}</li>
+			{% endif %}
+			{% if novelData.start_date %}
+			<li class="list-group-item"><b>Start Date:</b> {{ novelData.start_date }}</li>
+			{% endif %}
+			{% if novelData.end_date %}
+			<li class="list-group-item"><b>End Date:</b> {{ novelData.end_date }}</li>
+			{% endif %}
+			{% if novelData.prologue_date and novelData.prologue_date != "0000-00-00" %}
+			<li class="list-group-item"><b>Epilogue Date:</b> {{ novelData.epilogue_date }}</li>
+			{% endif %}
+		</ul>
+	</div>
+
+</div>

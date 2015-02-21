@@ -1,9 +1,13 @@
-<table border="1" cellspacing="0" cellpadding="5">
+<table class="table table-bordered table-striped table-hover">
+<thead>
 <tr><th>Product/Component Name:</th><th>Product/Component Type:</th></tr>
+</thead>
+<tbody>
 {% for component in components %}
 <tr>
 <td>{{ component.product_name }}</td>
 <td><a href="./product-type-detail.php?searchvalue={{ component.product_type_id | url_encode }}">{{ component.component_type }}({{ component.product_type }})</a></td>
 </tr>
 {% endfor %}
+</tbody>
 </table>

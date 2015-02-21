@@ -14,8 +14,5 @@ $template = $twig->loadTemplate('factory.html');
 
 echo $template->render(array(
 	'factories' => $factories,
-	'nextLink' => $nextLink,
-	'previousLink' => $previousLink,
-	'pageLinks' => $pageLinks,
-	'trimmedsearchvalue' => $trimmedsearchvalue,
+	'pageNav' => $pageNav,
 	));

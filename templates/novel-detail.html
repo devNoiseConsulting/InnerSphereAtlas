@@ -1,33 +1,41 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<head>
-	<title>Inner Sphere Atlas: Novels</title>
-	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.4.1/build/reset-fonts-grids/reset-fonts-grids.css">
-	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.4.1/build/base/base-min.css">
-	<link rel="stylesheet" type="text/css" href="./style/isatlas.css" media="screen" />
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{{ novelData.title }} | Inner Sphere Atlas: Novels</title>
+
+    <!-- Bootstrap -->
+    <link href="style/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 </head>
 <body>
-<div id="doc2" class="yui-t4">
-	<div id="hd">
-		<h1><a href="./">IS Atlas</a> / <a href="./novel.php">Novels</a> /</h1>
-	</div>
-	<div id="bd">
-		<div id="yui-main">
-			<div class="yui-b">
-				<div class="yui-g">
-					{% include 'novel-detail-detail.html' %}
-					{% include 'novel-detail-publications.html' %}
-					{% include 'novel-detail-timeline.html' %}
-				</div>
-			</div>
-			</div>
-		<div class="yui-b">
-			{% include 'adsense.html' %}
-		</div>
-	</div>
-	<div id="ft">
-		{% include 'cya.html' %}
-	</div>
+<div class="container">
+	<ol class="breadcrumb">
+		<li><a href="./">IS Atlas</a></li>
+		<li><a href="./novel.php">Novels</a></li>
+		<li class="active">{{ novelData.title }}</li>
+	</ol>
 </div>
+<div class="container">
+	{% include 'novel-detail-detail.html' %}
+	{% include 'novel-detail-publications.html' %}
+	{% include 'novel-detail-timeline.html' %}
+</div>
+<footer class="container text-muted">
+	{% include 'cya.html' %}
+</footer>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="javascript/bootstrap.min.js"></script>
 </body>
 </html>

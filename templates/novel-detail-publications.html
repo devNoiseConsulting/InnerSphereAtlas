@@ -1,7 +1,10 @@
 {% if publisherData %}
 <h2>Publication Information:</h2>
-<table border="1" cellspacing="0" cellpadding="5">
+<table class="table table-bordered table-striped table-hover">
+<thead>
 <tr><th>Publisher:</th><th>Stock Number:</th><th>ISBN:</th><th>Year:</th><th>Price:</th><th>Cover:</th><th>Amazon.com:</th></tr>
+</thead>
+<tbody>
 {% for novel in publisherData %}
 <tr valign="top">
 <td>{{ novel.publisher }}</td>
@@ -19,5 +22,6 @@
 </td>
 </tr>
 {% endfor %}
+</tbody>
 </table>
 {% endif %}

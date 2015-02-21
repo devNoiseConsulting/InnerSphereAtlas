@@ -22,6 +22,7 @@ if (isset($sort)) {
 	}
 }
 
+$novelData = null;
 $found = array_key_exists("found", $_REQUEST) ? $_REQUEST["found"] : "X";
 if (empty($found) || !is_numeric($found)) {
 	if (isset($func) && $func == "search") {

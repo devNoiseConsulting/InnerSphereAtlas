@@ -1,6 +1,7 @@
 {% if  timeline %}
 <h2>Chapter Information:</h2>
-<table border="1" cellspacing="0" cellpadding="5">
+<table class="table table-bordered table-striped table-hover">
+<thead>
 <tr>
 <th>Chapter:</th>
 <th>Date:</th>
@@ -8,6 +9,8 @@
 <th>X Coord:</th>
 <th>Y Coord:</th>
 </tr>
+</thead>
+<tbody>
 {% for chapter in timeline %}
 <tr>
 <td>{{ chapter.chapter_name }}</td>
@@ -33,7 +36,7 @@
 </td>	
 </tr>
 {% endfor %}
+</tbody>
 </table>
-<br />
 {% include 'legend.html' %}
 {% endif %}
