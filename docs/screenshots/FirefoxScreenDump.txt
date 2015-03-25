@@ -1,0 +1,32 @@
+http://isatlas.localhost/factory.php
+screenshot factory --fullpage
+
+http://isatlas.localhost/factory-detail.php?factory=5787702
+screenshot factory-detail --fullpage
+
+http://isatlas.localhost/
+screenshot index --fullpage
+
+http://isatlas.localhost/novel.php
+screenshot novel --fullpage
+
+http://isatlas.localhost/novel-detail.php?novel=5
+screenshot novel-detail --fullpage
+
+http://isatlas.localhost/novel-timeline.php?func=browselist&sort=X&found=2702&start=50
+screenshot novel-timeline --fullpage
+
+http://isatlas.localhost/planet.php?func=browsebyletter&searchvalue=A
+screenshot planet --fullpage
+
+http://isatlas.localhost/planet-detail.php?planet=8377200
+screenshot planet-detail --fullpage
+
+http://isatlas.localhost/product-type.php
+screenshot product-type --fullpage
+
+http://isatlas.localhost/product-type-detail.php?searchvalue=20000
+screenshot product-type-detail --fullpage
+
+http://isatlas.localhost/system-map.php?planet=8377200&era=3025
+screenshot starmap --fullpage
