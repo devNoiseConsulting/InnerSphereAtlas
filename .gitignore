@@ -2,5 +2,9 @@
 *.swp
 composer.phar
 www/isatlas-config.php
+www/isatlas-config.php.orig
+www/isatlas-config.php.local
 www/javascript/
+www/images/*.jpg
+www/style/bootstrap.min.css
 vendor
