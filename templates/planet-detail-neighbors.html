@@ -1,5 +1,6 @@
 <h2>Inhabited System(s) within thirty light-years:</h2>
 {% if neighbors %}
+<div class="table-responsive">
 <table class="table table-bordered table-striped table-hover">
 <thead>
 <tr><th>Planet:</th><th>X Coord:</th><th>Y Coord:</th><th>Distance:</th><th></th></tr>
@@ -31,6 +32,7 @@
 {% endfor %}
 </tbody>
 </table>
+</div>
 {% else %}
 <div class="panel panel-default">
 	<div class="panel-body">
