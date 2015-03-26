@@ -33,7 +33,9 @@ if (empty($name)) { $name = "Terra"; }
 
 $era = array_key_exists("era", $_REQUEST) ? $_REQUEST["era"] : "3062";
 if (!is_numeric($era)) { $era = 3062; }
-$era = preg_replace("/(2575|2750|30(25|30|40|52|57|62))/", "\\1", $era);
+$preg_eras = "/(2575|2750|30(25|30|40|52|57|62))/";
+if (!preg_match($preg_eras, $era)) { $era = 3062; }
+$era = preg_replace($preg_eras, "\\1", $era);
 
 $eras = array('E2575', 'E2750', 'E3025', 'E3030', 'E3040', 'E3052', 'E3057', 'E3062');
 

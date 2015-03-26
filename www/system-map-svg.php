@@ -24,7 +24,9 @@ if (!is_numeric($planet)) { $planet = 2266787; }
 
 $era = array_key_exists("era", $_REQUEST) ? $_REQUEST["era"] : "3062";
 if (!is_numeric($era)) { $era = 3062; }
-$era = preg_replace("/(2575|2750|30(25|30|40|52|57|62))/", "era_\\1", $era);
+$preg_eras = "/(2575|2750|30(25|30|40|52|57|62))/";
+if (!preg_match($preg_eras, $era)) { $era = 3062; }
+$era = preg_replace($preg_eras, "era_\\1", $era);
 
 $query = "SELECT
 P.planet_id,
@@ -53,8 +55,15 @@ $sth = null;
 if ($planetData) {
 	$name = $planetData['name'];
 	$planet_id = $planetData['planet_id'];
+
 	$x = $planetData['x_coord'];
+	$x_min = $x - 60;
+	$x_max = $x + 60;
+
 	$y = $planetData['y_coord'];
+	$y_min = $y - 60;
+	$y_max = $y + 60;
+
 	$red = $planetData['color1_r'];
 	$green = $planetData['color1_g'];
 	$blue = $planetData['color1_b'];
@@ -120,8 +129,8 @@ if ($planetData) {
 	faction F,
 	" . $era . " E
 	WHERE
-	(P.x_coord > " . ($x - 60) . " AND P.x_coord < " . ($x + 60) . ") AND
-	(P.y_coord > " . ($y - 60) . " AND P.y_coord < " . ($y + 60) . ") AND
+	(P.x_coord > :x_min AND P.x_coord < :x_max) AND
+	(P.y_coord > :y_min AND P.y_coord < :y_max) AND
 	P.planet_id = E.planet_id AND
 	E.faction_id = F.faction_id
 	ORDER BY
@@ -130,7 +139,10 @@ if ($planetData) {
 	";
 	
 	$sth = $dbh->prepare($query);
-	$sth->bindParam(':planet_id', $planet_id);
+	$sth->bindParam(':x_min', $x_min);
+	$sth->bindParam(':x_max', $x_max);
+	$sth->bindParam(':y_min', $y_min);
+	$sth->bindParam(':y_max', $y_max);
 	$sth->execute();
 	$planets = $sth->fetchAll(PDO::FETCH_ASSOC);
 	$sth = null;
