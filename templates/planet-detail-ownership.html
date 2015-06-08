@@ -1,35 +1,42 @@
 <h2>System Owner / Occupation:</h2>
 {% if eraOwnership %}
 <div class="table-responsive">
-<table class="table table-bordered table-striped table-hover">
-<thead>
-<tr><th>Era:</th><th>Faction:</th></tr>
-</thead>
-<tbody>
-{% for era in eras %}
-<tr>
-	<td>{{ era | slice(1,4) }}</td>
-	<td>{{ attribute(eraOwnership, era) }}</td>
-</tr>
-{% endfor %}
-</table>
-</div><br />
+	<table class="table table-bordered table-striped table-hover">
+		<thead>
+			<tr>
+				<th>Era:</th>
+				<th>Faction:</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for era in eras %}
+			<tr>
+				<td>{{ era | slice(1,4) }}</td>
+				<td>{{ attribute(eraOwnership, era) }}</td>
+			</tr>
+			{% endfor %}
+	</table>
+</div>
+<br />
 {% endif %}
-
 {% if ownerDates %}
 <div class="table-responsive">
-<table class="table table-bordered table-striped table-hover">
-<thead>
-<tr><th>Occupation Date:</th><th>Faction:</th></tr>
-</thead>
-<tbody>
-{% for ownerDate in ownerDates %}
-<tr>
-	<td>{{ ownerDate.occupation_date }}</td>
-	<td>{{ ownerDate.name }}</td>
-</tr>
-{% endfor %}
-</tbody>
-</table>
-</div><br />
+	<table class="table table-bordered table-striped table-hover">
+		<thead>
+			<tr>
+				<th>Occupation Date:</th>
+				<th>Faction:</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for ownerDate in ownerDates %}
+			<tr>
+				<td>{{ ownerDate.occupation_date }}</td>
+				<td>{{ ownerDate.name }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+<br />
 {% endif %}

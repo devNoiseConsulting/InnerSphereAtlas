@@ -1,66 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>{{ planetData.name }} circa {{ currentEra | slice(1,4) }} | Inner Sphere Atlas: Star Maps</title>
 
-    <!-- Bootstrap -->
-    <link href="style/bootstrap.min.css" rel="stylesheet">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ planetData.name }} circa {{ currentEra | slice(1,4) }} | Inner Sphere Atlas: Star Maps</title>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+  <!-- Bootstrap -->
+  <link href="style/bootstrap.min.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
 </head>
+
 <body>
-<div class="container">
-	<ol class="breadcrumb">
-		<li><a href="./">IS Atlas</a></li>
-		<li><a href="./planet.php">Systems</a></li>
-		<li><a href="./planet-detail.php?planet={{ planet | url_encode }}">{{ planetData.name }}</a></li>
-		<li class="active">Star Maps</li>
-	</ol>
-</div>
-<div class="container">
-	<div class="row">
-		<div class="col-sm-12">
-			<ul class="list-group">
-				<li class="list-group-item"><b>System Name:</b> <a href="./planet-detail.php?planet={{ planet | url_encode }}">{{ planetData.name }}</a></li>
-				<li class="list-group-item"><b>Coordinates:</b> {{ planetData.x_coord }}, {{ planetData.y_coord }}</li>
-			</ul>
-		</div>
-	</div>
-	<nav>
-		<ul class="pagination pagination-lg">
-		{% for era in eras %}
-		{% if era != currentEra %}
-			<li><a href="./system-map.php?planet={{ planet | url_encode }}&amp;era={{ era | slice(1,4) | url_encode }}">{{ era | slice(1,4) }}</a></li>
-		{% else %}
-			<li class="active"><a href="./system-map.php?planet={{ planet | url_encode }}&amp;era={{ era | slice(1,4) | url_encode }}">{{ era | slice(1,4) }}</a></li>
-		{% endif %}
-		{% endfor %}
-		</ul>
-	</nav>
-	<div class="row">
-		<div class="col-sm-12">
-			<div class="class="embed-responsive-item">
-				<embed class="embed-responsive-item" src="{{ svg_url }}" type="image/svg+xml" pluginspage="http://www.adobe.com/svg/viewer/install/" />
-			</div>
-			<p>This page makes use of <a href="http://www.w3.org/TR/SVG/">SVG</a>. You may need a plug-in for your browser to render this image.</p>
-		</div>
-	</div>
-</div>
-<footer class="container text-muted">
-	{% include 'cya.html' %}
-</footer>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="javascript/bootstrap.min.js"></script>
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><a href="./">IS Atlas</a></li>
+      <li><a href="./planet.php">Systems</a></li>
+      <li><a href="./planet-detail.php?planet={{ planet | url_encode }}">{{ planetData.name }}</a></li>
+      <li class="active">Star Maps</li>
+    </ol>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <ul class="list-group">
+          <li class="list-group-item"><b>System Name:</b> <a href="./planet-detail.php?planet={{ planet | url_encode }}">{{ planetData.name }}</a></li>
+          <li class="list-group-item"><b>Coordinates:</b> {{ planetData.x_coord }}, {{ planetData.y_coord }}</li>
+        </ul>
+      </div>
+    </div>
+    <nav>
+      <ul class="pagination pagination-lg">
+        {% for era in eras %} {% if era != currentEra %}
+        <li><a href="./system-map.php?planet={{ planet | url_encode }}&amp;era={{ era | slice(1,4) | url_encode }}">{{ era | slice(1,4) }}</a></li>
+        {% else %}
+        <li class="active"><a href="./system-map.php?planet={{ planet | url_encode }}&amp;era={{ era | slice(1,4) | url_encode }}">{{ era | slice(1,4) }}</a></li>
+        {% endif %} {% endfor %}
+      </ul>
+    </nav>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="embed-responsive-item">
+          <embed class="embed-responsive-item" src="{{ svg_url }}" type="image/svg+xml" pluginspage="http://www.adobe.com/svg/viewer/install/" />
+        </div>
+        <p>This page makes use of <a href="http://www.w3.org/TR/SVG/">SVG</a>. You may need a plug-in for your browser to render this image.</p>
+      </div>
+    </div>
+  </div>
+  {% include 'footer.html' %}
 </body>
+
 </html>

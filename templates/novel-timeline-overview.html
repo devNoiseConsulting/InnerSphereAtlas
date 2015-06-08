@@ -1,24 +1,24 @@
-{% include 'next_prev.html' %} 
+{% include 'next_prev.html' %}
 
 <div class="table-responsive">
-<table class="table table-bordered table-striped table-hover">
-<thead>
-<tr>
-<th><a href="./novel-timeline.php?sort=date">Date:</a></th>
-<th><a href="./novel-timeline.php?sort=title">Title:</a></th>
-<th>Chapter:</th>
-</tr>
-</thead>
-<tbody>
-{% for chapter in timeline %}
-<tr>
-<td>{{ chapter.chapter_date }}</td>
-<td><a href="./novel-detail.php?novel={{ chapter.novel_id | url_encode }}">{{ chapter.title }}</a></td>
-<td>{{ chapter.chapter_name }}</td>
-</tr>
-{% endfor %}
-</tbody>
-</table>
+  <table class="table table-bordered table-striped table-hover">
+    <thead>
+      <tr>
+        <th><a href="./novel-timeline.php?sort=date">Date:</a></th>
+        <th><a href="./novel-timeline.php?sort=title">Title:</a></th>
+        <th>Chapter:</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for chapter in timeline %}
+      <tr>
+        <td>{{ chapter.chapter_date }}</td>
+        <td><a href="./novel-detail.php?novel={{ chapter.novel_id | url_encode }}">{{ chapter.title }}</a></td>
+        <td>{{ chapter.chapter_name }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </div>
 
-{% include 'next_prev.html' %} 
+{% include 'next_prev.html' %}

@@ -1,30 +1,40 @@
 {% if pageNav.pageLinks %}
 <nav>
-{% if pageNav.letterNav %}
+	{% if pageNav.letterNav %}
 	<ul class="pagination pagination-sm">
-{% for letter in pageNav.letterNav %}
-	{% if pageNav.trimmedsearchvalue == letter %}
-		<li class="active">{% else %}<li>{% endif %}<a href="{{ pageNav.php_self }}?func={{ pageNav.func }}&amp;searchvalue={{ letter | raw }}">{{ letter }}</a></li>
-{% endfor %}
+		{% for letter in pageNav.letterNav %}
+		{% if pageNav.trimmedsearchvalue == letter %}
+		<li class="active">
+		{% else %}
+		<li>
+		{% endif %}
+			<a href="{{ pageNav.php_self }}?func={{ pageNav.func }}&amp;searchvalue={{ letter | raw }}">{{ letter }}</a>
+		</li>
+		{% endfor %}
 	</ul>
 </nav>
 {% endif %}
 <nav>
 	<ul class="pagination pagination-sm">
-	{% if pageNav.firstPage %}
+		{% if pageNav.firstPage %}
 		<li class="disabled"><a href="#">&#9664;</a></li>
-	{% else %}
+		{% else %}
 		<li>{{ pageNav.previousLink | raw }}</li>
-	{% endif %}
-{% for number in pageNav.pageNumbers %}
-	{% if pageNav.pageNum == number %}
-		<li class="active">{% else %}<li>{% endif %}{{ pageNav.pageLinks[number] | raw }}</li>
-{% endfor %}
-	{% if pageNav.lastPage %}
+		{% endif %}
+		{% for number in pageNav.pageNumbers %}
+		{% if pageNav.pageNum == number %}
+		<li class="active">
+		{% else %}
+		<li>
+		{% endif %}
+			{{ pageNav.pageLinks[number] | raw }}
+		</li>
+		{% endfor %}
+		{% if pageNav.lastPage %}
 		<li class="disabled"><a href="#">&#9654;</a></li>
-	{% else %}
+		{% else %}
 		<li>{{ pageNav.nextLink | raw }}</li>
-	{% endif %}
+		{% endif %}
 	</ul>
 </nav>
 {% endif %}

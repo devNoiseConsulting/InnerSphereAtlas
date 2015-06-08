@@ -1,20 +1,22 @@
-{% include 'next_prev.html' %} 
+{% include 'next_prev.html' %}
 
 <div class="table-responsive">
-<table class="table table-bordered table-striped table-hover">
-<thead>
-<tr><th>Product/Component Type:</th></tr>
-</thead>
-<tbody>
-{% for product in products %}
-<tr>
-<td>
-<a href="./product-type-detail.php?searchvalue={{ product.product_type_id }}">{{ product.component_type }} ({{ product.product_type }})</a>
-</td>
-</tr>
-{% endfor %} 
-</tbody>
-</table>
+  <table class="table table-bordered table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Product/Component Type:</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for product in products %}
+      <tr>
+        <td>
+          <a href="./product-type-detail.php?searchvalue={{ product.product_type_id }}">{{ product.component_type }} ({{ product.product_type }})</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </div>
 
-{% include 'next_prev.html' %} 
+{% include 'next_prev.html' %}

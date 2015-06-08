@@ -1,21 +1,25 @@
 {% if novels %}
 <h2>Used as a location in the following Novels:</h2>
 <div class="table-responsive">
-<table class="table table-bordered table-striped table-hover">
-<thead>
-<tr><th>Novel:</th><th># of Chapters:</th><th>Amazon.com:</th></tr>
-</thead>
-<tbody>
-	{% for novel in novels %}
-<tr>
-<td><a href="./novel-detail.php?novel= {{ novel.novel_id | url_encode }}">{{ novel.title }}</a></td>
-<td>{{ novel.chapters }}</td>
-<td>
-{% include 'amazon-link.html' %}
-</td>
-</tr>
-	{% endfor %}
-</tbody>
-</table>
+	<table class="table table-bordered table-striped table-hover">
+		<thead>
+			<tr>
+				<th>Novel:</th>
+				<th># of Chapters:</th>
+				<th>Amazon.com:</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for novel in novels %}
+			<tr>
+				<td><a href="./novel-detail.php?novel= {{ novel.novel_id | url_encode }}">{{ novel.title }}</a></td>
+				<td>{{ novel.chapters }}</td>
+				<td>
+					{% include 'amazon-link.html' %}
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 </div>
 {% endif %}
