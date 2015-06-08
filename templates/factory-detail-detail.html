@@ -1,7 +1,9 @@
 {% if factoryData %}
 <div class="row">
 	<div class="col-sm-12">
-		<h2><b>Factory:</b> {{ factoryData.name }}</h2>
+		<div class="page-header">
+			<h1><b>Factory:</b> {{ factoryData.name }}</h1>
+		</div>
 	</div>
 </div>
 <div class="row">
@@ -12,5 +14,4 @@
 		</ul>
 	</div>
 </div>
-{% include 'product_component.html' %}
-{% endif %}
+{% include 'product_component.html' %} {% endif %}
