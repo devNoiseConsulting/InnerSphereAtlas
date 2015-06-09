@@ -24,7 +24,7 @@
   <meta name="ICBM" content="40.0508, -75.4047" />
 
   <!-- Bootstrap -->
-  <link href="style/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -52,20 +52,28 @@
           </div>
           <div class="panel-body">
             <form method="post" action="./planet.php">
-              Search:
-              <input type="hidden" name="func" value="search" />
-              <input type="hidden" name="start" value="0" />
-              <input type="hidden" name="whichfield" value="name" />
-              <input type="text" name="searchvalue" size="24" value="" />
-              <input type="submit" value="Go!" />
-              <div class="autocomplete"></div>
-              <script type="text/javascript">
-                new Ajax.Autocompleter('searchvalue',
-                  'planet_complete',
-                  './planet_ajax.php', {
-                    minChars: 3
-                  })
-              </script>
+              <div class="form-group">
+                <input type="hidden" name="func" value="search" />
+                <input type="hidden" name="start" value="0" />
+                <input type="hidden" name="whichfield" value="name" />
+                <div class="col-xs-10">
+                  <input type="text" class="form-control" name="searchvalue" size="24" value="" placeholder="Search Systems"/>
+                </div>
+                <div class="col-xs-2">
+                  <button type="submit" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    <span class="sr-only">Search</span>
+                  </button>
+                </div>
+                <div class="autocomplete"></div>
+                <script type="text/javascript">
+                  new Ajax.Autocompleter('searchvalue',
+                    'planet_complete',
+                    './planet_ajax.php', {
+                      minChars: 3
+                    })
+                </script>
+              </div>
             </form>
             <ul class="pagination pagination-sm">
               <li>
@@ -214,12 +222,20 @@
           </div>
           <div class="panel-body">
             <form method="post" action="./factory.php">
-              Search:
-              <input type="hidden" name="func" value="search" />
-              <input type="hidden" name="start" value="0" />
-              <input name="searchvalue" />
-              <input type="hidden" name="whichfield" value="F.name" />
-              <input type="submit" value="Go!" />
+              <div class="form-group">
+                <input type="hidden" name="func" value="search" />
+                <input type="hidden" name="start" value="0" />
+                <input type="hidden" name="whichfield" value="F.name" />
+                <div class="col-xs-10">
+                  <input type="text" class="form-control" name="searchvalue" size="24" value="" placeholder="Search Factories"/>
+                </div>
+                <div class="col-xs-2">
+                  <button type="submit" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    <span class="sr-only">Search</span>
+                  </button>
+                </div>
+              </div>
             </form>
           </div>
           <ul class="list-group">
@@ -273,16 +289,24 @@
       <div class="col-sm-6">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h2><a href="./product-type.php">Product / Component Types: </a></h2>
+            <h2><a href="./product-type.php">Product or Component Types: </a></h2>
           </div>
           <div class="panel-body">
             <form method="post" action="./product-type.php">
-              Search:
-              <input type="hidden" name="func" value="search" />
-              <input type="hidden" name="start" value="0" />
-              <input name="searchvalue" />
-              <input type="hidden" name="whichfield" value="PT.product_type" />
-              <input type="submit" value="Go!" />
+              <div class="form-group">
+                <input type="hidden" name="func" value="search" />
+                <input type="hidden" name="start" value="0" />
+                <input type="hidden" name="whichfield" value="PT.product_type" />
+                <div class="col-xs-10">
+                  <input type="text" class="form-control" name="searchvalue" size="24" value="" placeholder="Search Products or Components"/>
+                </div>
+                <div class="col-xs-2">
+                  <button type="submit" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    <span class="sr-only">Search</span>
+                  </button>
+                </div>
+              </div>
             </form>
           </div>
           <ul class="list-group">

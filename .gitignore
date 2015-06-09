@@ -8,3 +8,4 @@ www/javascript/
 www/images/*.jpg
 www/style/bootstrap.min.css
 vendor
+deploy.sh
