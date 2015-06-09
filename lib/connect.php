@@ -11,7 +11,10 @@
 */
 
 	try {
-		$dbh = new PDO('mysql:host='.$Host.';dbname='.$Database, $User, $Password);
+		$dbh = new PDO(
+			'mysql:host='.$Host.';dbname='.$Database.';charset=utf8',
+			$User,
+			$Password);
 	} catch (PDOException $e) {
 		print "Error!: " . $e->getMessage() . "<br/>";
 		die();
