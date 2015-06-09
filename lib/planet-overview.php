@@ -1,7 +1,6 @@
 <?php
 
 $func = array_key_exists("func", $_REQUEST) ? $_REQUEST["func"] : "all";
-$whichfield = array_key_exists("whichfield", $_REQUEST) ? $_REQUEST["whichfield"] : "P.name";
 $searchvalue = array_key_exists("searchvalue", $_REQUEST) ? $_REQUEST["searchvalue"] : "%";
 $searchvalue = trim($searchvalue);
 if (strlen($searchvalue) == 1) {
@@ -23,7 +22,7 @@ if (empty($found) || !is_numeric($found)) {
 	COUNT(*) AS found
 	FROM
 	planet P
-	WHERE ($whichfield LIKE :searchvalue)
+	WHERE (P.name LIKE :searchvalue)
 	";
 
 	$sth = $dbh->prepare($query);
@@ -47,7 +46,7 @@ P.fluff
 FROM
 planet P
 WHERE
-($whichfield LIKE :searchvalue)
+(P.name LIKE :searchvalue)
 ORDER BY P.name
 LIMIT :start, :limit";
 

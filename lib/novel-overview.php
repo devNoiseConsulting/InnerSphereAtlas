@@ -2,6 +2,16 @@
 
 $func = array_key_exists("func", $_REQUEST) ? $_REQUEST["func"] : "browselist";
 $whichfield = array_key_exists("whichfield", $_REQUEST) ? $_REQUEST["whichfield"] : "title";
+if (isset($whichfield)) {
+	if ($whichfield == "title") {
+		$whichfield = "N.title";
+	} else if ($whichfield == "author") {
+		$whichfield = "N.author";
+	} else {
+		$whichfield = "N.title";
+	}
+}
+
 $searchvalue = array_key_exists("searchvalue", $_REQUEST) ? $_REQUEST["searchvalue"] : "Heir to the Dragon";
 $searchvalue = '%' . trim($searchvalue) . '%';
 
@@ -32,7 +42,7 @@ if (empty($found) || !is_numeric($found)) {
 		$query = "SELECT
 		COUNT(*) AS found
 		FROM
-		novel
+		novel N
 		WHERE
 		($whichfield LIKE :searchvalue)
 		";
@@ -40,7 +50,7 @@ if (empty($found) || !is_numeric($found)) {
 		$query = "SELECT
 		COUNT(*) AS found
 		FROM
-		novel
+		novel N
 		";
 	}
 	$sth = $dbh->prepare($query);
@@ -102,4 +112,4 @@ foreach ($novelData as $key => $novel) {
 	$novelData[$key]['author_search'] = $_SERVER['PHP_SELF'] . "?func=search&amp;whichfield=author&amp;searchvalue=" . urlencode($novel['author']);
 }
 
-include("$ISA_LIBDIR/next_prev.php"); 
+include("$ISA_LIBDIR/next_prev.php");

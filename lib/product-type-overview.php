@@ -1,7 +1,6 @@
 <?php
 
 $func = array_key_exists("func", $_REQUEST) ? $_REQUEST["func"] : "browselist";
-$whichfield = array_key_exists("whichfield", $_REQUEST) ? $_REQUEST["whichfield"] : "PT.product_type";
 $searchvalue = array_key_exists("searchvalue", $_REQUEST) ? $_REQUEST["searchvalue"] : "Dropships";
 $searchvalue = '%' . trim($searchvalue) . '%';
 
@@ -15,24 +14,24 @@ $limit = (int) $limit;
 $found = array_key_exists("found", $_REQUEST) ? $_REQUEST["found"] : null;
 if (empty($found) || !is_numeric($found)) {
 	if ($func == "search") {
-		$query = "SELECT 
+		$query = "SELECT
 		COUNT(DISTINCT PT.product_type) AS found
-		FROM 
-		product_type PT, 
-		product PC 
-		WHERE 
-		(PT.product_type LIKE :searchvalue OR 
-		PT.component_type LIKE :searchvalue) AND 
+		FROM
+		product_type PT,
+		product PC
+		WHERE
+		(PT.product_type LIKE :searchvalue OR
+		PT.component_type LIKE :searchvalue) AND
 		PT.product_type_id=PC.product_type_id
 		";
 		//echo "$query<P>\n";
 	} else {
-		$query = "SELECT 
+		$query = "SELECT
 		COUNT(DISTINCT PT.product_type) AS found
-		FROM 
-		product_type PT, 
-		product PC 
-		WHERE 
+		FROM
+		product_type PT,
+		product PC
+		WHERE
 		PT.product_type_id=PC.product_type_id
 		";
 		//echo "$query<p>\n";
@@ -48,14 +47,14 @@ if (empty($found) || !is_numeric($found)) {
 	$found = $productData['found'] - 1;
 }
 
-include("$ISA_LIBDIR/next_prev.php"); 
+include("$ISA_LIBDIR/next_prev.php");
 
 if ($limit == 0) { $limit = $found; }
 
 if ($func == "search") {
 	$query = "SELECT DISTINCT
-	PT.product_type_id, 
-	PT.component_type, 
+	PT.product_type_id,
+	PT.component_type,
 	PT.product_type
 	FROM
 	product_type PT,
@@ -64,22 +63,22 @@ if ($func == "search") {
 	(PT.product_type LIKE :searchvalue OR
 	PT.component_type LIKE :searchvalue) AND
 	PT.product_type_id=PC.product_type_id
-	ORDER BY 
-	PT.product_type_id, 
+	ORDER BY
+	PT.product_type_id,
 	PT.product_type
 	LIMIT :start, :limit";
 } else {
 	$query = "SELECT DISTINCT
-	PT.product_type_id, 
-	PT.component_type, 
+	PT.product_type_id,
+	PT.component_type,
 	PT.product_type
 	FROM
 	product_type PT,
 	product PC
 	WHERE
 	PT.product_type_id=PC.product_type_id
-	ORDER BY 
-	PT.product_type_id, 
+	ORDER BY
+	PT.product_type_id,
 	PT.product_type
 	LIMIT :start, :limit";
 }
@@ -94,4 +93,4 @@ $sth->execute();
 $products = $sth->fetchAll(PDO::FETCH_ASSOC);
 $sth = null;
 
-include("$ISA_LIBDIR/next_prev.php"); 
+include("$ISA_LIBDIR/next_prev.php");

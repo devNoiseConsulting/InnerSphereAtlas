@@ -2,8 +2,17 @@
 
 $func = array_key_exists("func", $_REQUEST) ? $_REQUEST["func"] : "browselist";
 $whichfield = array_key_exists("whichfield", $_REQUEST) ? $_REQUEST["whichfield"] : "novel_id";
+if (isset($whichfield)) {
+	if ($whichfield == "novel_id") {
+		$whichfield = "N.novel_id";
+	} else {
+		$whichfield = "N.novel_id";
+	}
+}
 $searchvalue = array_key_exists("searchvalue", $_REQUEST) ? $_REQUEST["searchvalue"] : "5";
-$searchvalue = '%' . trim($searchvalue) . '%';
+if (!is_numeric($searchvalue)) {
+	$searchvalue = '%' . trim($searchvalue) . '%';
+}
 
 $start = array_key_exists("start", $_REQUEST) ? $_REQUEST["start"] : "0";
 if (!is_numeric($start)) { $start = 0; }
@@ -28,12 +37,12 @@ if (empty($found) || !is_numeric($found)) {
 	if (isset($func) && $func == "search") {
 		$query = "SELECT
 		COUNT(*) AS found
-		FROM novel_timeline 
+		FROM novel_timeline
 		WHERE
 		($whichfield LIKE :searchvalue)
 		";
 	} else {
-		$query = "SELECT 
+		$query = "SELECT
 		COUNT(*) AS found
 		FROM
 		novel_timeline
@@ -76,7 +85,8 @@ if (isset($func) && $func == "search") {
 	novel N,
 	novel_timeline NT
 	WHERE
-	(N.novel_id = NT.novel_id) 
+	(N.novel_id = NT.novel_id)
+	AND NT.chapter_date > '1900-00-00'
 	ORDER BY " . $sortString . "
 	LIMIT :start, :limit";
 }
@@ -90,4 +100,4 @@ $sth->execute();
 $timeline = $sth->fetchAll(PDO::FETCH_ASSOC);
 $sth = null;
 
-include("$ISA_LIBDIR/next_prev.php"); 
+include("$ISA_LIBDIR/next_prev.php");

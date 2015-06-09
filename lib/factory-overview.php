@@ -1,7 +1,6 @@
 <?php
 
 $func = array_key_exists("func", $_REQUEST) ? $_REQUEST["func"] : "browselist";
-$whichfield = array_key_exists("whichfield", $_REQUEST) ? $_REQUEST["whichfield"] : "F.name";
 $searchvalue = array_key_exists("searchvalue", $_REQUEST) ? $_REQUEST["searchvalue"] : "Majesty";
 $searchvalue = '%' . trim($searchvalue) . '%';
 
@@ -15,22 +14,22 @@ $limit = (int) $limit;
 $found = array_key_exists("found", $_REQUEST) ? $_REQUEST["found"] : null;
 if (empty($found) || !is_numeric($found)) {
 	if (isset($func) && $func == "search") {
-		$query = "SELECT 
+		$query = "SELECT
 		COUNT(*) AS found
-		FROM 
-		planet P, 
-		factory F 
-		WHERE 
-		F.name LIKE :searchvalue AND 
+		FROM
+		planet P,
+		factory F
+		WHERE
+		F.name LIKE :searchvalue AND
 		P.planet_id = F.planet_id
 		";
 	} else {
-		$query = "SELECT 
+		$query = "SELECT
 		COUNT(*) AS found
-		FROM 
-		planet P, 
-		factory F 
-		WHERE 
+		FROM
+		planet P,
+		factory F
+		WHERE
 		P.planet_id = F.planet_id
 		";
 	}
@@ -60,7 +59,7 @@ if ($func == "search") {
 	planet P,
 	factory F
 	WHERE
-	F.name LIKE :searchvalue AND 
+	F.name LIKE :searchvalue AND
 	P.planet_id = F.planet_id
 	ORDER BY F.name
 	LIMIT :start, :limit
@@ -93,4 +92,4 @@ $sth->execute();
 $factories = $sth->fetchAll(PDO::FETCH_ASSOC);
 $sth = null;
 
-include("$ISA_LIBDIR/next_prev.php"); 
+include("$ISA_LIBDIR/next_prev.php");
