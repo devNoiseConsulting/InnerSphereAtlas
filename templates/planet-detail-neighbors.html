@@ -1,4 +1,4 @@
-<h2>Inhabited System(s) within thirty light-years:</h2>
+<h2>Inhabited System(s) within 2 jumps:</h2>
 {% if neighbors %}
 <div class="table-responsive">
 	<table class="table table-bordered table-striped table-hover">
@@ -7,7 +7,7 @@
 				<th>Planet:</th>
 				<th>X Coord:</th>
 				<th>Y Coord:</th>
-				<th>Distance:</th>
+				<th>Jumps:</th>
 				<th></th>
 			</tr>
 		</thead>
@@ -17,7 +17,7 @@
 				<td><a href="./planet-detail.php?planet={{ neighbor.planet_id | url_encode }}">{{ neighbor.planet_name }}</a></td>
 				<td align="right">{{ neighbor.x_coord }}</td>
 				<td align="right">{{ neighbor.y_coord }}</td>
-				<td align="right">{{ neighbor.distance }}</td>
+				<td align="right">{{ neighbor.jumps }}</td>
 				<td align="center">
 					{% if neighbor.factory or neighbor.fluff %}
 					<a href="./planet-detail.php?planet={{ neighbor.planet_id | url_encode }}">

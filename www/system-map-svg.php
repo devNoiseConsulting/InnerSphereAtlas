@@ -8,14 +8,14 @@ header("Content-type: image/svg+xml");
 print('<?xml version="1.0" encoding="UTF-8" ?>' . "\n");
 ?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Basic//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-basic.dtd">
-<svg 
+<svg
      version="1.1"
      baseProfile="basic"
      xmlns="http://www.w3.org/2000/svg"
      xmlns:xlink="http://www.w3.org/1999/xlink"
      id="svg-root"
-     width="100%" 
-     height="100%" 
+     width="100%"
+     height="100%"
      viewBox="0 0 <?php echo($ISA_MAP_SIZE . ' ' . $ISA_MAP_SIZE); ?>" >
 <?php
 
@@ -82,7 +82,7 @@ if ($planetData) {
 	P.x_coord,
 	P.y_coord
 	";
-	
+
 	$sth = $dbh->prepare($query);
 	$sth->bindParam(':planet_id', $planet_id);
 	$sth->execute();
@@ -95,7 +95,7 @@ if ($planetData) {
 <radialGradient id="jumpradial">
 <stop offset="0%" style="stop-color:White;" />
 <stop offset="100%" style="stop-color:rgb(<?php echo($rgb); ?>);">
-<animate attributeName="offset" from="0%" to="100%" dur="10s" repeatCount="indefinite" />
+<animate attributeName="offset" from="0%" to="100%" dur="30s" repeatCount="indefinite" />
 </stop>
 </radialGradient>
 </defs>
@@ -105,10 +105,10 @@ if ($planetData) {
 <?php
 	/* Loop through each item */
 	for ($i=0; $i < count($planetJumps); $i++) {
-	
+
 		$x_coord = ($planetJumps[$i]['x_coord'] - $x) * $ISA_MAP_SCALE + $ISA_MAP_OFFSET;
 		$y_coord = ($planetJumps[$i]['y_coord'] - $y) * -1 * $ISA_MAP_SCALE + $ISA_MAP_OFFSET;
-		
+
 		echo '<line x1="' . $ISA_MAP_OFFSET . '" y1="' . $ISA_MAP_OFFSET;
 		echo '" x2="' . $x_coord . '" y2="' . $y_coord;
 		echo '" />' . "\n";
@@ -137,7 +137,7 @@ if ($planetData) {
 	P.x_coord,
 	P.y_coord
 	";
-	
+
 	$sth = $dbh->prepare($query);
 	$sth->bindParam(':x_min', $x_min);
 	$sth->bindParam(':x_max', $x_max);
@@ -146,27 +146,27 @@ if ($planetData) {
 	$sth->execute();
 	$planets = $sth->fetchAll(PDO::FETCH_ASSOC);
 	$sth = null;
-	
+
 	$font_size = $ISA_MAP_PLANET_DIAMETER * 1.5;
 	echo '<g font-family="Helvetica" font-size="' . $font_size . '" >' . "\n";
 	/* Loop through each item */
 	for ($i=0; $i < count($planets); $i++) {
 		$name = $planets[$i]['name'];
 		$planet_id = $planets[$i]['planet_id'];
-	
+
 		$x_coord = ($planets[$i]['x_coord'] - $x) * $ISA_MAP_SCALE + $ISA_MAP_OFFSET;
 		$y_coord = ($planets[$i]['y_coord'] - $y) * -1 * $ISA_MAP_SCALE + $ISA_MAP_OFFSET;
-	
+
 		$red = $planets[$i]['color1_r'];
 		$green = $planets[$i]['color1_g'];
 		$blue = $planets[$i]['color1_b'];
 		$color = 'rgb(' . $red . ',' . $green . ',' . $blue . ')';
-		
+
 		$capital = $planets[$i]['capital'];
-	
+
 		$x_title = $x_coord - $ISA_MAP_TITLE_OFFSET + 1;
 		$y_title = $y_coord + $font_size + 2;
-		
+
 		echo '<a xlink:href="./planet-detail.php?planet=' . $planet_id . '" xlink:alt="' . $name . '" target="_top">' . "\n";
 		if ($capital == 0) {
 			echo '<circle id="jump_limit" cx="' . $x_coord . '" cy="' . $y_coord . '" r="' . $ISA_MAP_PLANET_RADIUS;
@@ -174,7 +174,7 @@ if ($planetData) {
 		} else {
 			echo '<polygon stroke="' . $color . '" stroke-width="1.5" ';
 			echo 'fill="' . $color . '" points="';
-			
+
 			$radius = ((1 / $capital) + 1) * $ISA_MAP_PLANET_RADIUS;
 			$sides = $capital + 2;
 			$angle = 2 * pi() / $sides;
@@ -188,7 +188,7 @@ if ($planetData) {
 				echo round($pX, 2) . "," . round($pY, 2) . " ";
 				$currentAngle += $angle;
 			}
-			
+
 			echo '" />';
 			$x_title -= ($radius / 4);
 			$y_title += ($radius / 4);
