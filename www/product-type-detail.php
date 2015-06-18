@@ -4,6 +4,7 @@ require_once('../vendor/autoload.php');
 
 require_once("./isatlas-config.php");
 require_once("$ISA_LIBDIR/connect.php");
+require_once("$ISA_LIBDIR/canonical-link.php");
 
 include("$ISA_LIBDIR/product-type-detail.php");
 
@@ -13,6 +14,7 @@ $twig = new Twig_Environment($loader);
 $template = $twig->loadTemplate('product-type-detail.html');
 
 echo $template->render(array(
+	'canonicalLink' => $canonicalLink,
 	'productData' => $product,
 	'products' => $products,
 	'pageNav' => $pageNav,

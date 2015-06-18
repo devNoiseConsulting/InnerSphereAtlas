@@ -4,6 +4,7 @@ require_once('../vendor/autoload.php');
 
 require_once("./isatlas-config.php");
 require_once("$ISA_LIBDIR/connect.php");
+require_once("$ISA_LIBDIR/canonical-link.php");
 
 $planet = array_key_exists("planet", $_REQUEST) ? $_REQUEST["planet"] : 2266787;
 $query = "SELECT
@@ -47,6 +48,7 @@ $twig = new Twig_Environment($loader);
 $template = $twig->loadTemplate('system-map.html');
 
 echo $template->render(array(
+	'canonicalLink' => $canonicalLink,
 	'planet' => $planet,
 	'planetData' => $planetData,
 	'currentEra' => 'E' . $era,
