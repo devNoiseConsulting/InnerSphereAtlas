@@ -1,7 +1,9 @@
 <div class="row">
   <div class="col-sm-12">
     <div class="page-header">
-      <h1><b>Factories:</b></h1>
+      <h1>
+        <b>Factories:</b>
+      </h1>
     </div>
   </div>
 </div>
@@ -20,12 +22,14 @@
     </thead>
     <tbody>
       {% for factory in factories %}
-      <tr>
-        <td><a href="./factory-detail.php?factory={{ factory.factory_id }}">{{ factory.name }}</a></td>
-        <td>{{ factory.planet_name }}</td>
-        <td align="right">{{ factory.x_coord }}</td>
-        <td align="right">{{ factory.y_coord }}</td>
-      </tr>
+        <tr>
+          <td>
+            <a href="./factory-detail.php?factory={{ factory.factory_id }}">{{ factory.name }}</a>
+          </td>
+          <td>{{ factory.planet_name }}</td>
+          <td align="right">{{ factory.x_coord }}</td>
+          <td align="right">{{ factory.y_coord }}</td>
+        </tr>
       {% endfor %}
     </tbody>
   </table>

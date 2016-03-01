@@ -1,11 +1,13 @@
 <div class="row">
   <div class="col-sm-12">
     <div class="page-header">
-      <h1><b>Product / Component:</b> {{ productData.component_type }} ({{ productData.product_type }})</h1>
+      <h1>
+        <b>Product / Component:</b>
+        {{ productData.component_type }}
+        ({{ productData.product_type }})</h1>
     </div>
   </div>
 </div>
-
 
 {% include 'next_prev.html' %}
 
@@ -20,11 +22,15 @@
     </thead>
     <tbody>
       {% for product in products %}
-      <tr>
-        <td>{{ product.product_name }}</td>
-        <td><a href="./factory-detail.php?factory={{ product.factory_id | url_encode }}">{{ product.factory_name }}</a></td>
-        <td><a href="./planet-detail.php?planet={{ product.planet_id | url_encode }}">{{ product.planet_name }}</a></td>
-      </tr>
+        <tr>
+          <td>{{ product.product_name }}</td>
+          <td>
+            <a href="./factory-detail.php?factory={{ product.factory_id | url_encode }}">{{ product.factory_name }}</a>
+          </td>
+          <td>
+            <a href="./planet-detail.php?planet={{ product.planet_id | url_encode }}">{{ product.planet_name }}</a>
+          </td>
+        </tr>
       {% endfor %}
     </tbody>
   </table>

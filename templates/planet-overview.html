@@ -1,7 +1,9 @@
 <div class="row">
   <div class="col-sm-12">
     <div class="page-header">
-      <h1><b>Systems:</b></h1>
+      <h1>
+        <b>Systems:</b>
+      </h1>
     </div>
   </div>
 </div>
@@ -9,41 +11,43 @@
 {% include 'next_prev.html' %}
 
 <div class="table-responsive">
-	<table class="table table-bordered table-striped table-hover">
-		<thead>
-			<tr>
-				<th>Name:</th>
-				<th>X Coord:</th>
-				<th>Y Coord:</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for planet in planets %}
-			<tr>
-				<td><a href="./planet-detail.php?planet={{ planet.planet_id | url_encode }}">{{ planet.name }}</a></td>
-				<td align="right">{{ planet.x_coord }}</td>
-				<td align="right">{{ planet.y_coord }}</td>
-				<td align="center">
-					{% if planet.factory or planet.fluff %}
-					<a href="./planet-detail.php?planet={{ planet.planet_id | url_encode }}">
-						{% if planet.factory and planet.fluff %}
-						{% spaceless %}
-						<img src="./images/fluff.gif" alt="Description" width="16" height="16" border="0" />
-						<img src="./images/factory.gif" alt="Factory" width="16" height="16" border="0" />
-						{% endspaceless %}
-						{% elseif planet.factory %}
-						<img src="./images/factory.gif" alt="Factory" width="16" height="16" border="0" />
-						{% elseif planet.fluff %}
-						<img src="./images/fluff.gif" alt="Description" width="16" height="16" border="0" />
-						{% endif %}
-					</a>
-					{% endif %}
-				</td>
-			</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+  <table class="table table-bordered table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Name:</th>
+        <th>X Coord:</th>
+        <th>Y Coord:</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for planet in planets %}
+        <tr>
+          <td>
+            <a href="./planet-detail.php?planet={{ planet.planet_id | url_encode }}">{{ planet.name }}</a>
+          </td>
+          <td align="right">{{ planet.x_coord }}</td>
+          <td align="right">{{ planet.y_coord }}</td>
+          <td align="center">
+            {% if planet.factory or planet.fluff %}
+              <a href="./planet-detail.php?planet={{ planet.planet_id | url_encode }}">
+                {% if planet.factory and planet.fluff %}
+                  {% spaceless %}
+                    <img src="./images/fluff.gif" alt="Description" width="16" height="16" border="0"/>
+                    <img src="./images/factory.gif" alt="Factory" width="16" height="16" border="0"/>
+                  {% endspaceless %}
+                {% elseif planet.factory %}
+                  <img src="./images/factory.gif" alt="Factory" width="16" height="16" border="0"/>
+                {% elseif planet.fluff %}
+                  <img src="./images/fluff.gif" alt="Description" width="16" height="16" border="0"/>
+                {% endif %}
+              </a>
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </div>
 
 {% include 'next_prev.html' %}

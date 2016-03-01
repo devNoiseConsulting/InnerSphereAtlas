@@ -1,40 +1,40 @@
 {% if publisherData %}
-<h2>Publication Information:</h2>
-<div class="table-responsive">
-  <table class="table table-bordered table-striped table-hover">
-    <thead>
-      <tr>
-        <th>Publisher:</th>
-        <th>Stock Number:</th>
-        <th>ISBN:</th>
-        <th>Year:</th>
-        <th>Price:</th>
-        <th>Cover:</th>
-        <th>Amazon.com:</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for novel in publisherData %}
-      <tr valign="top">
-        <td>{{ novel.publisher }}</td>
-        <td>{{ novel.stock_id }}</td>
-        <td>{{ novel.isbn }}</td>
-        <td>{{ novel.print_year }}</td>
-        <td>${{ novel.price }}</td>
-        <td align=\ "center\">
-          {% if novel.thumbnail %}
-          <a href="{{ novel.imageLink | raw }}">
-            <img src="{{ novel.thumbnail }}" alt="" height="140">
-          </a>
-          <br />
-          {% endif %}
-        </td>
-        <td>
-          {% include 'amazon-link.html' %}
-        </td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-</div>
+  <h2>Publication Information:</h2>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Publisher:</th>
+          <th>Stock Number:</th>
+          <th>ISBN:</th>
+          <th>Year:</th>
+          <th>Price:</th>
+          <th>Cover:</th>
+          <th>Amazon.com:</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for novel in publisherData %}
+          <tr valign="top">
+            <td>{{ novel.publisher }}</td>
+            <td>{{ novel.stock_id }}</td>
+            <td>{{ novel.isbn }}</td>
+            <td>{{ novel.print_year }}</td>
+            <td>${{ novel.price }}</td>
+            <td align=\ "center\">
+              {% if novel.thumbnail %}
+                <a href="{{ novel.imageLink | raw }}">
+                  <img src="{{ novel.thumbnail }}" alt="" height="140">
+                </a>
+                <br/>
+              {% endif %}
+            </td>
+            <td>
+              {% include 'amazon-link.html' %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 {% endif %}

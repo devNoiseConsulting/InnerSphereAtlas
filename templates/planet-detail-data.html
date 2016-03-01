@@ -1,45 +1,68 @@
 <div class="row">
 
-	<div class="col-sm-12">
-		<div class="page-header">
-			<h1><b>System:</b> {{ planetData.name }}</h1>
-		</div>
-	</div>
+  <div class="col-sm-12">
+    <div class="page-header">
+      <h1>
+        <b>System:</b>
+        {{ planetData.name }}</h1>
+    </div>
+  </div>
 
-	{% if planetData.description %}
-	<div class="col-sm-8">
-		<h2>Description:</h2>
-		{{ planetData.description | raw }}
-	</div>
-	{% endif %}
+  {% if planetData.description %}
+    <div class="col-sm-8">
+      <h2>Description:</h2>
+      {{ planetData.description | raw }}
+    </div>
+  {% endif %}
 
-	<div class="col-sm-4">
-		<!-- List group -->
-		<ul class="list-group">
-			<li class="list-group-item"><b>System Name: </b> {{ planetData.name }}</li>
-			<li class="list-group-item"><b>Coordinates:</b> {{ planetData.x_coord }}, {{ planetData.y_coord }}</li>
-			{% if planetData.star_type %}
-			<li class="list-group-item"><b>Star Type:</b> {{ planetData.star_type }}</li>
-			{% endif %}
-			{% if planetData.position %}
-			<li class="list-group-item"><b>Position in System:</b> {{ planetData.position }}</li>
-			{% endif %}
-			{% if planetData.travel_time %}
-			<li class="list-group-item"><b>Time to Jump Point:</b> {{ planetData.travel_time }} days</li>
-			{% endif %}
-			{% if planetData.recharging_station %}
-			<li class="list-group-item"><b>Recharging Station:</b> {{ planetData.recharging_station }}</li>
-			{% endif %}
-			{% if planetData.comstar_facility %}
-			<li class="list-group-item"><b>ComStar Facility Class:</b> {{ planetData.comstar_facility }}</li>
-			{% endif %}
-			{% if planetData.population %}
-			<li class="list-group-item"><b>Population:</b> {{ planetData.population | number_format }}</li>
-			{% endif %}
-			{% if planetData.native_life %}
-			<li class="list-group-item"><b>Percentage and Level of Native Life:</b> {{ planetData.native_life }}</li>
-			{% endif %}
-		</ul>
-	</div>
+  <div class="col-sm-4">
+    <!-- List group -->
+    <ul class="list-group">
+      <li class="list-group-item">
+        <b>System Name:
+        </b>
+        {{ planetData.name }}</li>
+      <li class="list-group-item">
+        <b>Coordinates:</b>
+        {{ planetData.x_coord }},
+        {{ planetData.y_coord }}</li>
+      {% if planetData.star_type %}
+        <li class="list-group-item">
+          <b>Star Type:</b>
+          {{ planetData.star_type }}</li>
+      {% endif %}
+      {% if planetData.position %}
+        <li class="list-group-item">
+          <b>Position in System:</b>
+          {{ planetData.position }}</li>
+      {% endif %}
+      {% if planetData.travel_time %}
+        <li class="list-group-item">
+          <b>Time to Jump Point:</b>
+          {{ planetData.travel_time }}
+          days</li>
+      {% endif %}
+      {% if planetData.recharging_station %}
+        <li class="list-group-item">
+          <b>Recharging Station:</b>
+          {{ planetData.recharging_station }}</li>
+      {% endif %}
+      {% if planetData.comstar_facility %}
+        <li class="list-group-item">
+          <b>ComStar Facility Class:</b>
+          {{ planetData.comstar_facility }}</li>
+      {% endif %}
+      {% if planetData.population %}
+        <li class="list-group-item">
+          <b>Population:</b>
+          {{ planetData.population | number_format }}</li>
+      {% endif %}
+      {% if planetData.native_life %}
+        <li class="list-group-item">
+          <b>Percentage and Level of Native Life:</b>
+          {{ planetData.native_life }}</li>
+      {% endif %}
+    </ul>
+  </div>
 
 </div>

@@ -8,10 +8,13 @@
     </thead>
     <tbody>
       {% for component in components %}
-      <tr>
-        <td>{{ component.product_name }}</td>
-        <td><a href="./product-type-detail.php?searchvalue={{ component.product_type_id | url_encode }}">{{ component.component_type }} ({{ component.product_type }})</a></td>
-      </tr>
+        <tr>
+          <td>{{ component.product_name }}</td>
+          <td>
+            <a href="./product-type-detail.php?searchvalue={{ component.product_type_id | url_encode }}">{{ component.component_type }}
+              ({{ component.product_type }})</a>
+          </td>
+        </tr>
       {% endfor %}
     </tbody>
   </table>

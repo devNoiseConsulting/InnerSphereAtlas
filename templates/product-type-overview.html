@@ -1,7 +1,9 @@
 <div class="row">
   <div class="col-sm-12">
     <div class="page-header">
-      <h1><b>Product or Component Types:</b></h1>
+      <h1>
+        <b>Product or Component Types:</b>
+      </h1>
     </div>
   </div>
 </div>
@@ -17,11 +19,12 @@
     </thead>
     <tbody>
       {% for product in products %}
-      <tr>
-        <td>
-          <a href="./product-type-detail.php?searchvalue={{ product.product_type_id }}">{{ product.component_type }} ({{ product.product_type }})</a>
-        </td>
-      </tr>
+        <tr>
+          <td>
+            <a href="./product-type-detail.php?searchvalue={{ product.product_type_id }}">{{ product.component_type }}
+              ({{ product.product_type }})</a>
+          </td>
+        </tr>
       {% endfor %}
     </tbody>
   </table>

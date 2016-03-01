@@ -1,49 +1,51 @@
 <h2>Inhabited System(s) within 2 jumps:</h2>
 {% if neighbors %}
-<div class="table-responsive">
-	<table class="table table-bordered table-striped table-hover">
-		<thead>
-			<tr>
-				<th>Planet:</th>
-				<th>X Coord:</th>
-				<th>Y Coord:</th>
-				<th>Jumps:</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for neighbor in neighbors %}
-			<tr>
-				<td><a href="./planet-detail.php?planet={{ neighbor.planet_id | url_encode }}">{{ neighbor.planet_name }}</a></td>
-				<td align="right">{{ neighbor.x_coord }}</td>
-				<td align="right">{{ neighbor.y_coord }}</td>
-				<td align="right">{{ neighbor.jumps }}</td>
-				<td align="center">
-					{% if neighbor.factory or neighbor.fluff %}
-					<a href="./planet-detail.php?planet={{ neighbor.planet_id | url_encode }}">
-						{% if neighbor.factory and neighbor.fluff %}
-						{% spaceless %}
-						<img src="./images/fluff.gif" alt="Description" width="16" height="16" border="0" />
-						<img src="./images/factory.gif" alt="Factory" width="16" height="16" border="0" />
-						{% endspaceless %}
-						{% elseif neighbor.factory %}
-						<img src="./images/factory.gif" alt="Factory" width="16" height="16" border="0" />
-						{% elseif neighbor.fluff %}
-						<img src="./images/fluff.gif" alt="Description" width="16" height="16" border="0" />
-						{% endif %}
-					</a>
-					{% endif %}
-				</td>
-			</tr>
-			{% endfor %}
-		</tbody>
-	</table>
-</div>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Planet:</th>
+          <th>X Coord:</th>
+          <th>Y Coord:</th>
+          <th>Jumps:</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for neighbor in neighbors %}
+          <tr>
+            <td>
+              <a href="./planet-detail.php?planet={{ neighbor.planet_id | url_encode }}">{{ neighbor.planet_name }}</a>
+            </td>
+            <td align="right">{{ neighbor.x_coord }}</td>
+            <td align="right">{{ neighbor.y_coord }}</td>
+            <td align="right">{{ neighbor.jumps }}</td>
+            <td align="center">
+              {% if neighbor.factory or neighbor.fluff %}
+                <a href="./planet-detail.php?planet={{ neighbor.planet_id | url_encode }}">
+                  {% if neighbor.factory and neighbor.fluff %}
+                    {% spaceless %}
+                      <img src="./images/fluff.gif" alt="Description" width="16" height="16" border="0"/>
+                      <img src="./images/factory.gif" alt="Factory" width="16" height="16" border="0"/>
+                    {% endspaceless %}
+                  {% elseif neighbor.factory %}
+                    <img src="./images/factory.gif" alt="Factory" width="16" height="16" border="0"/>
+                  {% elseif neighbor.fluff %}
+                    <img src="./images/fluff.gif" alt="Description" width="16" height="16" border="0"/>
+                  {% endif %}
+                </a>
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 {% else %}
-<div class="panel panel-default">
-	<div class="panel-body">
-		There are no inhabited systems within thirty light-years of this planet.
-	</div>
-</div>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      There are no inhabited systems within thirty light-years of this planet.
+    </div>
+  </div>
 {% endif %}
 {% include 'legend.html' %}

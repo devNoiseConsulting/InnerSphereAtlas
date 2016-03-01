@@ -1,17 +1,26 @@
 {% if factoryData %}
-<div class="row">
-	<div class="col-sm-12">
-		<div class="page-header">
-			<h1><b>Factory:</b> {{ factoryData.name }}</h1>
-		</div>
-	</div>
-</div>
-<div class="row">
-	<div class="col-sm-12">
-		<ul class="list-group">
-			<li class="list-group-item"><b>System Name:</b> <a href="./planet-detail.php?planet={{ factoryData.planet_id | url_encode }}">{{ factoryData.planet_name }}</a></li>
-			<li class="list-group-item"><b>Coordinates:</b> {{ factoryData.x_coord }}, {{ factoryData.y_coord }}</li>
-		</ul>
-	</div>
-</div>
-{% include 'product_component.html' %} {% endif %}
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="page-header">
+        <h1>
+          <b>Factory:</b>
+          {{ factoryData.name }}</h1>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <b>System Name:</b>
+          <a href="./planet-detail.php?planet={{ factoryData.planet_id | url_encode }}">{{ factoryData.planet_name }}</a>
+        </li>
+        <li class="list-group-item">
+          <b>Coordinates:</b>
+          {{ factoryData.x_coord }},
+          {{ factoryData.y_coord }}</li>
+      </ul>
+    </div>
+  </div>
+  {% include 'product_component.html' %}
+{% endif %}
