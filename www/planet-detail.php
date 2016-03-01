@@ -34,4 +34,5 @@ echo $template->render(array(
 	'factories' => $factories,
 	'neighbors' => $neighbors,
 	'novels' => $novels,
+	'copyrightYear' => date('Y')
 	));

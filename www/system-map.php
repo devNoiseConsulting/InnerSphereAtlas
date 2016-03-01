@@ -54,4 +54,5 @@ echo $template->render(array(
 	'currentEra' => 'E' . $era,
 	'eras' => $eras,
 	'svg_url' => $svg_url,
+	'copyrightYear' => date('Y')
 	));

@@ -17,4 +17,5 @@ echo $template->render(array(
 	'canonicalLink' => $canonicalLink,
 	'novelData' => $novelData,
 	'pageNav' => $pageNav,
+	'copyrightYear' => date('Y')
 	));

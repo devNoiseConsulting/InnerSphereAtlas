@@ -10,6 +10,10 @@ $twig = new Twig_Environment($loader);
 
 $template = $twig->loadTemplate('index.html');
 
+$searchLetters = array("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z");
+
 echo $template->render(array(
   'canonicalLink' => $canonicalLink,
+  'searchLetters' => $searchLetters,
+  'copyrightYear' => date('Y')
 ));

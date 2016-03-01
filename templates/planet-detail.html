@@ -10,7 +10,7 @@
   <link rel="alternate" href="{{ canonicalLink }}" hreflang="x-default">
 
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -40,11 +40,11 @@
       <div class="col-sm-6">
         <a name="map" ></a>
         <h2>System Star Maps:</h2>
-        <ul class="pagination pagination-sm">
+        <div class="list-group">
           {% for era in eras %}
-          <li><a href="./system-map.php?planet={{ planet | url_encode }}&amp;era={{ era | slice(1,4) | url_encode }}">{{ era | slice(1,4) }}</a></li>
+          <a class="list-group-item" href="./system-map.php?planet={{ planet | url_encode }}&amp;era={{ era | slice(1,4) | url_encode }}">{{ era | slice(1,4) }}</a>
           {% endfor %}
-        </ul>
+        </div>
       </div>
 
       <div class="col-sm-6">

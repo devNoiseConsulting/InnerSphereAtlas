@@ -18,4 +18,5 @@ echo $template->render(array(
 	'novelData' => $novelData,
 	'timeline' => $timeline,
 	'pageNav' => $pageNav,
+	'copyrightYear' => date('Y')
 	));

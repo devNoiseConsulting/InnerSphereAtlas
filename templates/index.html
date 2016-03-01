@@ -26,7 +26,7 @@
   <link rel="alternate" href="{{ canonicalLink }}" hreflang="x-default">
 
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -38,14 +38,12 @@
 </head>
 
 <body>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="page-header">
-          <h1 class="text-center">Inner Sphere Atlas</h1>
-        </div>
-      </div>
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="text-center">Inner Sphere Atlas</h1>
     </div>
+  </div>
+  <div class="container">
     <div class="row">
       <div class="col-sm-6">
         <div class="panel panel-default">
@@ -68,86 +66,26 @@
                 </div>
               </div>
             </form>
-            <ul class="pagination">
-              <li>
-                <a href="./planet.php?func=browsebyletter&amp;searchvalue=A">A</a>
-              </li>
-              <li>
-                <a href="./planet.php?func=browsebyletter&amp;searchvalue=B">B</a>
-              </li>
-              <li>
-                <a href="./planet.php?func=browsebyletter&amp;searchvalue=C">C</a>
-              </li>
-              <li>
-                <a href="./planet.php?func=browsebyletter&amp;searchvalue=D">D</a>
-              </li>
-              <li>
-                <a href="./planet.php?func=browsebyletter&amp;searchvalue=E">E</a>
-              </li>
-              <li>
-                <a href="./planet.php?func=browsebyletter&amp;searchvalue=F">F</a>
-              </li>
-              <li>
-                <a href="./planet.php?func=browsebyletter&amp;searchvalue=G">G</a>
-              </li>
-              <li>
-                <a href="./planet.php?func=browsebyletter&amp;searchvalue=H">H</a>
-              </li>
-              <li>
-                <a href="./planet.php?func=browsebyletter&amp;searchvalue=I">I</a>
-              </li>
-              <li>
-                <a href="./planet.php?func=browsebyletter&amp;searchvalue=J">J</a>
-              </li>
-              <li>
-                <a href="./planet.php?func=browsebyletter&amp;searchvalue=K">K</a>
-              </li>
-              <li>
-                <a href="./planet.php?func=browsebyletter&amp;searchvalue=L">L</a>
-              </li>
-              <li>
-                <a href="./planet.php?func=browsebyletter&amp;searchvalue=M">M</a>
-              </li>
-              <li>
-                <a href="./planet.php?func=browsebyletter&amp;searchvalue=N">N</a>
-              </li>
-              <li>
-                <a href="./planet.php?func=browsebyletter&amp;searchvalue=O">O</a>
-              </li>
-              <li>
-                <a href="./planet.php?func=browsebyletter&amp;searchvalue=P">P</a>
-              </li>
-              <li>
-                <a href="./planet.php?func=browsebyletter&amp;searchvalue=Q">Q</a>
-              </li>
-              <li>
-                <a href="./planet.php?func=browsebyletter&amp;searchvalue=R">R</a>
-              </li>
-              <li>
-                <a href="./planet.php?func=browsebyletter&amp;searchvalue=S">S</a>
-              </li>
-              <li>
-                <a href="./planet.php?func=browsebyletter&amp;searchvalue=T">T</a>
-              </li>
-              <li>
-                <a href="./planet.php?func=browsebyletter&amp;searchvalue=U">U</a>
-              </li>
-              <li>
-                <a href="./planet.php?func=browsebyletter&amp;searchvalue=V">V</a>
-              </li>
-              <li>
-                <a href="./planet.php?func=browsebyletter&amp;searchvalue=W">W</a>
-              </li>
-              <li>
-                <a href="./planet.php?func=browsebyletter&amp;searchvalue=X">X</a>
-              </li>
-              <li>
-                <a href="./planet.php?func=browsebyletter&amp;searchvalue=Y">Y</a>
-              </li>
-              <li>
-                <a href="./planet.php?func=browsebyletter&amp;searchvalue=Z">Z</a>
-              </li>
-            </ul>
+          </div>
+          <div class="panel-body">
+            <form method="get" action="./planet.php">
+              <div class="form-group">
+                <input type="hidden" name="func" value="browsebyletter" />
+                <div class="col-xs-10">
+                  <select class="form-control" name="searchvalue">
+                  {% for letter in searchLetters %}
+                  <option>{{ letter }}</option>
+                  {% endfor %}
+                  </select>
+                </div>
+                <div class="col-xs-2">
+                  <button type="submit" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    <span class="sr-only">Search</span>
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
           <div class="list-group">
             <a class="list-group-item" href="/planet-detail.php?planet=2075223">A Place</a>

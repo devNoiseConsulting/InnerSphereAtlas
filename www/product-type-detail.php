@@ -18,4 +18,5 @@ echo $template->render(array(
 	'productData' => $product,
 	'products' => $products,
 	'pageNav' => $pageNav,
+	'copyrightYear' => date('Y')
 	));
