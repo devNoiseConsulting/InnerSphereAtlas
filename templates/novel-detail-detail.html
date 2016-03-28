@@ -3,51 +3,53 @@
   <div class="col-sm-12">
     <div class="page-header">
       <h1>
+        <i class="icon ion-ios-book"></i>
         <b>Novel:</b>
         {{ novelData.title }}</h1>
     </div>
   </div>
 
   {% if novelData.notes %}
-    <div class="col-sm-8">
-      <h2>Description:</h2>
-      {{ novelData.notes | raw }}
+  <div class="col-sm-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2>Description:</h2>
+      </div>
+      <div class="panel-body">
+        {{ novelData.notes | raw }}
+      </div>
     </div>
+  </div>
   {% endif %}
 
-  <div class="panel panel-default col-sm-4">
-    <!-- List group -->
-    <ul class="list-group">
-      <li class="list-group-item">
-        <b>Title:</b>
-        {{ novelData.title }}</li>
-      <li class="list-group-item">
-        <b>Author:</b>
-        {{ novelData.author }}</li>
-      <li class="list-group-item">
-        <b>Series:</b>
-        {{ novelData.series }}</li>
-      {% if novelData.prologue_date and novelData.prologue_date != "0000-00-00" %}
+  <div class="col-sm-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2>Novel Info:</h2>
+      </div>
+      <!-- List group -->
+      <ul class="list-group">
         <li class="list-group-item">
-          <b>Prologue Date:</b>
-          {{ novelData.prologue_date }}</li>
-      {% endif %}
-      {% if novelData.start_date %}
+          <b>Title:</b> {{ novelData.title }}</li>
         <li class="list-group-item">
-          <b>Start Date:</b>
-          {{ novelData.start_date }}</li>
-      {% endif %}
-      {% if novelData.end_date %}
+          <b>Author:</b> {{ novelData.author }}</li>
         <li class="list-group-item">
-          <b>End Date:</b>
-          {{ novelData.end_date }}</li>
-      {% endif %}
-      {% if novelData.prologue_date and novelData.prologue_date != "0000-00-00" %}
+          <b>Series:</b> {{ novelData.series }}</li>
+        {% if novelData.prologue_date and novelData.prologue_date != "0000-00-00" %}
         <li class="list-group-item">
-          <b>Epilogue Date:</b>
-          {{ novelData.epilogue_date }}</li>
-      {% endif %}
-    </ul>
+          <b>Prologue Date:</b> {{ novelData.prologue_date }}</li>
+        {% endif %} {% if novelData.start_date %}
+        <li class="list-group-item">
+          <b>Start Date:</b> {{ novelData.start_date }}</li>
+        {% endif %} {% if novelData.end_date %}
+        <li class="list-group-item">
+          <b>End Date:</b> {{ novelData.end_date }}</li>
+        {% endif %} {% if novelData.prologue_date and novelData.prologue_date != "0000-00-00" %}
+        <li class="list-group-item">
+          <b>Epilogue Date:</b> {{ novelData.epilogue_date }}</li>
+        {% endif %}
+      </ul>
+    </div>
   </div>
 
 </div>

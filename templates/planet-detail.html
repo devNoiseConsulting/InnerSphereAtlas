@@ -1,93 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="index, follow"/>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow" />
 
-    <!-- common social tags -->
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@ISAtlasBTech" />
-    <meta name="twitter:creator" content="@ISAtlasBTech" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://isatlas.teamspam.net/images/ISAtlasTwitterCard.png" />
-    <meta property="og:image:width" content="512" />
-    <meta property="og:image:height" content="512" />
-    <meta property="og:site_name" content="Inner Sphere Atlas" />
+  <!-- common social tags -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@ISAtlasBTech" />
+  <meta name="twitter:creator" content="@ISAtlasBTech" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://isatlas.teamspam.net/images/ISAtlasTwitterCard.png" />
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta property="og:site_name" content="Inner Sphere Atlas" />
 
-    <!-- document-specific social tags -->
-    <meta property="og:url" content="{{ canonicalLink }}" />
-    <meta property="og:title" content="{{ planetData.name }}  | Planets/Systems | Inner Sphere Atlas" />
-    <meta property="og:description" content="Information about '{{ planetData.name }}' ({{ planetData.x_coord }}, {{ planetData.y_coord }}), a planet/system in the BattleTech/MechWarrior Universe (aka The Inner Sphere)." />
+  <!-- document-specific social tags -->
+  <meta property="og:url" content="{{ canonicalLink }}" />
+  <meta property="og:title" content="{{ planetData.name }}  | Planets/Systems | Inner Sphere Atlas" />
+  <meta property="og:description" content="Information about '{{ planetData.name }}' ({{ planetData.x_coord }}, {{ planetData.y_coord }}), a planet/system in the BattleTech/MechWarrior Universe (aka The Inner Sphere)." />
 
-    <!-- icons -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon-precomposed" href="/images/icon/apple-touch-icon-precomposed.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/icon/apple-touch-icon-72x72-precomposed.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/icon/apple-touch-icon-114x114-precomposed.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/icon/apple-touch-icon-144x144-precomposed.png" />
+  <!-- icons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon-precomposed" href="/images/icon/apple-touch-icon-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/icon/apple-touch-icon-72x72-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/icon/apple-touch-icon-114x114-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/icon/apple-touch-icon-144x144-precomposed.png" />
 
-    <title>{{ planetData.name }} | Planets/Systems | Inner Sphere Atlas</title>
+  <title>{{ planetData.name }} | Planets/Systems | Inner Sphere Atlas</title>
 
-    <link rel="alternate" href="{{ canonicalLink }}" hreflang="x-default">
+  <link rel="alternate" href="{{ canonicalLink }}" hreflang="x-default">
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script> <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script> <![endif]-->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
-  </head>
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script> <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script> <![endif]-->
 
-  <body>
-    <div class="container">
-      <ol class="breadcrumb">
-        <li>
-          <a href="./">Inner Sphere Atlas</a>
-        </li>
-        <li>
-          <a href="./planet.php">Systems</a>
-        </li>
-        <li class="active">{{ planetData.name }}</li>
-      </ol>
-    </div>
-    <div class="container">
-      {% include 'planet-detail-data.html' %}
+</head>
 
-      <div class="row">
-        <div class="col-sm-6">
-          {% include 'planet-detail-ownership.html' %}
-        </div>
+<body>
+  <div class="container">
+    <ol class="breadcrumb">
+      <li>
+        <a href="./">Inner Sphere Atlas</a>
+      </li>
+      <li>
+        <a href="./planet.php">Systems</a>
+      </li>
+      <li class="active">{{ planetData.name }}</li>
+    </ol>
+  </div>
+  <div class="container">
+    {% include 'planet-detail-data.html' %}
 
-        <div class="col-sm-6">
-          <a name="map"></a>
-          <h2>System Star Maps:</h2>
+    <div class="row">
+      <div class="col-sm-6">
+        {% include 'planet-detail-ownership.html' %}
+      </div>
+
+      <div class="col-sm-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+
+            <a name="map"></a>
+            <h2>System Star Maps:</h2>
+          </div>
           <div class="list-group">
             {% for era in eras %}
-              <a class="list-group-item" href="./system-map.php?planet={{ planet | url_encode }}&amp;era={{ era | slice(1,4) | url_encode }}">{{ era | slice(1,4) }}</a>
-            {% endfor %}
+            <a class="list-group-item" href="./system-map.php?planet={{ planet | url_encode }}&amp;era={{ era | slice(1,4) | url_encode }}">{{ era | slice(1,4) }}</a> {% endfor %}
           </div>
         </div>
-
-        <div class="col-sm-6">
-          {% include 'planet-detail-factory.html' %}
-        </div>
       </div>
 
-      <div class="row">
-        <div class="col-sm-6">
-          {% include 'planet-detail-neighbors.html' %}
-        </div>
-
-        <div class="col-sm-6">
-          {% include 'planet-detail-novels.html' %}
-        </div>
+      <div class="col-sm-6">
+        {% include 'planet-detail-factory.html' %}
       </div>
     </div>
-    {% include 'footer.html' %}
-  </body>
+
+    <div class="row">
+      <div class="col-sm-6">
+        {% include 'planet-detail-neighbors.html' %}
+      </div>
+
+      <div class="col-sm-6">
+        {% include 'planet-detail-novels.html' %}
+      </div>
+    </div>
+  </div>
+  {% include 'footer.html' %}
+</body>
 
 </html>
