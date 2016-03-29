@@ -1,11 +1,18 @@
-RewriteEngine on
+RewriteEngine On
+
+# RewriteBase /
+# RewriteCond %{HTTP_HOST} www.isatlas.teamspam.net$ [NC]
+# RewriteRule ^(.*)$ https://isatlas.teamspam.net/$1 [L,R=301]
+
+# RewriteCond %{HTTPS} Off
+# RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 <IfModule mod_expires.c>
 ExpiresActive On
 ExpiresDefault "access 1 month"
-</ifModule>
+</IfModule>
 <IfModule mod_deflate.c>
 AddOutputFilterByType DEFLATE text/html text/plain text/xml image/svg+xml
-</ifModule>
+</IfModule>
 
 Header set X-TeamSPAM "Information is in the noise!"
