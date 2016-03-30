@@ -40,6 +40,7 @@
 </head>
 
 <body>
+  <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
   <div class="container">
     <ol class="breadcrumb">
       <li>
@@ -50,9 +51,24 @@
       </li>
       <li class="active">{{ productData.component_type }} ({{ productData.product_type }})</li>
     </ol>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="page-header">
+          <h1>
+            <i class="icon ion-gear-a"></i>
+            <b>Product / Component:</b>
+            {{ productData.component_type }}
+            ({{ productData.product_type }})</h1>
+        </div>
+      </div>
+    </div>
+    {% include 'next_prev.html' %}
+  </div>
+  <div class="container" id="content" tabindex="-1">
+    {% include 'product-type-detail-detail.html' %}
   </div>
   <div class="container">
-    {% include 'product-type-detail-detail.html' %}
+    {% include 'next_prev.html' %}
   </div>
   {% include 'footer.html' %}
 </body>

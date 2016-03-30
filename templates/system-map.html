@@ -1,60 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="robots" content="index, follow" />
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="index, follow" />
 
-    <!-- common social tags -->
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@ISAtlasBTech" />
-    <meta name="twitter:creator" content="@ISAtlasBTech" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://isatlas.teamspam.net/images/ISAtlasTwitterMap.png" />
-    <meta property="og:image:width" content="512" />
-    <meta property="og:image:height" content="512" />
-    <meta property="og:site_name" content="Inner Sphere Atlas" />
+  <!-- common social tags -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@ISAtlasBTech" />
+  <meta name="twitter:creator" content="@ISAtlasBTech" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://isatlas.teamspam.net/images/ISAtlasTwitterMap.png" />
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta property="og:site_name" content="Inner Sphere Atlas" />
 
-    <!-- document-specific social tags -->
-    <meta property="og:url" content="{{ canonicalLink }}" />
-    <meta property="og:title" content="{{ planetData.name }} circa {{ currentEra | slice(1,4) }} | Star Maps | Inner Sphere Atlas" />
-    <meta property="og:description" content="Star Map for '{{ planetData.name }}' ({{ planetData.x_coord }}, {{ planetData.y_coord }}) circa {{ currentEra | slice(1,4) }}, a planet/system in the BattleTech/MechWarrior Universe (aka The Inner Sphere)." />
+  <!-- document-specific social tags -->
+  <meta property="og:url" content="{{ canonicalLink }}" />
+  <meta property="og:title" content="{{ planetData.name }} circa {{ currentEra | slice(1,4) }} | Star Maps | Inner Sphere Atlas" />
+  <meta property="og:description" content="Star Map for '{{ planetData.name }}' ({{ planetData.x_coord }}, {{ planetData.y_coord }}) circa {{ currentEra | slice(1,4) }}, a planet/system in the BattleTech/MechWarrior Universe (aka The Inner Sphere)." />
 
-    <!-- icons -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon-precomposed" href="/images/icon/apple-touch-icon-precomposed.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/icon/apple-touch-icon-72x72-precomposed.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/icon/apple-touch-icon-114x114-precomposed.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/icon/apple-touch-icon-144x144-precomposed.png" />
+  <!-- icons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon-precomposed" href="/images/icon/apple-touch-icon-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/icon/apple-touch-icon-72x72-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/icon/apple-touch-icon-114x114-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/icon/apple-touch-icon-144x144-precomposed.png" />
 
-    <title>{{ planetData.name }} circa {{ currentEra | slice(1,4) }} | Star Maps | Inner Sphere Atlas</title>
+  <title>{{ planetData.name }} circa {{ currentEra | slice(1,4) }} | Star Maps | Inner Sphere Atlas</title>
 
-    <link rel="alternate" href="{{ canonicalLink }}" hreflang="x-default" />
+  <link rel="alternate" href="{{ canonicalLink }}" hreflang="x-default" />
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
 
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
-  </head>
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+</head>
 
-  <body>
-    <div class="container">
-      <ol class="breadcrumb">
-        <li>
-          <a href="./">Inner Sphere Atlas</a>
-        </li>
-        <li>
-          <a href="./planet.php">Systems</a>
-        </li>
-        <li>
-          <a href="./planet-detail.php?planet={{ planet | url_encode }}">{{ planetData.name }}</a>
-        </li>
-        <li class="active">Star Maps</li>
-      </ol>
-    </div>
-    <div class="container">
+<body>
+  <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+  <div class="container">
+    <ol class="breadcrumb">
+      <li>
+        <a href="./">Inner Sphere Atlas</a>
+      </li>
+      <li>
+        <a href="./planet.php">Systems</a>
+      </li>
+      <li>
+        <a href="./planet-detail.php?planet={{ planet | url_encode }}">{{ planetData.name }}</a>
+      </li>
+      <li class="active">Star Maps</li>
+    </ol>
+    <div class="row">
       <div class="col-sm-12">
         <div class="page-header">
           <h1>
@@ -63,51 +63,50 @@
             {{ planetData.name }}</h1>
         </div>
       </div>
-      <nav>
-        <ul class="pagination pagination-lg">
-          {% for era in eras %}
-            {% if era != currentEra %}
-              <li>
-                <a href="./system-map.php?planet={{ planet | url_encode }}&amp;era={{ era | slice(1,4) | url_encode }}">{{ era | slice(1,4) }}</a>
-              </li>
-            {% else %}
-              <li class="active">
-                <a href="./system-map.php?planet={{ planet | url_encode }}&amp;era={{ era | slice(1,4) | url_encode }}">{{ era | slice(1,4) }}</a>
-              </li>
-            {% endif %}
-          {% endfor %}
-        </ul>
-      </nav>
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="embed-responsive-item">
-            <embed class="embed-responsive-item" src="{{ svg_url }}" type="image/svg+xml" pluginspage="http://www.adobe.com/svg/viewer/install/"/>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-12">
-          <br/>
-          <ul class="list-group">
-            <li class="list-group-item">
-              <b>System Name:</b>
-              <a href="./planet-detail.php?planet={{ planet | url_encode }}">{{ planetData.name }}</a>
-            </li>
-            <li class="list-group-item">
-              <b>Coordinates:</b>
-              {{ planetData.x_coord }},
-              {{ planetData.y_coord }}</li>
-          </ul>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-12">
-          <p>This page makes use of
-            <a href="http://www.w3.org/TR/SVG/">SVG</a>. You may need a plug-in for your browser to render this image.</p>
+    </div>
+    <nav>
+      <ul class="pagination pagination-lg">
+        {% for era in eras %} {% if era != currentEra %}
+        <li>
+          <a href="./system-map.php?planet={{ planet | url_encode }}&amp;era={{ era | slice(1,4) | url_encode }}">{{ era | slice(1,4) }}</a>
+        </li>
+        {% else %}
+        <li class="active">
+          <a href="./system-map.php?planet={{ planet | url_encode }}&amp;era={{ era | slice(1,4) | url_encode }}">{{ era | slice(1,4) }}</a>
+        </li>
+        {% endif %} {% endfor %}
+      </ul>
+    </nav>
+  </div>
+  <div class="container" id="content" tabindex="-1">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="embed-responsive-item">
+          <embed class="embed-responsive-item" src="{{ svg_url }}" type="image/svg+xml" pluginspage="http://www.adobe.com/svg/viewer/install/" />
         </div>
       </div>
     </div>
-    {% include 'footer.html' %}
-  </body>
+    <div class="row">
+      <div class="col-sm-12">
+        <br/>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <b>System Name:</b>
+            <a href="./planet-detail.php?planet={{ planet | url_encode }}">{{ planetData.name }}</a>
+          </li>
+          <li class="list-group-item">
+            <b>Coordinates:</b> {{ planetData.x_coord }}, {{ planetData.y_coord }}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <p>This page makes use of
+          <a href="http://www.w3.org/TR/SVG/">SVG</a>. You may need a plug-in for your browser to render this image.</p>
+      </div>
+    </div>
+  </div>
+  {% include 'footer.html' %}
+</body>
 
 </html>

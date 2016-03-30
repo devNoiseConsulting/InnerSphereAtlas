@@ -40,6 +40,7 @@
 </head>
 
 <body>
+  <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
   <div class="container">
     <ol class="breadcrumb">
       <li>
@@ -50,8 +51,18 @@
       </li>
       <li class="active">{{ factoryData.name }}</li>
     </ol>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="page-header">
+          <h1>
+            <i class="icon ion-settings"></i>
+            <b>Factory:</b>
+            {{ factoryData.name }}</h1>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="container">
+  <div class="container" id="content" tabindex="-1">
     {% include 'factory-detail-detail.html' %}
   </div>
   {% include 'footer.html' %}

@@ -1,29 +1,25 @@
 {% if pageNav.pageLinks %}
-  <nav>
-    <ul class="pagination pagination-lg">
-      {% if pageNav.firstPage %}
-        <li class="disabled">
-          <a href="#">&#9664;</a>
-        </li>
-      {% else %}
-        <li>{{ pageNav.previousLink | raw }}</li>
-      {% endif %}
-      {% for number in pageNav.pageNumbers %}
-        {% if pageNav.pageNum == number %}
-          <li class="active">
-          {% else %}
-          <li>
-          {% endif %}
-          {{ pageNav.pageLinks[number] | raw }}
-        </li>
-      {% endfor %}
-      {% if pageNav.lastPage %}
-        <li class="disabled">
-          <a href="#">&#9654;</a>
-        </li>
-      {% else %}
-        <li>{{ pageNav.nextLink | raw }}</li>
-      {% endif %}
-    </ul>
-  </nav>
+<nav>
+  <ul class="pagination pagination-lg">
+    {% if pageNav.firstPage %}
+    <li class="disabled">
+      <a href="#">&#9664;</a>
+    </li>
+    {% else %}
+    <li>{{ pageNav.previousLink | raw }}</li>
+    {% endif %}
+    {% for number in pageNav.pageNumbers %}
+    <li{% if pageNav.pageNum==number %} class="active" {% endif %}>
+      {{ pageNav.pageLinks[number] | raw }}
+    </li>
+    {% endfor %}
+    {% if pageNav.lastPage %}
+    <li class="disabled">
+      <a href="#">&#9654;</a>
+    </li>
+    {% else %}
+    <li>{{ pageNav.nextLink | raw }}</li>
+    {% endif %}
+  </ul>
+</nav>
 {% endif %}
