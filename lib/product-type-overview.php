@@ -47,8 +47,6 @@ if (empty($found) || !is_numeric($found)) {
 	$found = $productData['found'] - 1;
 }
 
-include("$ISA_LIBDIR/next_prev.php");
-
 if ($limit == 0) { $limit = $found; }
 
 if ($func == "search") {

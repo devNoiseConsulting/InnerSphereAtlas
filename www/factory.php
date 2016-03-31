@@ -2,8 +2,8 @@
 
 require_once('../vendor/autoload.php');
 
-include("./isatlas-config.php");
-include("$ISA_LIBDIR/connect.php");
+require_once("./isatlas-config.php");
+require_once("$ISA_LIBDIR/connect.php");
 require_once("$ISA_LIBDIR/canonical-link.php");
 
 include("$ISA_LIBDIR/factory-overview.php");

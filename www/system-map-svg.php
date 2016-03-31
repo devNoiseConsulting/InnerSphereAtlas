@@ -91,16 +91,8 @@ if ($planetData) {
 
 	$ringSize = 30 * $ISA_MAP_SCALE - 0.5;
 ?>
-<defs>
-<radialGradient id="jumpradial">
-<stop offset="0%" style="stop-color:White;" />
-<stop offset="100%" style="stop-color:rgb(<?php echo($rgb); ?>);">
-<animate attributeName="offset" from="0%" to="100%" dur="30s" repeatCount="indefinite" />
-</stop>
-</radialGradient>
-</defs>
 <rect x="1" y="0.5" width="<?php echo($ISA_MAP_SIZE - 1); ?>" height="<?php echo($ISA_MAP_SIZE - 1); ?>" fill="whitesmoke" />
-<circle cx="<?php echo($ISA_MAP_OFFSET); ?>" cy="<?php echo($ISA_MAP_OFFSET); ?>" r="<?php echo($ringSize); ?>" stroke="black" stroke-width="1" stroke-dasharray="15" opacity="0.5" fill="url(#jumpradial)" />
+<circle cx="<?php echo($ISA_MAP_OFFSET); ?>" cy="<?php echo($ISA_MAP_OFFSET); ?>" r="<?php echo($ringSize); ?>" stroke="black" stroke-width="1" stroke-dasharray="15" opacity="0.25" fill="rgb(<?php echo($rgb); ?>)" />
 <g stroke="black" stroke-width="0.5" stroke-dasharray="3" opacity="0.33" fill="none">
 <?php
 	/* Loop through each item */

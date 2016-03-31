@@ -1,7 +1,10 @@
 #Default robots.txt file (ask all bots to crawl slowly but still index everything).
 User-agent: *
-Crawl-delay: 1
+
 Disallow: /factory.php*
 Disallow: /novel.php*
 Disallow: /planet.php*
 Disallow: /product-type.php*
+
+Sitemap: http://isatlas.teamspam.net/sitemap.xml
+Crawl-delay: 1
