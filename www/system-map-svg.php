@@ -1,5 +1,6 @@
 <?php
 include("./isatlas-config.php");
+require_once("$ISA_LIBDIR/http-header-response.php");
 include("$ISA_LIBDIR/connect.php");
 
 header("Content-type: image/svg+xml");

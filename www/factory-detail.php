@@ -3,6 +3,7 @@
 require_once('../vendor/autoload.php');
 
 require_once("./isatlas-config.php");
+require_once("$ISA_LIBDIR/http-header-response.php");
 require_once("$ISA_LIBDIR/connect.php");
 require_once("$ISA_LIBDIR/canonical-link.php");
 

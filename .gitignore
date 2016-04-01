@@ -1,6 +1,7 @@
 .DS_Store
 *.swp
 composer.phar
+lib/*.ser
 www/isatlas-config.php
 www/isatlas-config.php.orig
 www/isatlas-config.php.local

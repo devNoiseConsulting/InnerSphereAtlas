@@ -19,26 +19,28 @@ header("Last-Modified: ".gmdate("D, d M Y H:i:s", $lastModifiedTime)." GMT");
 if (array_key_exists($_SERVER['PHP_SELF'], $eTagData["fingerPrint"])) {
 	$hashFragment = $hashFragments["fingerPrint"][$_SERVER['PHP_SELF']];
 } else {
-	$hashFragment = hash('whirlpool', $_SERVER['PHP_SELF']);
+	$hashFragment = hash('tiger192,3', $_SERVER['PHP_SELF']);
 }
 
-$etag = hash('whirlpool',
+$etag = hash('tiger192,3',
 	$_SERVER['PHP_SELF'] . ":" .
 	serialize($_REQUEST) . ":" .
 	$hashFragment . ":" .
 	$_SERVER['HTTP_USER_AGENT']
 );
-header("Etag: $etag");
+header("ETag: " . $etag);
 
 
 // If client sent an If-None-Match header with the correct ETag, do not download again
 if(isset($_SERVER['HTTP_IF_NONE_MATCH']) && trim(trim($_SERVER['HTTP_IF_NONE_MATCH']), '\'"') === $etag) {
-	header('HTTP/1.1 304 Not Modified');
+	// 304 Not Modified
+	http_response_code(304);
 	exit();
 }
 
 // If client sent an If-Modified-Since header with a recent modification date, do not download again
 if(isset($_SERVER['HTTP_IF_MODIFIED_SINCE']) && strtotime($_SERVER['HTTP_IF_MODIFIED_SINCE']) > $lastModifiedTime) {
-	header('HTTP/1.1 304 Not Modified');
+	// 304 Not Modified
+	http_response_code(304);
 	exit();
 }
