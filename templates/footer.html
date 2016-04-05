@@ -13,6 +13,7 @@
   </footer>
 </div>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
+{% if amp == false %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <script>
@@ -32,3 +33,20 @@
   ga('create', '__UA-uacct-#__', 'auto');
   ga('send', 'pageview');
 </script>
+{% else %}
+<amp-analytics type="googleanalytics" id="analytics1">
+<script type="application/json">
+{
+  "vars": {
+    "account": "__UA-uacct-#__"
+  },
+  "triggers": {
+    "trackPageview": {
+      "on": "visible",
+      "request": "pageview"
+    }
+  }
+}
+</script>
+</amp-analytics>
+{% endif %}

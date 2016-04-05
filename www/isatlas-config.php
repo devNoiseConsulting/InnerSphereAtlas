@@ -1,6 +1,9 @@
 <?php
 	date_default_timezone_set('UTC');
 
+	# Constants for Canonical Links
+	$ISA_CANONICAL_PROTOCOL = "HTTP";
+
 	# Constants for Filepaths
 	$ISA_LIBDIR = "<path_to>/lib";
 	$ISA_CACHEDIR = "<path_to>/cache";

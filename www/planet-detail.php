@@ -9,6 +9,8 @@ require_once("$ISA_LIBDIR/canonical-link.php");
 
 $planet = $_REQUEST["planet"];
 if (empty($planet) || !is_numeric($planet)) { $planet = 2266787; }
+$amp = array_key_exists("amp", $_REQUEST) ? $_REQUEST["amp"] : false;
+if ($amp) { $amp = true; }
 
 include("$ISA_LIBDIR/planet-detail.php");
 
@@ -35,5 +37,6 @@ echo $template->render(array(
 	'factories' => $factories,
 	'neighbors' => $neighbors,
 	'novels' => $novels,
+	'amp' => $amp,
 	'copyrightYear' => date('Y')
 	));
