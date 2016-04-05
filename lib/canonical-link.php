@@ -1,6 +1,7 @@
 <?php
-$canonicalLink = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' .
-	$_SERVER['SERVER_NAME'] .
-	$_SERVER['REQUEST_URI'];
-#$canonicalLink = htmlspecialchars($canonicalLink, ENT_QUOTES, 'UTF-8');
+$script = explode("&amp=", $_SERVER['REQUEST_URI']);
 
+$canonicalLink = $ISA_CANONICAL_PROTOCOL . '://' .
+	$_SERVER['SERVER_NAME'] .
+	$script[0];
+#$canonicalLink = htmlspecialchars($canonicalLink, ENT_QUOTES, 'UTF-8');

@@ -1,5 +1,9 @@
 <!DOCTYPE html>
+{% if amp %}
+<html amp lang="en">
+{% else %}
 <html lang="en">
+{% endif %}
 
 <head>
   <meta charset="utf-8" />
@@ -31,13 +35,21 @@
 
   <title>{{ planetData.name }} | Planets/Systems | Inner Sphere Atlas</title>
 
-  <link rel="alternate" href="{{ canonicalLink }}" hreflang="x-default" />
   <link rel="canonical" href="{{ canonicalLink }}" />
+  {% if amp == false %}
+  <link rel="alternate" href="{{ canonicalLink }}" hreflang="x-default" />
+  <link rel="amphtml" href="{{ canonicalLink }}&amp;amp=1">
 
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
 
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+  {% else %}
+  <link rel="alternate" href="{{ canonicalLink }}&amp;amp=1" hreflang="x-default" />
+
+  {% include 'planet-detail.css' %}
+  {% include 'amp-boilerplate.html' %}
+  {% endif %}
 </head>
 
 <body>
