@@ -28,6 +28,8 @@ h1 { font-size: 36px; }
 h2 { font-size: 30px; }
 p { margin: 0px 0px 10px; }
 small { font-size: 85%; }
+.text-right { text-align: right; }
+.text-center { text-align: center; }
 .text-muted { color: #777; }
 .page-header { padding-bottom: 9px; margin: 40px 0px 20px; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #eee; }
 ol,ul { margin-top: 0px; margin-bottom: 10px; }
@@ -85,7 +87,7 @@ a.list-group-item:hover { color: #555; text-decoration: none; background-color: 
 .container::after,.panel-body::after,.row::after { clear: both; }
 
 /*stylesheet 2/2 | https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css*/
-@font-face { font-family: "Ionicons";src: url("http://code.ionicframework.com/ionicons/2.0.1/fonts/ionicons.eot?v=2.0.1");src: url("http://code.ionicframework.com/ionicons/2.0.1/fonts/ionicons.eot?v=2.0.1#iefix") format("embedded-opentype"), url("http://code.ionicframework.com/ionicons/2.0.1/fonts/ionicons.ttf?v=2.0.1") format("truetype"), url("http://code.ionicframework.com/ionicons/2.0.1/fonts/ionicons.woff?v=2.0.1") format("woff"), url("http://code.ionicframework.com/ionicons/2.0.1/fonts/ionicons.svg?v=2.0.1#Ionicons") format("svg");font-weight: normal;font-style: normal }
+@font-face { font-family: "Ionicons";src: url("https://code.ionicframework.com/ionicons/2.0.1/fonts/ionicons.eot?v=2.0.1");src: url("https://code.ionicframework.com/ionicons/2.0.1/fonts/ionicons.eot?v=2.0.1#iefix") format("embedded-opentype"), url("https://code.ionicframework.com/ionicons/2.0.1/fonts/ionicons.ttf?v=2.0.1") format("truetype"), url("https://code.ionicframework.com/ionicons/2.0.1/fonts/ionicons.woff?v=2.0.1") format("woff"), url("https://code.ionicframework.com/ionicons/2.0.1/fonts/ionicons.svg?v=2.0.1#Ionicons") format("svg");font-weight: normal;font-style: normal }
 .ion-document-text::before,.ion-planet::before,.ion-settings::before { display: inline-block; font-family: Ionicons; speak: none; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; text-rendering: auto; line-height: 1; -webkit-font-smoothing: antialiased; }
 .ion-document-text:before{content:"\f12e"}
 .ion-planet:before{content:"\f343"}

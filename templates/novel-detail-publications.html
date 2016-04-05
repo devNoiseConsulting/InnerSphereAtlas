@@ -18,13 +18,13 @@
       </thead>
       <tbody>
         {% for novel in publisherData %}
-        <tr valign="top">
+        <tr>
           <td>{{ novel.publisher }}</td>
           <td>{{ novel.stock_id }}</td>
           <td>{{ novel.isbn }}</td>
           <td>{{ novel.print_year }}</td>
           <td>${{ novel.price }}</td>
-          <td align="center">
+          <td class="text-center">
             {% if novel.thumbnail %}
             <a href="{{ novel.imageLink | raw }}">
               <img src="{{ novel.thumbnail }}" alt="" height="140">

@@ -22,11 +22,11 @@
         <td>
           <a href="./novel-detail.php?novel={{ novel.novel_id }}">{{ novel.title }}</a>
         </td>
-        <td align="left">
+        <td class="text-left">
           <a href="{{ novel.author_search | raw }}">{{ novel.author }}</a>
         </td>
-        <td align="right">{{ novel.start_date }}</td>
-        <td align="right">{{ novel.end_date }}</td>
+        <td class="text-right">{{ novel.start_date }}</td>
+        <td class="text-right">{{ novel.end_date }}</td>
       </tr>
       {% endfor %}
     </tbody>

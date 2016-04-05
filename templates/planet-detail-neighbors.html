@@ -20,10 +20,10 @@
           <td>
             <a href="./planet-detail.php?planet={{ neighbor.planet_id | url_encode }}">{{ neighbor.planet_name }}</a>
           </td>
-          <td align="right">{{ neighbor.x_coord }}</td>
-          <td align="right">{{ neighbor.y_coord }}</td>
-          <td align="right">{{ neighbor.jumps }}</td>
-          <td align="center">
+          <td class="text-right">{{ neighbor.x_coord }}</td>
+          <td class="text-right">{{ neighbor.y_coord }}</td>
+          <td class="text-right">{{ neighbor.jumps }}</td>
+          <td class="text-center">
             {% if neighbor.factory or neighbor.fluff %}
             <a href="./planet-detail.php?planet={{ neighbor.planet_id | url_encode }}">
                   {% if neighbor.factory and neighbor.fluff %}
