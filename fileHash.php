@@ -141,6 +141,14 @@ $files = array (
   "$ISA_TEMPLATEDIR/footer.html",
   "$ISA_TEMPLATEDIR/cya.html",
   ),
+  "sitemap.php" => array (
+  "$ISA_DOCROOTDIR/sitemap.php",
+  "$ISA_DOCROOTDIR/isatlas-config.php",
+  "$ISA_LIBDIR/canonical-link.php",
+  "$ISA_TEMPLATEDIR/sitemap.html",
+  "$ISA_TEMPLATEDIR/footer.html",
+  "$ISA_TEMPLATEDIR/cya.html",
+  ),
   "system-map.php" => array (
   "$ISA_DOCROOTDIR/system-map.php",
   "$ISA_DOCROOTDIR/isatlas-config.php",

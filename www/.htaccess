@@ -9,10 +9,21 @@ RewriteEngine On
 
 <IfModule mod_expires.c>
 ExpiresActive On
+ExpiresByType text/html "access 1 week"
+ExpiresByType text/css "access 1 week"
+ExpiresByType text/x-javascript "access 1 week"
 ExpiresDefault "access 1 month"
 </IfModule>
 <IfModule mod_deflate.c>
-AddOutputFilterByType DEFLATE text/html text/plain text/xml image/svg+xml
+AddOutputFilterByType DEFLATE text/html text/plain text/xml image/svg+xml application/xml
 </IfModule>
+
+<filesMatch ".(jpg|jpeg|png|gif|ico)$">
+Header set Cache-Control "max-age=2628000, public"
+</filesMatch>
+
+<filesMatch ".(css|js|html|shtml|php|txt|xml)$">
+Header set Cache-Control "max-age=604800, public"
+</filesMatch>
 
 Header set X-TeamSPAM "Information is in the noise!"
