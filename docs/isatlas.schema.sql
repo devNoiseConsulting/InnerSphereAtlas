@@ -1,8 +1,7 @@
--- MySQL dump 10.13  Distrib 5.6.22, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.6.30, for Linux (x86_64)
 --
--- Host: localhost    Database: michae23_isatlas
 -- ------------------------------------------------------
--- Server version	5.6.22
+-- Server version	5.6.30
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -426,6 +425,7 @@ CREATE TABLE `factory` (
   `factory_id` int(11) NOT NULL DEFAULT '0',
   `planet_id` int(11) NOT NULL DEFAULT '0',
   `name` varchar(64) NOT NULL DEFAULT '',
+  `slug` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`factory_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -496,6 +496,7 @@ CREATE TABLE `novel` (
   `epilogue_date` date DEFAULT NULL,
   `notes` text,
   `series` varchar(64) NOT NULL DEFAULT '',
+  `slug` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`novel_id`),
   UNIQUE KEY `title` (`title`),
   UNIQUE KEY `novel_id` (`novel_id`),
@@ -566,31 +567,32 @@ DROP TABLE IF EXISTS `planet`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `planet` (
   `planet_id` int(11) NOT NULL DEFAULT '0',
-  `name` varchar(32) NOT NULL DEFAULT '',
+  `name` varchar(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `x_coord` float(10,2) NOT NULL DEFAULT '0.00',
   `y_coord` float(10,2) NOT NULL DEFAULT '0.00',
-  `star_type` varchar(32) DEFAULT NULL,
+  `star_type` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
   `planets_in_system` tinyint(4) DEFAULT NULL,
   `position` tinyint(4) DEFAULT NULL,
   `satellites` tinyint(6) DEFAULT NULL,
-  `atm_pressures` enum('Thin','Low','Standard','High') DEFAULT NULL,
-  `atm_subtype` enum('Breathable','Tainted','Toxic') DEFAULT NULL,
+  `atm_pressures` enum('Thin','Low','Standard','High') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `atm_subtype` enum('Breathable','Tainted','Toxic') COLLATE utf8_unicode_ci DEFAULT NULL,
   `surface_gravity` float(5,2) DEFAULT NULL,
   `equatorial_temperature` smallint(6) DEFAULT NULL,
-  `temperature_subtype` varchar(32) DEFAULT NULL,
+  `temperature_subtype` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
   `travel_time` float(10,2) DEFAULT NULL,
-  `recharging_station` varchar(32) DEFAULT NULL,
-  `comstar_facility` enum('A','B','C','None') DEFAULT NULL,
+  `recharging_station` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `comstar_facility` enum('A','B','C','None') COLLATE utf8_unicode_ci DEFAULT NULL,
   `population` bigint(20) DEFAULT NULL,
-  `socio_industrial_levels` varchar(32) DEFAULT NULL,
+  `socio_industrial_levels` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
   `surface_water` tinyint(4) DEFAULT NULL,
-  `native_life` varchar(64) DEFAULT NULL,
-  `fluff_source` varchar(128) DEFAULT NULL,
-  `description` text,
-  `factory` char(1) DEFAULT NULL,
-  `fluff` char(1) DEFAULT NULL,
+  `native_life` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fluff_source` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` mediumtext COLLATE utf8_unicode_ci,
+  `factory` char(1) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fluff` char(1) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `slug` varchar(256) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`planet_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -622,6 +624,7 @@ CREATE TABLE `product_type` (
   `product_type_id` int(11) NOT NULL AUTO_INCREMENT,
   `component_type` varchar(64) NOT NULL DEFAULT '',
   `product_type` varchar(64) NOT NULL DEFAULT '',
+  `slug` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`product_type_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=64301 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -656,4 +659,4 @@ CREATE TABLE `publisher` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-02-06 11:00:33
+-- Dump completed on 2016-08-10 15:51:10

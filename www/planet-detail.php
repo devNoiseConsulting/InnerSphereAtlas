@@ -7,10 +7,23 @@ require_once("$ISA_LIBDIR/http-header-response.php");
 require_once("$ISA_LIBDIR/connect.php");
 require_once("$ISA_LIBDIR/canonical-link.php");
 
-$planet = $_REQUEST["planet"];
+if ((count($slug) > 2) && (is_numeric($slug[2]))) {
+	$planet = $slug[2];
+} else {
+	$planet = array_key_exists("planet", $_GET) ? $_GET["planet"] : 2266787;
+}
 if (empty($planet) || !is_numeric($planet)) { $planet = 2266787; }
-$mobile = array_key_exists("mobile", $_REQUEST) ? $_REQUEST["mobile"] : false;
-if ($mobile) { $mobile = true; }
+
+$amp = "";
+if ((count($slug) > 4) && ($slug[4] == "amp")) {
+	$mobile = true;
+} else {
+	$mobile = array_key_exists("mobile", $_GET) ? $_GET["mobile"] : false;
+}
+if ($mobile) {
+	$mobile = true;
+	$amp = "/amp";
+}
 
 include("$ISA_LIBDIR/planet-detail.php");
 
@@ -38,5 +51,6 @@ echo $template->render(array(
 	'neighbors' => $neighbors,
 	'novels' => $novels,
 	'mobile' => $mobile,
+	'amp' => $amp,
 	'copyrightYear' => date('Y')
 	));

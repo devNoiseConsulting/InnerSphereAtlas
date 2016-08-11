@@ -5,7 +5,8 @@ NT.novel_id,
 N.title,
 COUNT(NT.chapter_name) AS chapters,
 P.isbn,
-P.availability
+P.availability,
+N.slug
 FROM
 novel N,
 novel_timeline NT,

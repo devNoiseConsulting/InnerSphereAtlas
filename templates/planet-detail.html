@@ -38,7 +38,7 @@
   <link rel="canonical" href="{{ canonicalLink }}" />
   {% if mobile == false %}
   <link rel="alternate" href="{{ canonicalLink }}" hreflang="x-default" />
-  <link rel="amphtml" href="{{ canonicalLink }}&amp;mobile=1">
+  <link rel="amphtml" href="{{ canonicalLink }}/amp">
 
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
@@ -90,10 +90,10 @@
   <div class="container">
     <ol class="breadcrumb">
       <li>
-        <a href="./">Inner Sphere Atlas</a>
+        <a href="/">Inner Sphere Atlas</a>
       </li>
       <li>
-        <a href="./planet.php">Systems</a>
+        <a href="/planet.php">Systems</a>
       </li>
       <li class="active">{{ planetData.name }}</li>
     </ol>
@@ -123,7 +123,7 @@
           </div>
           <div class="list-group">
             {% for era in eras %}
-            <a class="list-group-item" href="./system-map.php?planet={{ planet | url_encode }}&amp;era={{ era | slice(1,4) | url_encode }}">{{ era | slice(1,4) }}</a> {% endfor %}
+            <a class="list-group-item" href="/system-map.php?planet={{ planet | url_encode }}&amp;era={{ era | slice(1,4) | url_encode }}">{{ era | slice(1,4) }}</a> {% endfor %}
           </div>
         </div>
       </div>
