@@ -1,8 +1,8 @@
 RewriteEngine On
 
 # RewriteBase /
-# RewriteCond %{HTTP_HOST} www.isatlas.teamspam.net$ [NC]
-# RewriteRule ^(.*)$ https://isatlas.teamspam.net/$1 [L,R=301]
+# RewriteCond %{HTTP_HOST} ^www\.isatlas\.teamspam\.net$ [NC]
+# RewriteRule ^(.*)$ http://isatlas.teamspam.net/$1 [L,R=301]
 
 # RewriteCond %{HTTPS} Off
 # RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]

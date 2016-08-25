@@ -19,8 +19,8 @@
 
   <!-- document-specific social tags -->
   <meta property="og:url" content="{{ canonicalLink }}" />
-  <meta property="og:title" name="twitter:title" content="{{ factoryData.name }} | Factories | Inner Sphere Atlas" />
-  <meta property="og:description" name="description" content="Information about '{{ factoryData.name }}', a factory set in the BattleTech/MechWarrior Universe (aka The Inner Sphere)." />
+  <meta property="og:title" name="twitter:title" content="{{ factoryData.name }} on {{ factoryData.planet_name }} | Factories | Inner Sphere Atlas" />
+  <meta property="og:description" name="description" content="Information about '{{ factoryData.name }}' on '{{ factoryData.planet_name }}', is a factory set in the BattleTech/MechWarrior Universe (aka The Inner Sphere)." />
 
   <!-- icons -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -29,11 +29,27 @@
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/icon/apple-touch-icon-114x114-precomposed.png" />
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/icon/apple-touch-icon-144x144-precomposed.png" />
 
-  <title>{{ factoryData.name }} | Factories | Inner Sphere Atlas</title>
+  <title>{{ factoryData.name }} on {{ factoryData.planet_name }} | Factories | Inner Sphere Atlas</title>
 
   <link rel="alternate" href="{{ canonicalLink }}" hreflang="x-default" />
   <link rel="canonical" href="{{ canonicalLink }}" />
   <link rel=”publisher” href="https://plus.google.com/100379799764247656300">
+
+  <script type="application/ld+json">
+      {
+          "@context": "http://schema.org",
+          "@type": "WebSite",
+          "url": "{{ canonicalLink }}",
+          "name": "{{ factoryData.name }} on {{ factoryData.planet_name }} | Factories | Inner Sphere Atlas",
+          "description": "Information about '{{ factoryData.name }}' on '{{ factoryData.planet_name }}', is a factory set in the BattleTech/MechWarrior Universe (aka The Inner Sphere).",
+          "publisher": "Inner Sphere Atlas",
+          "sameAs": [
+              "https://twitter.com/ISAtlasBtech",
+              "https://www.facebook.com/InnerSphereAtlas/",
+              "https://plus.google.com/100379799764247656300"
+          ]
+      }
+  </script>
 
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
@@ -59,7 +75,7 @@
           <h1>
             <i class="icon ion-settings"></i>
             <b>Factory:</b>
-            {{ factoryData.name }}</h1>
+            {{ factoryData.name }} on {{ factoryData.planet_name }}</h1>
         </div>
       </div>
     </div>
