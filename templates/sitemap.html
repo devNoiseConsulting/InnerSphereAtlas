@@ -46,7 +46,7 @@
     <div class="container">
         <ol class="breadcrumb">
             <li>
-                <a href="./">Inner Sphere Atlas</a>
+                <a href="/">Inner Sphere Atlas</a>
             </li>
             <li class="active">Site Map</li>
         </ol>
@@ -65,47 +65,51 @@
         <ul>
             <li>
                 <h2>
-                <a href="./planet.php">Systems:</a> </h2>
+                <a href="/planet.php"><i class="icon ion-planet"></i> Systems:</a> </h2>
                 <ul>
-                  {% for planet_id, name in planets %}
+                  {% for planet in planets %}
                     <li>
-                        <a href="./planet-detail.php?planet={{ planet_id | url_encode }}">{{ name }}</a>
+                        <a href="/planet-detail.php/{{ planet.slug }}">{{ planet.name }}</a>
                     </li>
                     {% endfor %}
                 </ul>
             </li>
             <li>
                 <h2>
-                <a href="./factory.php">Factories:</a> </h2>
+                <a href="/factory.php"><i class="icon ion-settings"></i> Factories:</a> </h2>
                 <ul>
-                  {% for factory_id, name in factories %}
+                  {% for factory in factories %}
                     <li>
-                        <a href="./factory-detail.php?factory={{ factory_id }}">{{ name }}</a>
+                        <a href="/factory-detail.php/{{ factory.slug }}">{{ factory.name }}</a>
                     </li>
                 {% endfor %}
               </ul>
             </li>
             <li>
                 <h2>
-                <a href="./product-type.php">Product or Component Types:</a> </h2>
+                <a href="/product-type.php"><i class="icon ion-gear-a"></i> Product or Component Types:</a> </h2>
                 <ul>
-                  {% for product_type_id, name in productTypes %}
+                  {% for productType in productTypes %}
                     <li>
-                        <a href="./product-type-detail.php?searchvalue={{ product_type_id }}">{{ name }}</a>
+                        <a href="/product-type-detail.php/{{ productType.slug }}">{{ productType.name }}</a>
                     </li>
                 {% endfor %}
               </ul>
             </li>
             <li>
                 <h2>
-                <a href="./novel.php">Novels:</a> </h2>
+                <a href="/novel.php"><i class="icon ion-ios-book"></i> Novels:</a>
+                </h2>
                 <ul>
                     <li>
-                        <a href="./novel-timeline.php">Novel Timeline</a>
+                        <a href="/novel-timeline.php">Novel Timeline</a>
                     </li>
-                    {% for novel_id, title in novels %}
+                  </ul>
+                  <br/>
+                  <ul>
+                    {% for novel in novels %}
                     <li>
-                        <a href="./novel-detail.php?novel={{ novel_id }}">{{ title }}</a>
+                        <a href="/novel-detail.php/{{ novel.slug }}">{{ novel.name }}</a>
                     </li>
                     {% endfor %}
                 </ul>
