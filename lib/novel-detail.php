@@ -1,7 +1,5 @@
 <?php
 
-$novel = array_key_exists("novel", $_REQUEST) ? $_REQUEST["novel"] : "9";
-
 $query = "SELECT
 *
 FROM
