@@ -12,7 +12,7 @@
       {% for factory in factories %}
         <tr>
           <td>
-            <a href="./factory-detail.php?factory={{ factory.factory_id }}">{{ factory.name }}</a>
+            <a href="/factory-detail.php/{{ factory.slug }}{{ amp }}">{{ factory.name }}</a>
           </td>
           <td>{{ factory.planet_name }}</td>
           <td class="text-right">{{ factory.x_coord }}</td>

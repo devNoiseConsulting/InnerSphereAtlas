@@ -51,10 +51,12 @@ if ($func == "search") {
 	$query = "SELECT
 	F.factory_id,
 	F.name,
+	F.slug,
 	P.planet_id,
 	P.name AS planet_name,
 	P.x_coord,
-	P.y_coord
+	P.y_coord,
+	P.slug AS planet_slug
 	FROM
 	planet P,
 	factory F
@@ -68,10 +70,12 @@ if ($func == "search") {
 	$query = "SELECT
 	F.factory_id,
 	F.name,
+	F.slug,
 	P.planet_id,
 	P.name AS planet_name,
 	P.x_coord,
-	P.y_coord
+	P.y_coord,
+	P.slug AS planet_slug
 	FROM
 	planet P,
 	factory F

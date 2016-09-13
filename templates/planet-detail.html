@@ -123,7 +123,7 @@
           </div>
           <div class="list-group">
             {% for era in eras %}
-            <a class="list-group-item" href="/system-map.php?planet={{ planet | url_encode }}&amp;era={{ era | slice(1,4) | url_encode }}">{{ era | slice(1,4) }}</a> {% endfor %}
+            <a class="list-group-item" href="/system-map.php/{{ planetData.slug }}/{{ era | slice(1,4) | url_encode }}{{ amp }}">{{ era | slice(1,4) }}</a> {% endfor %}
           </div>
         </div>
       </div>

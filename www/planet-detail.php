@@ -35,6 +35,10 @@ include("$ISA_LIBDIR/planet-detail-neighbors.php");
 
 include("$ISA_LIBDIR/planet-detail-novels.php");
 
+if (array_key_exists("slug", $planetData)) {
+	$canonicalLink = $seoLink . "/" . $planetData["slug"];
+}
+
 $loader = new Twig_Loader_Filesystem($ISA_TEMPLATEDIR);
 $twig = new Twig_Environment($loader);
 

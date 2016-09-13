@@ -75,7 +75,8 @@ if (isset($func) && $func == "search") {
 	N.start_date,
 	N.end_date,
 	N.epilogue_date,
-	N.notes
+	N.notes,
+	N.slug
 	FROM
 	novel N
 	WHERE
@@ -91,7 +92,8 @@ if (isset($func) && $func == "search") {
 	N.start_date,
 	N.end_date,
 	N.epilogue_date,
-	N.notes
+	N.notes,
+	N.slug
 	FROM
 	novel N
 	ORDER BY " . $sortString . "

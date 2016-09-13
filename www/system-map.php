@@ -7,41 +7,35 @@ require_once("$ISA_LIBDIR/http-header-response.php");
 require_once("$ISA_LIBDIR/connect.php");
 require_once("$ISA_LIBDIR/canonical-link.php");
 
-$planet = array_key_exists("planet", $_REQUEST) ? $_REQUEST["planet"] : 2266787;
-$query = "SELECT
-P.name,
-P.x_coord,
-P.y_coord
-FROM
-planet P
-where
-P.planet_id = :planet
-";
-
-$sth = $dbh->prepare($query);
-$sth->bindParam(':planet', $planet);
-$sth->execute();
-$planetData = $sth->fetch(PDO::FETCH_ASSOC);
-
-if ($planetData) {
-	$name = $planetData['name'];
-	$x = $planetData['x_coord'];
-	$y = $planetData['y_coord'];
+if ((count($slug) > 2) && (is_numeric($slug[2]))) {
+	$planet = $slug[2];
+} else {
+	$planet = array_key_exists("planet", $_GET) ? $_GET["planet"] : 2266787;
 }
+if (empty($planet) || !is_numeric($planet)) { $planet = 2266787; }
 
-if (empty($x)) { $x = 0; }
-if (empty($y)) { $y = 0; }
-if (empty($name)) { $name = "Terra"; }
-
-$era = array_key_exists("era", $_REQUEST) ? $_REQUEST["era"] : "3062";
-if (!is_numeric($era)) { $era = 3062; }
+if ((count($slug) > 4) && (is_numeric($slug[4]))) {
+	$era = $slug[4];
+} else {
+	$era = array_key_exists("era", $_GET) ? $_GET["era"] : "3062";
+}
+if (empty($era) || !is_numeric($era)) { $era = 3062; }
 $preg_eras = "/(2575|2750|30(25|30|40|52|57|62))/";
 if (!preg_match($preg_eras, $era)) { $era = 3062; }
 $era = preg_replace($preg_eras, "\\1", $era);
 
-$eras = array('E2575', 'E2750', 'E3025', 'E3030', 'E3040', 'E3052', 'E3057', 'E3062');
+$amp = "";
+if ((count($slug) > 5) && ($slug[5] == "amp")) {
+	$mobile = true;
+} else {
+	$mobile = array_key_exists("mobile", $_GET) ? $_GET["mobile"] : false;
+}
+if ($mobile) {
+	$mobile = true;
+	$amp = "/amp";
+}
 
-$svg_url = "./system-map-svg.php?planet=" . urlencode($planet) . "&era=" . $era;
+include("$ISA_LIBDIR/system-map.php");
 
 $loader = new Twig_Loader_Filesystem($ISA_TEMPLATEDIR);
 $twig = new Twig_Environment($loader);

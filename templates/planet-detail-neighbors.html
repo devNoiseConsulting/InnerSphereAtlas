@@ -28,22 +28,12 @@
             <a href="/planet-detail.php/{{ neighbor.slug }}{{ amp }}">
                   {% if neighbor.factory and neighbor.fluff %}
                     {% spaceless %}
-                      <!--
-                      <img src="./images/fluff.gif" alt="Description" width="16" height="16" border="0"/>
-                      <img src="./images/factory.gif" alt="Factory" width="16" height="16" border="0"/>
-                      -->
                       <i class="icon ion-document-text"></i>&nbsp;
                       <i class="icon ion-settings"></i>
                     {% endspaceless %}
                   {% elseif neighbor.factory %}
-                    <!--
-                    <img src="./images/factory.gif" alt="Factory" width="16" height="16" border="0"/>
-                    -->
                     <i class="icon ion-settings"></i>
                   {% elseif neighbor.fluff %}
-                    <!--
-                    <img src="./images/fluff.gif" alt="Description" width="16" height="16" border="0"/>
-                    -->
                     <i class="icon ion-document-text"></i>
                   {% endif %}
                 </a> {% endif %}

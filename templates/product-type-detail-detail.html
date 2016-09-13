@@ -12,10 +12,10 @@
         <tr>
           <td>{{ product.product_name }}</td>
           <td>
-            <a href="./factory-detail.php?factory={{ product.factory_id | url_encode }}">{{ product.factory_name }}</a>
+            <a href="/factory-detail.php/{{ product.factory_slug }}{{ amp }}">{{ product.factory_name }}</a>
           </td>
           <td>
-            <a href="./planet-detail.php?planet={{ product.planet_id | url_encode }}">{{ product.planet_name }}</a>
+            <a href="/planet-detail.php/{{ product.planet_slug }}{{ amp }}">{{ product.planet_name }}</a>
           </td>
         </tr>
       {% endfor %}

@@ -3,10 +3,10 @@
     <thead>
       <tr>
         <th>
-          <a href="./novel-timeline.php?sort=date">Date:</a>
+          <a href="/novel-timeline.php?sort=date">Date:</a>
         </th>
         <th>
-          <a href="./novel-timeline.php?sort=title">Title:</a>
+          <a href="/novel-timeline.php?sort=title">Title:</a>
         </th>
         <th>Chapter:</th>
       </tr>
@@ -16,7 +16,7 @@
       <tr>
         <td>{{ chapter.chapter_date }}</td>
         <td>
-          <a href="./novel-detail.php?novel={{ chapter.novel_id | url_encode }}">{{ chapter.title }}</a>
+          <a href="/novel-detail.php/{{ chapter.slug }}{{ amp }}">{{ chapter.title }}</a>
         </td>
         <td>{{ chapter.chapter_name }}</td>
       </tr>

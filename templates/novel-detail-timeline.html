@@ -21,31 +21,21 @@
           <td>{{ chapter.chapter_name }}</td>
           <td>{{ chapter.chapter_date }}</td>
           <td>
-            <a href="./planet-detail.php?planet={{ chapter.planet_id | url_encode }}">{{ chapter.name }}</a>
+            <a href="/planet-detail.php/{{ chapter.slug }}{{ amp }}">{{ chapter.name }}</a>
           </td>
           <td class="text-right">{{ chapter.x_coord }}</td>
           <td class="text-right">{{ chapter.y_coord }}</td>
           <td class="text-center">
             {% if chapter.factory or chapter.fluff %}
-            <a href="./planet-detail.php?planet={{ chapter.planet_id | url_encode }}">
+            <a href="/planet-detail.php/{{ chapter.slug }}{{ amp }}">
               {% if chapter.factory and chapter.fluff %}
                 {% spaceless %}
-                  <!--
-                  <img src="./images/fluff.gif" alt="Description" width="16" height="16" border="0"/>
-                  <img src="./images/factory.gif" alt="Factory" width="16" height="16" border="0"/>
-                  -->
                   <i class="icon ion-document-text"></i>&nbsp;
                   <i class="icon ion-settings"></i>
                 {% endspaceless %}
               {% elseif chapter.factory %}
-                <!--
-                <img src="./images/factory.gif" alt="Factory" width="16" height="16" border="0"/>
-                -->
                 <i class="icon ion-settings"></i>
               {% elseif chapter.fluff %}
-                <!--
-                <img src="./images/fluff.gif" alt="Description" width="16" height="16" border="0"/>
-                -->
                 <i class="icon ion-document-text"></i>
               {% endif %}
                 </a>

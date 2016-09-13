@@ -3,16 +3,16 @@
     <thead>
       <tr>
         <th>
-          <a href="./novel.php?sort=title">Title:</a>
+          <a href="/novel.php?sort=title">Title:</a>
         </th>
         <th>
-          <a href="./novel.php?sort=author">Author:</a>
+          <a href="/novel.php?sort=author">Author:</a>
         </th>
         <th>
-          <a href="./novel.php?sort=start">Start Date:</a>
+          <a href="/novel.php?sort=start">Start Date:</a>
         </th>
         <th>
-          <a href="./novel.php?sort=end">End Date:</a>
+          <a href="/novel.php?sort=end">End Date:</a>
         </th>
       </tr>
     </thead>
@@ -20,7 +20,7 @@
       {% for novel in novelData %}
       <tr>
         <td>
-          <a href="./novel-detail.php?novel={{ novel.novel_id }}">{{ novel.title }}</a>
+          <a href="/novel-detail.php/{{ novel.slug }}{{ amp }}">{{ novel.title }}</a>
         </td>
         <td class="text-left">
           <a href="{{ novel.author_search | raw }}">{{ novel.author }}</a>

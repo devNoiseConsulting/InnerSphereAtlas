@@ -53,7 +53,8 @@ if ($func == "search") {
 	$query = "SELECT DISTINCT
 	PT.product_type_id,
 	PT.component_type,
-	PT.product_type
+	PT.product_type,
+	PT.slug
 	FROM
 	product_type PT,
 	product PC
@@ -69,7 +70,8 @@ if ($func == "search") {
 	$query = "SELECT DISTINCT
 	PT.product_type_id,
 	PT.component_type,
-	PT.product_type
+	PT.product_type,
+	PT.slug
 	FROM
 	product_type PT,
 	product PC

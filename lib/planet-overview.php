@@ -42,7 +42,8 @@ P.name,
 P.x_coord,
 P.y_coord,
 P.factory,
-P.fluff
+P.fluff,
+P.slug
 FROM
 planet P
 WHERE

@@ -5,7 +5,7 @@
   {% if factories %}
   <div class="list-group">
     {% for factory in factories %}
-    <a class="list-group-item" href="/factory-detail.php?factory={{ factory.factory_id | url_encode }}">{{ factory.name }}</a> {% endfor %}
+    <a class="list-group-item" href="/factory-detail.php/{{ factory.slug }}{{ amp }}">{{ factory.name }}</a> {% endfor %}
   </div>
   {% else %}
   <div class="panel-body">

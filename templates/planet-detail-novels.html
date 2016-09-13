@@ -16,7 +16,7 @@
         {% for novel in novels %}
         <tr>
           <td>
-            <a href="/novel-detail.php?novel={{ novel.novel_id | url_encode }}">{{ novel.title }}</a>
+            <a href="/novel-detail.php/{{ novel.slug }}{{ amp }}">{{ novel.title }}</a>
           </td>
           <td>{{ novel.chapters }}</td>
           <td>

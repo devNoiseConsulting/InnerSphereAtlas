@@ -12,31 +12,21 @@
       {% for planet in planets %}
       <tr>
         <td>
-          <a href="./planet-detail.php?planet={{ planet.planet_id | url_encode }}">{{ planet.name }}</a>
+          <a href="/planet-detail.php/{{ planet.slug }}{{ amp }}">{{ planet.name }}</a>
         </td>
         <td class="text-right">{{ planet.x_coord }}</td>
         <td class="text-right">{{ planet.y_coord }}</td>
         <td class="text-center">
           {% if planet.factory or planet.fluff %}
-          <a href="./planet-detail.php?planet={{ planet.planet_id | url_encode }}">
+          <a href="/planet-detail.php/{{ planet.slug }}{{ amp }}">
             {% if planet.factory and planet.fluff %}
               {% spaceless %}
-              <!--
-              <img src="./images/fluff.gif" alt="Description" width="16" height="16" border="0"/>
-              <img src="./images/factory.gif" alt="Factory" width="16" height="16" border="0"/>
-              -->
               <i class="icon ion-document-text"></i>&nbsp;
               <i class="icon ion-settings"></i>
               {% endspaceless %}
             {% elseif planet.factory %}
-              <!--
-              <img src="./images/factory.gif" alt="Factory" width="16" height="16" border="0"/>
-              -->
               <i class="icon ion-settings"></i>
             {% elseif planet.fluff %}
-              <!--
-              <img src="./images/fluff.gif" alt="Description" width="16" height="16" border="0"/>
-              -->
               <i class="icon ion-document-text"></i>
             {% endif %}
           </a> {% endif %}

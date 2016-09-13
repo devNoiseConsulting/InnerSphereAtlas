@@ -8,7 +8,8 @@ P.name,
 P.x_coord,
 P.y_coord,
 P.fluff,
-P.factory
+P.factory,
+P.slug
 FROM
 novel_timeline NT,
 planet P
