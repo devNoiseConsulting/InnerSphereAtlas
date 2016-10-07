@@ -8,22 +8,22 @@ if (file_exists($fileName)) {
 }
 
 
-if (array_key_exists($_SERVER['PHP_SELF'], $eTagData["fileAge"])) {
-	$lastModifiedTime = $hashFragments["fileAge"][$_SERVER['PHP_SELF']];
+if (array_key_exists($_SERVER['SCRIPT_NAME'], $eTagData["fileAge"])) {
+	$lastModifiedTime = $hashFragments["fileAge"][$_SERVER['SCRIPT_NAME']];
 } else {
 	$lastModifiedTime = filemtime($_SERVER['SCRIPT_FILENAME']);
 }
 header("Last-Modified: ".gmdate("D, d M Y H:i:s", $lastModifiedTime)." GMT");
 
 
-if (array_key_exists($_SERVER['PHP_SELF'], $eTagData["fingerPrint"])) {
-	$hashFragment = $hashFragments["fingerPrint"][$_SERVER['PHP_SELF']];
+if (array_key_exists($_SERVER['SCRIPT_NAME'], $eTagData["fingerPrint"])) {
+	$hashFragment = $hashFragments["fingerPrint"][$_SERVER['SCRIPT_NAME']];
 } else {
-	$hashFragment = hash('tiger192,3', $_SERVER['PHP_SELF']);
+	$hashFragment = hash('tiger192,3', $_SERVER['SCRIPT_NAME']);
 }
 
 $etag = hash('tiger192,3',
-	$_SERVER['PHP_SELF'] . ":" .
+	$_SERVER['SCRIPT_NAME'] . ":" .
 	serialize($_REQUEST) . ":" .
 	$hashFragment . ":" .
 	$_SERVER['HTTP_USER_AGENT']

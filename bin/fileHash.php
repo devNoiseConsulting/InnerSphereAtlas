@@ -3,17 +3,19 @@
 require_once("./www/isatlas-config.php");
 
 $files = array (
-  "index.php" => array (
+  "/index.php" => array (
   "$ISA_DOCROOTDIR/index.php",
   "$ISA_DOCROOTDIR/isatlas-config.php",
+  "$ISA_LIBDIR/http-header-response.php",
   "$ISA_LIBDIR/canonical-link.php",
   "$ISA_TEMPLATEDIR/index.html",
   "$ISA_TEMPLATEDIR/footer.html",
   "$ISA_TEMPLATEDIR/cya.html",
   ),
-  "factory.php" => array (
+  "/factory.php" => array (
   "$ISA_DOCROOTDIR/factory.php",
   "$ISA_DOCROOTDIR/isatlas-config.php",
+  "$ISA_LIBDIR/http-header-response.php",
   "$ISA_LIBDIR/connect.php",
   "$ISA_LIBDIR/canonical-link.php",
   "$ISA_LIBDIR/factory-overview.php",
@@ -24,9 +26,10 @@ $files = array (
   "$ISA_TEMPLATEDIR/footer.html",
   "$ISA_TEMPLATEDIR/cya.html",
   ),
-  "factory-detail.php" => array (
+  "/factory-detail.php" => array (
   "$ISA_DOCROOTDIR/factory-detail.php",
   "$ISA_DOCROOTDIR/isatlas-config.php",
+  "$ISA_LIBDIR/http-header-response.php",
   "$ISA_LIBDIR/connect.php",
   "$ISA_LIBDIR/canonical-link.php",
   "$ISA_LIBDIR/factory-detail.php",
@@ -37,10 +40,11 @@ $files = array (
   "$ISA_TEMPLATEDIR/footer.html",
   "$ISA_TEMPLATEDIR/cya.html",
   ),
-  "novel.php" => array (
+  "/novel.php" => array (
   "$ISA_DOCROOTDIR/novel.php",
   "$ISA_DOCROOTDIR/isatlas-config.php",
   "$ISA_LIBDIR/connect.php",
+  "$ISA_LIBDIR/http-header-response.php",
   "$ISA_LIBDIR/canonical-link.php",
   "$ISA_LIBDIR/novel-overview.php",
   "$ISA_LIBDIR/next_prev.php",
@@ -50,10 +54,11 @@ $files = array (
   "$ISA_TEMPLATEDIR/footer.html",
   "$ISA_TEMPLATEDIR/cya.html",
   ),
-  "novel-timeline.php" => array (
+  "/novel-timeline.php" => array (
   "$ISA_DOCROOTDIR/novel-timeline.php",
   "$ISA_DOCROOTDIR/isatlas-config.php",
   "$ISA_LIBDIR/connect.php",
+  "$ISA_LIBDIR/http-header-response.php",
   "$ISA_LIBDIR/canonical-link.php",
   "$ISA_LIBDIR/novel-timeline-overview.php",
   "$ISA_LIBDIR/next_prev.php",
@@ -63,10 +68,11 @@ $files = array (
   "$ISA_TEMPLATEDIR/footer.html",
   "$ISA_TEMPLATEDIR/cya.html",
   ),
-  "novel-detail.php" => array (
+  "/novel-detail.php" => array (
   "$ISA_DOCROOTDIR/novel-detail.php",
   "$ISA_DOCROOTDIR/isatlas-config.php",
   "$ISA_LIBDIR/connect.php",
+  "$ISA_LIBDIR/http-header-response.php",
   "$ISA_LIBDIR/canonical-link.php",
   "$ISA_LIBDIR/novel-detail.php",
   "$ISA_LIBDIR/novel-detail-publications.php",
@@ -80,10 +86,11 @@ $files = array (
   "$ISA_TEMPLATEDIR/footer.html",
   "$ISA_TEMPLATEDIR/cya.html",
   ),
-  "planet.php" => array (
+  "/planet.php" => array (
   "$ISA_DOCROOTDIR/planet.php",
   "$ISA_DOCROOTDIR/isatlas-config.php",
   "$ISA_LIBDIR/connect.php",
+  "$ISA_LIBDIR/http-header-response.php",
   "$ISA_LIBDIR/canonical-link.php",
   "$ISA_LIBDIR/planet-overview.php",
   "$ISA_LIBDIR/next_prev.php",
@@ -94,10 +101,11 @@ $files = array (
   "$ISA_TEMPLATEDIR/footer.html",
   "$ISA_TEMPLATEDIR/cya.html",
   ),
-  "planet-detail.php" => array (
+  "/planet-detail.php" => array (
   "$ISA_DOCROOTDIR/planet-detail.php",
   "$ISA_DOCROOTDIR/isatlas-config.php",
   "$ISA_LIBDIR/connect.php",
+  "$ISA_LIBDIR/http-header-response.php",
   "$ISA_LIBDIR/canonical-link.php",
   "$ISA_LIBDIR/planet-detail.php",
   "$ISA_LIBDIR/planet-detail-ownership.php",
@@ -115,10 +123,11 @@ $files = array (
   "$ISA_TEMPLATEDIR/footer.html",
   "$ISA_TEMPLATEDIR/cya.html",
   ),
-  "product-type.php" => array (
+  "/product-type.php" => array (
   "$ISA_DOCROOTDIR/product-type.php",
   "$ISA_DOCROOTDIR/isatlas-config.php",
   "$ISA_LIBDIR/connect.php",
+  "$ISA_LIBDIR/http-header-response.php",
   "$ISA_LIBDIR/canonical-link.php",
   "$ISA_LIBDIR/product-type-overview.php",
   "$ISA_LIBDIR/next_prev.php",
@@ -128,10 +137,11 @@ $files = array (
   "$ISA_TEMPLATEDIR/footer.html",
   "$ISA_TEMPLATEDIR/cya.html",
   ),
-  "product-type-detail.php" => array (
+  "/product-type-detail.php" => array (
   "$ISA_DOCROOTDIR/product-type-detail.php",
   "$ISA_DOCROOTDIR/isatlas-config.php",
   "$ISA_LIBDIR/connect.php",
+  "$ISA_LIBDIR/http-header-response.php",
   "$ISA_LIBDIR/canonical-link.php",
   "$ISA_LIBDIR/product-type-detail.php",
   "$ISA_LIBDIR/next_prev.php",
@@ -141,33 +151,37 @@ $files = array (
   "$ISA_TEMPLATEDIR/footer.html",
   "$ISA_TEMPLATEDIR/cya.html",
   ),
-  "sitemap.php" => array (
+  "/sitemap.php" => array (
   "$ISA_DOCROOTDIR/sitemap.php",
   "$ISA_DOCROOTDIR/isatlas-config.php",
+  "$ISA_LIBDIR/http-header-response.php",
   "$ISA_LIBDIR/canonical-link.php",
   "$ISA_TEMPLATEDIR/sitemap.html",
   "$ISA_TEMPLATEDIR/footer.html",
   "$ISA_TEMPLATEDIR/cya.html",
   ),
-  "system-map.php" => array (
+  "/system-map.php" => array (
   "$ISA_DOCROOTDIR/system-map.php",
   "$ISA_DOCROOTDIR/isatlas-config.php",
   "$ISA_LIBDIR/connect.php",
+  "$ISA_LIBDIR/http-header-response.php",
   "$ISA_LIBDIR/canonical-link.php",
   "$ISA_TEMPLATEDIR/system-map.html",
   "$ISA_TEMPLATEDIR/footer.html",
   "$ISA_TEMPLATEDIR/cya.html",
   ),
-  "system-map-svg.php" => array (
+  "/system-map-svg.php" => array (
   "$ISA_DOCROOTDIR/system-map-svg.php",
   "$ISA_DOCROOTDIR/isatlas-config.php",
   "$ISA_LIBDIR/connect.php",
+  "$ISA_LIBDIR/http-header-response.php",
   "$ISA_LIBDIR/canonical-link.php",
   ),
-  "system-map-svg-double.php" => array (
+  "/system-map-svg-double.php" => array (
   "$ISA_DOCROOTDIR/system-map-svg-double.php",
   "$ISA_DOCROOTDIR/isatlas-config.php",
   "$ISA_LIBDIR/connect.php",
+  "$ISA_LIBDIR/http-header-response.php",
   "$ISA_LIBDIR/canonical-link.php",
   )
 );
