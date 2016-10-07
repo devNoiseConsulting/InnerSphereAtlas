@@ -38,7 +38,7 @@ $planets = array(
   [ "id" => 8482260, "name" => "Thuban", "slug" => "8482260/thuban" ],
   [ "id" => 8456668, "name" => "Tikonov", "slug" => "8456668/tikonov" ],
   [ "id" => 8992767, "name" => "Twycross", "slug" => "8992767/twycross" ],
-  [ "id" => 9376530, "name" => "Wernke/Talon", "slug" => "9376530/wernke/talon" ],
+  [ "id" => 9376530, "name" => "Wernke/Talon", "slug" => "9376530/wernke-talon" ],
   [ "id" => 9674400, "name" => "Yorii", "slug" => "9674400/yorii" ]
 );
 
@@ -84,9 +84,9 @@ $productTypes = array(
   [ "id" => 21000, "name" => "BattleMech (Medium BattleMech)", "slug" => "21000/battlemech-medium-battlemech" ],
   [ "id" => 40270, "name" => "Component (Communications System)", "slug" => "40270/component-communications-system" ],
   [ "id" => 40220, "name" => "Component (Targeting and Tracking System)", "slug" => "40220/component-targeting-and-tracking-system" ],
-  [ "id" => 47003, "name" => "Component - Armament (Autocannon/20)", "slug" => "47003/component-armament-autocannon/20" ],
+  [ "id" => 47003, "name" => "Component - Armament (Autocannon/20)", "slug" => "47003/component-armament-autocannon-20" ],
   [ "id" => 51000, "name" => "Component - Armament (Gauss Rifle)", "slug" => "51000/component-armament-gauss-rifle" ],
-  [ "id" => 49003, "name" => "Component - Armament (Ultra Autocannon/20)", "slug" => "49003/component-armament-ultra-autocannon/20" ],
+  [ "id" => 49003, "name" => "Component - Armament (Ultra Autocannon/20)", "slug" => "49003/component-armament-ultra-autocannon-20" ],
   [ "id" => 60100, "name" => "Component - Armor - Ferro-Fibrous (BattleMechs & Vehicles)", "slug" => "60100/component-armor-ferro-fibrous-battlemechs-vehicles" ],
   [ "id" => 60000, "name" => "Component - Armor - Standard (BattleMechs & Vehicles)", "slug" => "60000/component-armor-standard-battlemechs-vehicles" ],
   [ "id" => 61100, "name" => "Component - Chasiss - Endo Steel (BattleMechs)", "slug" => "61100/component-chasiss-endo-steel-battlemechs" ],

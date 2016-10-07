@@ -37,8 +37,9 @@ class SlugFix
 
 		for ($i = 0; $i < count($this->data); $i++) {
 			$slug = $this->data[$i];
-			$newSlug = $slug{'id'} . "/" . $seo->slugify($slug{'name'});
-			if ($newSlug != $slug{'slug'}) {
+			$newSlug = $slug{'id'} . "/" . $seo->slugify(str_replace("'", "", $slug{'name'}));
+
+			if (strcmp($newSlug, $slug{'slug'}) !== 0) {
 				$slug{'slug'} = $newSlug;
 				$this->fixedData[] = $slug;
 			}
@@ -48,7 +49,6 @@ class SlugFix
 	public function updateSlugs() {
 		for ($i = 0; $i < count($this->fixedData); $i++) {
 			$slug = $this->fixedData[$i];
-
 			$sth = $this->dbh->prepare($this->updateQuery);
 			$sth->bindParam(':new_slug', $slug{'slug'}, PDO::PARAM_STR);
 			$sth->bindParam(':id', $slug{'id'}, PDO::PARAM_INT);
@@ -63,7 +63,7 @@ class SlugFix
 	public function fix() {
 		$this->fetchSlugs();
 		$this->checkSlugs();
-		#$this->updateSlugs();
+		$this->updateSlugs();
 	}
 }
 
@@ -148,14 +148,14 @@ WHERE P2.product_type_id = P1.product_type_id
 
 $productSelectQuery = "SELECT
 PT.product_type_id AS id,
-CONCAT(PT.component_type, PT.product_type) AS name,
+CONCAT_WS(' ', PT.component_type, PT.product_type) AS name,
 PT.slug
 FROM
 product_type PT
 ";
 $productUpdateQuery = "UPDATE product_type
 SET slug = :new_slug
-WHERE product_id = :id
+WHERE product_type_id = :id
 ";
 
 $productFix = new SlugFix($dbh, $productSelectQuery, $productUpdateQuery);
