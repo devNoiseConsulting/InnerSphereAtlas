@@ -1,11 +1,13 @@
 RewriteEngine On
 
+# Force HTTPS
+#RewriteCond %{HTTPS} !On
+#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+
+# Force www
 # RewriteBase /
 # RewriteCond %{HTTP_HOST} ^www\.isatlas\.teamspam\.net$ [NC]
 # RewriteRule ^(.*)$ http://isatlas.teamspam.net/$1 [L,R=301]
-
-# RewriteCond %{HTTPS} Off
-# RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 <IfModule mod_expires.c>
 ExpiresActive On
@@ -19,6 +21,8 @@ ExpiresDefault "access 1 month"
 AddOutputFilterByType DEFLATE text/html text/plain text/xml image/svg+xml application/xml
 </IfModule>
 
+<IfModule mod_headers.c>
+
 <filesMatch ".(jpg|jpeg|png|gif|ico)$">
 Header set Cache-Control "max-age=2628000, public"
 </filesMatch>
@@ -27,9 +31,11 @@ Header set Cache-Control "max-age=2628000, public"
 Header set Cache-Control "max-age=604800, public"
 </filesMatch>
 
-<IfModule mod_headers.c>
 Header set X-TeamSPAM "Information is in the noise!"
+
+Header set Content-Security-Policy "default-src 'none'; script-src 'self' maxcdn.bootstrapcdn.com www.google-analytics.com ajax.googleapis.com cdn.ampproject.org 'sha256-pGaO0B4DcHutLtFTtvJo537ZftNUL4IjbYkeG9wg90A='; connect-src www.google-analytics.com; img-src 'self' www.google-analytics.com ir-na.amazon-adsystem.com; style-src 'self' 'unsafe-inline' maxcdn.bootstrapcdn.com code.ionicframework.com; font-src 'self' maxcdn.bootstrapcdn.com code.ionicframework.com; object-src 'self'; upgrade-insecure-requests"
 
 # Set XSS Protection header
 Header set X-XSS-Protection "1; mode=block"
+
 </IfModule>
