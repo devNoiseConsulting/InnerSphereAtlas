@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
+  <meta name="robots" content="index, follow, noodp" />
+
+  <meta name="verify-v1" content="GlY3yEdIofi6DHBMfA+J7Ay00/3LoUiSEpGbQ9QSRt0=" />
+  <meta name="msvalidate.01" content="553B4BEB2CD2F94DB26F1F10A537E4F4" />
+  <!--
+  <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
+  <meta name="DC.Title" content="Inner Sphere Atlas" />
+  <meta name="DC.Creator" content="Michael J. Flynn" />
+  <meta name="DC.Subject" content="BattleTech (Game)" />
+  <meta name="DC.Description" content="A listing of the known planets/systems in the BattleTech/MechWarrior Universe (aka The Inner Sphere)." />
+  <meta name="DC.Publisher" content="Team SPAM!" />
+  <meta name="DC.Contributor" content="Chris Wheeler" />
+  <meta name="DC.Type" content="Text" />
+  <meta name="DC.Format" content="text/html" />
+  <link rel="DC.Identifier" href="http://isatlas.teamspam.net/" />
+  <meta name="DC.Language" content="en" />
+  -->
+
+  <!-- common social tags -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@ISAtlasBTech" />
+  <meta name="twitter:creator" content="@ISAtlasBTech" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" name="twitter:image" content="https://isatlas.teamspam.net/images/ISAtlasTwitterCard.png" />
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta property="og:site_name" content="Inner Sphere Atlas" />
+
+  <!-- document-specific social tags -->
+  <meta property="og:title" content="Inner Sphere Atlas" />
+  <meta property="og:url" content="{{ canonicalLink }}" />
+  <meta property="og:description" name="description" content="A listing of the known planets/systems in the BattleTech/MechWarrior Universe (aka The Inner Sphere)." />
+
+  <!-- icons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon-precomposed" href="/images/icon/isatlas-57x57.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/icon/isatlas-72x72.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/icon/isatlas-114x114.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/icon/isatlas-144x144.png" />
+
+  <link rel="manifest" href="/manifest.json"></link>
+
+  <title>Inner Sphere Atlas - A BattleTech/MechWarrior Resource</title>
+
+  <link rel="alternate" href="/offline.html" hreflang="x-default" />
+  <link rel="canonical" href="/offline.html" />
+  <link rel=”publisher” href="https://plus.google.com/100379799764247656300">
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "url": "https://isatlas.teamspam.net/",
+      "name": "Inner Sphere Atlas",
+      "description": "A listing of the known planets/systems in the BattleTech/MechWarrior Universe (aka The Inner Sphere).",
+      "publisher": "Inner Sphere Atlas",
+      "sameAs": [
+        "https://twitter.com/ISAtlasBtech",
+        "https://www.facebook.com/InnerSphereAtlas/",
+        "https://plus.google.com/100379799764247656300"
+      ]
+    }
+  </script>
+
+  <!-- Bootstrap -->
+  <style type="text/css">
+    /*! CSS Used from: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css */
+
+    html {
+      font-family: sans-serif;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    footer {
+      display: block;
+    }
+
+    a {
+      background-color: transparent;
+    }
+
+    a:active,
+    a:hover {
+      outline: 0;
+    }
+
+    h1 {
+      margin: .67em 0;
+      font-size: 2em;
+    }
+
+    small {
+      font-size: 80%;
+    }
+
+    hr {
+      height: 0;
+      -webkit-box-sizing: content-box;
+      -moz-box-sizing: content-box;
+      box-sizing: content-box;
+    }
+
+    @media print {
+      *,
+      :after,
+      :before {
+        color: #000 !important;
+        text-shadow: none !important;
+        background: 0 0 !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+      }
+      a,
+      a:visited {
+        text-decoration: underline;
+      }
+      a[href]:after {
+        content: " (" attr(href) ")";
+      }
+      a[href^="#"]:after {
+        content: "";
+      }
+      h2,
+      p {
+        orphans: 3;
+        widows: 3;
+      }
+      h2 {
+        page-break-after: avoid;
+      }
+    }
+
+    * {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    :after,
+    :before {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 10px;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.42857143;
+      color: #333;
+      background-color: #fff;
+    }
+
+    a {
+      color: #337ab7;
+      text-decoration: none;
+    }
+
+    a:focus,
+    a:hover {
+      color: #23527c;
+      text-decoration: underline;
+    }
+
+    a:focus {
+      outline: thin dotted;
+      outline: 5px auto -webkit-focus-ring-color;
+      outline-offset: -2px;
+    }
+
+    hr {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      border: 0;
+      border-top: 1px solid #eee;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+
+    .sr-only-focusable:active,
+    .sr-only-focusable:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      margin: 0;
+      overflow: visible;
+      clip: auto;
+    }
+
+    h1,
+    h2 {
+      font-family: inherit;
+      font-weight: 500;
+      line-height: 1.1;
+      color: inherit;
+    }
+
+    h1,
+    h2 {
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 36px;
+    }
+
+    h2 {
+      font-size: 30px;
+    }
+
+    p {
+      margin: 0 0 10px;
+    }
+
+    small {
+      font-size: 85%;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .text-muted {
+      color: #777;
+    }
+
+    .container {
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    @media (min-width:768px) {
+      .container {
+        width: 750px;
+      }
+    }
+
+    @media (min-width:992px) {
+      .container {
+        width: 970px;
+      }
+    }
+
+    @media (min-width:1200px) {
+      .container {
+        width: 1170px;
+      }
+    }
+
+    .row {
+      margin-right: -15px;
+      margin-left: -15px;
+    }
+
+    .col-sm-12,
+    .col-sm-4,
+    .col-sm-8 {
+      position: relative;
+      min-height: 1px;
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+
+    @media (min-width:768px) {
+      .col-sm-12,
+      .col-sm-4,
+      .col-sm-8 {
+        float: left;
+      }
+      .col-sm-12 {
+        width: 100%;
+      }
+      .col-sm-8 {
+        width: 66.66666667%;
+      }
+      .col-sm-4 {
+        width: 33.33333333%;
+      }
+    }
+
+    .jumbotron {
+      padding-top: 30px;
+      padding-bottom: 30px;
+      margin-bottom: 30px;
+      color: inherit;
+      background-color: #eee;
+    }
+
+    .jumbotron h1 {
+      color: inherit;
+    }
+
+    .jumbotron p {
+      margin-bottom: 15px;
+      font-size: 21px;
+      font-weight: 200;
+    }
+
+    .jumbotron .container {
+      max-width: 100%;
+    }
+
+    @media screen and (min-width:768px) {
+      .jumbotron {
+        padding-top: 48px;
+        padding-bottom: 48px;
+      }
+      .jumbotron h1 {
+        font-size: 63px;
+      }
+    }
+
+    .panel {
+      margin-bottom: 20px;
+      background-color: #fff;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+      box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    }
+
+    .panel-body {
+      padding: 15px;
+    }
+
+    .panel-heading {
+      padding: 10px 15px;
+      border-bottom: 1px solid transparent;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+    }
+
+    .panel-danger {
+      border-color: #ebccd1;
+    }
+
+    .panel-danger>.panel-heading {
+      color: #a94442;
+      background-color: #f2dede;
+      border-color: #ebccd1;
+    }
+
+    .container:after,
+    .container:before,
+    .panel-body:after,
+    .panel-body:before,
+    .row:after,
+    .row:before {
+      display: table;
+      content: " ";
+    }
+
+    .container:after,
+    .panel-body:after,
+    .row:after {
+      clear: both;
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="text-center"><a href="https://isatlas.teamspam.net/">Inner Sphere Atlas</a></h1>
+      <p>
+        A website for the players or fans of BattleTech and MechWarrior games. Providing a catalog on the inhabited and known planets or systems of the Inner Sphere.
+      </p>
+    </div>
+  </div>
+  <div class="container" id="content" tabindex="-1">
+    <div class="row">
+
+      <div class="col-sm-12">
+        <div class="panel panel-danger">
+          <div class="panel-heading">
+            <h2>Offline:</h2>
+          </div>
+          <div class="panel-body">
+            <p>
+              We're sorry, but the Inner Sphere Atlas requires an internet connection to work. Please try again when you internet connection returns.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="container">
+    <hr/>
+    <footer class="text-muted">
+      <div class="row">
+        <div class="col-sm-4">
+          <p>Copyright &copy; Inner Sphere Atlas 2018</p>
+        </div>
+        <div class="col-sm-8">
+          <p>
+            <small>
+                      Classic BattleTech, BattleTech, BattleMech, ‘Mech, and MechWarrior are registered trademarks and/or trademarks of The Topps Company, Inc. in the United States and/or other countries. All Rights Reserved. Used without permission. Any use of The Topps Company, Inc.'s copyrighted material or trademarks in this file should not be viewed as a challenge to those copyrights or trademarks.
+                    </small>
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+
+</html>
