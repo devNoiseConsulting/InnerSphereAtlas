@@ -10,3 +10,4 @@ www/images/*.jpg
 www/style/bootstrap.min.css
 vendor
 deploy.sh
+testDeploy.sh
