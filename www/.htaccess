@@ -33,7 +33,16 @@ Header set Cache-Control "max-age=604800, public"
 
 Header set X-TeamSPAM "Information is in the noise!"
 
-Header set Content-Security-Policy "default-src 'none'; script-src 'self' maxcdn.bootstrapcdn.com www.google-analytics.com ajax.googleapis.com cdn.ampproject.org; connect-src 'self' www.google-analytics.com ajax.googleapis.com maxcdn.bootstrapcdn.com code.ionicframework.com; img-src 'self' www.google-analytics.com ir-na.amazon-adsystem.com; style-src 'self' 'unsafe-inline' maxcdn.bootstrapcdn.com code.ionicframework.com; font-src 'self' maxcdn.bootstrapcdn.com code.ionicframework.com; object-src 'self'; upgrade-insecure-requests"
+Header set Content-Security-Policy \
+"default-src 'none'; \
+connect-src 'self' www.google-analytics.com ajax.googleapis.com maxcdn.bootstrapcdn.com code.ionicframework.com; \
+font-src 'self' maxcdn.bootstrapcdn.com code.ionicframework.com; \
+img-src 'self' www.google-analytics.com ir-na.amazon-adsystem.com; \
+manifest-src 'self'; \
+object-src 'self'; \
+script-src 'self' maxcdn.bootstrapcdn.com www.google-analytics.com ajax.googleapis.com cdn.ampproject.org; \
+style-src 'self' 'unsafe-inline' maxcdn.bootstrapcdn.com code.ionicframework.com; \
+upgrade-insecure-requests"
 
 # Set XSS Protection header
 Header set X-XSS-Protection "1; mode=block"

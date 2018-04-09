@@ -63,7 +63,7 @@ self.__precacheManifest = [
   },
   {
     "url": "javascript/isatlas.js",
-    "revision": "cad31ac33ea866e44c2070bf6579f64c"
+    "revision": "d9a122c6765d406d252e829e8ed3677e"
   },
   {
     "url": "javascript/workbox-v3.0.1/workbox-background-sync.dev.js",
