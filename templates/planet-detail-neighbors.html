@@ -28,13 +28,13 @@
             <a href="/planet-detail.php/{{ neighbor.slug }}{{ amp }}">
                   {% if neighbor.factory and neighbor.fluff %}
                     {% spaceless %}
-                      <i class="icon ion-document-text"></i>&nbsp;
-                      <i class="icon ion-settings"></i>
+                      <i class="icon ion-document-text" aria-label="Description available"></i>&nbsp;
+                      <i class="icon ion-settings" aria-label="Factory present"></i>
                     {% endspaceless %}
                   {% elseif neighbor.factory %}
-                    <i class="icon ion-settings"></i>
+                    <i class="icon ion-settings" aria-label="Factory present"></i>
                   {% elseif neighbor.fluff %}
-                    <i class="icon ion-document-text"></i>
+                    <i class="icon ion-document-text" aria-label="Description available"></i>
                   {% endif %}
                 </a> {% endif %}
           </td>

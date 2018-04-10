@@ -39,6 +39,7 @@
     <meta property="og:description" name="description" content="A listing of the known planets/systems in the BattleTech/MechWarrior Universe (aka The Inner Sphere)." />
 
     <meta name="theme-color" content="#EEEEEE"/>
+    <link rel="manifest" href="/manifest.json"></link>
 
     <!-- icons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -46,8 +47,6 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/icon/isatlas-72x72.png" />
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/icon/isatlas-114x114.png" />
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/icon/isatlas-144x144.png" />
-
-    <link rel="manifest" href="/manifest.json"></link>
 
     <title>Inner Sphere Atlas - A BattleTech/MechWarrior Resource</title>
 
@@ -102,7 +101,7 @@
                                 <input type="hidden" name="func" value="search" />
                                 <input type="hidden" name="start" value="0" />
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" name="searchvalue" size="24" value="" placeholder="Search Systems" />
+                                    <input type="text" class="form-control" name="searchvalue" size="24" value="" placeholder="Search Systems" aria-label="Search Systems"/>
                                 </div>
                                 <div class="col-xs-2">
                                     <button type="submit" class="btn btn-primary">
@@ -118,7 +117,7 @@
                             <div class="form-group">
                                 <input type="hidden" name="func" value="browsebyletter" />
                                 <div class="col-xs-10">
-                                    <select class="form-control" name="searchvalue">
+                                    <select class="form-control" name="searchvalue" aria-label="Browse by Letter">
                                         {% for letter in searchLetters %}
                                         <option>{{ letter }}</option>
                                         {% endfor %}
@@ -154,7 +153,7 @@
                                 <input type="hidden" name="func" value="search" />
                                 <input type="hidden" name="start" value="0" />
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" name="searchvalue" size="24" value="" placeholder="Search Factories" />
+                                    <input type="text" class="form-control" name="searchvalue" size="24" value="" placeholder="Search Factories" aria-label="Search Factories"/>
                                 </div>
                                 <div class="col-xs-2">
                                     <button type="submit" class="btn btn-primary">
@@ -187,7 +186,7 @@
                                 <input type="hidden" name="func" value="search" />
                                 <input type="hidden" name="start" value="0" />
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" name="searchvalue" size="24" value="" placeholder="Search Products or Components" />
+                                    <input type="text" class="form-control" name="searchvalue" size="24" value="" placeholder="Search Products or Components" aria-label="Search Products or Components"/>
                                 </div>
                                 <div class="col-xs-2">
                                     <button type="submit" class="btn btn-primary">
